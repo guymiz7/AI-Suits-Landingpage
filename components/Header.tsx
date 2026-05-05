@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { Logo } from "./Logo";
-import { cn } from "@/lib/utils";
 
 const navItems = [
   { href: "#what-you-get", label: "התוצרים" },
@@ -23,37 +22,41 @@ export function Header() {
 
   return (
     <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-500",
-        scrolled
-          ? "border-b border-cream/10 bg-onyx/85 backdrop-blur-xl"
-          : "border-b border-transparent"
-      )}
+      className="fixed inset-x-0 top-0 z-50 transition-all duration-500"
+      style={{
+        background: scrolled ? "rgba(10,10,11,0.85)" : "transparent",
+        backdropFilter: scrolled ? "blur(16px)" : "none",
+        borderBottom: scrolled ? "1px solid var(--line-cream)" : "1px solid transparent",
+      }}
     >
-      {/* Document chrome — mono caption strip */}
-      <div className="hidden border-b border-cream/[0.06] py-2 lg:block">
-        <div className="container-luxe flex items-center justify-between">
-          <span className="caption-mono">Suits AI · Bootcamp · MMXXVI</span>
-          <span className="caption-mono">— תפור למידה</span>
+      {/* Document chrome strip — mono captions */}
+      <div className="hidden lg:block" style={{ borderBottom: "1px solid rgba(245,239,230,0.06)" }}>
+        <div className="container-page chrome py-2">
+          <span>Suits AI · Bootcamp</span>
+          <span>— תפור למידה</span>
+          <span>MMXXVI</span>
         </div>
       </div>
 
-      <div className="container-luxe flex h-20 items-center justify-between">
-        <Logo />
+      <div className="container-page flex h-20 items-center justify-between">
+        <Logo size="default" />
 
-        <nav className="hidden items-center gap-8 lg:flex">
+        <nav className="hidden items-center gap-9 lg:flex">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="font-serif text-base font-light text-graphite-200 transition-colors hover:text-cream"
+              className="font-serif text-base font-light transition-colors"
+              style={{ color: "rgba(245,239,230,0.65)" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--cream)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(245,239,230,0.65)")}
             >
               {item.label}
             </a>
           ))}
         </nav>
 
-        <div className="w-[180px]" aria-hidden="true" />
+        <div className="w-[100px]" aria-hidden="true" />
       </div>
     </header>
   );

@@ -4,19 +4,23 @@ import { motion } from "framer-motion";
 
 const audiences = [
   {
-    title: "בעלי עסקים",
-    text: "שרוצים שהעסק שלהם יביא תוצאות טובות יותר — בנכסים, בתהליכים ובאסטרטגיה.",
-    icon: <OwnerIcon />,
+    role: "Primary · קהל יעד ראשי",
+    name: "בעלי עסקים",
+    sub: "שרוצים שהעסק שלהם יביא תוצאות טובות יותר — בנכסים, בתהליכים ובאסטרטגיה.",
+    bullets: ["לשפר תהליכים", "לייצר נכסים טובים יותר", "לבנות פתרונות לעצמם", "להכניס AI לעסק"],
+    primary: true,
   },
   {
-    title: "מעצבים, אנשי שיווק ואנשי שירות",
-    text: "שרוצים לתת ערך מוסף ללקוחות שלהם, להרחיב יכולות ולעבוד מהר יותר עם AI.",
-    icon: <ProIcon />,
+    role: "Secondary · אנשי מקצוע",
+    name: "מעצבים · שיווק · שירות",
+    sub: "שרוצים לתת ערך מוסף ללקוחות שלהם, להרחיב יכולות ולעבוד מהר יותר עם AI.",
+    bullets: ["לפתח יכולת מקצועית", "לבנות לעסקים", "להציע שירותי AI", "להיכנס לתחום"],
   },
   {
-    title: "אנשים ללא ניסיון או רקע בתחום",
-    text: "שרוצים ללמוד את התחום הכי מבוקש היום — בצורה פרקטית, מהבסיס ועד תוצר אמיתי.",
-    icon: <BeginnerIcon />,
+    role: "Tertiary · בלי רקע",
+    name: "אנשים ללא ניסיון",
+    sub: "שרוצים ללמוד את התחום הכי מבוקש היום — בצורה פרקטית, מהבסיס ועד תוצר אמיתי.",
+    bullets: ["להיכנס לתחום מהר", "ללמוד נכון מההתחלה", "לבנות תוצר עובד", "להפוך לבילדרס"],
   },
 ];
 
@@ -24,88 +28,74 @@ export function WhoIsItFor() {
   return (
     <section
       id="audience"
-      className="relative overflow-hidden border-t border-white/[0.04] py-28 lg:py-36"
+      className="pinstripe-charcoal relative"
+      style={{ paddingTop: 120, paddingBottom: 120 }}
     >
-      <div className="container-luxe">
+      <div className="container-page chrome" style={{ marginBottom: 80, opacity: 0.55 }}>
+        <span>V · קהל היעד</span>
+        <span>Audience</span>
+      </div>
+
+      <div className="container-page">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="mx-auto max-w-3xl text-center"
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.7 }}
+          style={{ marginBottom: 60 }}
         >
-          <span
-            className="eyebrow-bordeaux"
-            style={{ letterSpacing: "0.45em" }}
-          >
-            קהל היעד
-          </span>
-          <h2 className="heading-display mt-5 font-serif font-light leading-[1.05] text-cream text-4xl sm:text-5xl lg:text-6xl">
-            למי ההכשרה הזאת{" "}
-            <span className="italic-accent">מתאימה?</span>
+          <div className="caption" style={{ marginBottom: 14 }}>V</div>
+          <h2 className="h1" style={{ maxWidth: "20ch" }}>
+            למי אנחנו <em className="italic-script" style={{ color: "var(--bordeaux-cream)" }}>תופרים</em>.
           </h2>
-          <div className="mx-auto mt-6 h-px w-16 bg-gradient-to-r from-transparent via-bordeaux-500 to-transparent" />
         </motion.div>
 
-        <div className="mx-auto mt-16 grid max-w-5xl gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-3">
           {audiences.map((a, i) => (
             <motion.div
-              key={a.title}
+              key={a.name}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/[0.06] bg-gradient-to-b from-graphite-800/50 to-graphite-900/80 p-7 transition-all duration-500 hover:-translate-y-1 hover:border-bordeaux-700/40 hover:shadow-luxury sm:p-8"
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.55, delay: i * 0.1 }}
+              className="card"
+              style={{
+                background: a.primary ? "var(--bordeaux-deep)" : "var(--graphite)",
+                borderColor: a.primary ? "var(--bordeaux)" : "var(--line-cream)",
+              }}
             >
-              <div className="pointer-events-none absolute -top-16 left-1/2 h-32 w-32 -translate-x-1/2 rounded-full bg-bordeaux-700/0 blur-3xl transition-all duration-700 group-hover:bg-bordeaux-700/15" />
-
-              <div className="flex h-16 w-16 items-center justify-center rounded-xl border border-white/10 bg-graphite-800/60 text-cream-warm transition-colors group-hover:border-bordeaux-700/40">
-                {a.icon}
+              <div className="role">{a.role}</div>
+              <div>
+                <div className="name">
+                  <em>{a.name}</em>
+                </div>
+                <p className="mt-4" style={{ color: "rgba(245,239,230,0.7)", fontSize: 14, lineHeight: 1.6 }}>
+                  {a.sub}
+                </p>
               </div>
-
-              <h3 className="heading-display mt-6 text-xl font-semibold leading-tight text-white sm:text-2xl">
-                {a.title}
-              </h3>
-              <p className="mt-3 text-sm font-light leading-relaxed text-graphite-300 sm:text-base">
-                {a.text}
-              </p>
-
-              <div className="mt-6 h-px w-full bg-gradient-to-l from-transparent via-bordeaux-700/30 to-transparent" />
+              <ul className="flex flex-wrap" style={{ listStyle: "none", padding: 0, margin: 0, gap: "6px 14px" }}>
+                {a.bullets.map((b, j) => (
+                  <li
+                    key={b}
+                    className="font-serif"
+                    style={{ fontSize: 15, fontWeight: 300, fontStyle: "italic", color: "var(--cream)" }}
+                  >
+                    {b}
+                    {j < a.bullets.length - 1 && (
+                      <span style={{ marginRight: 14, color: "var(--smoke)" }}>·</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           ))}
         </div>
       </div>
+
+      <div className="container-page chrome" style={{ marginTop: 80, opacity: 0.55 }}>
+        <span>Suits AI · Audience</span>
+        <span>05 / V</span>
+      </div>
     </section>
-  );
-}
-
-function OwnerIcon() {
-  return (
-    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7 sm:h-8 sm:w-8">
-      <path d="M5 26V13l11-7 11 7v13" />
-      <path d="M11 26v-9h10v9" />
-      <line x1="5" y1="26" x2="27" y2="26" />
-      <circle cx="16" cy="20" r="1.5" fill="currentColor" />
-    </svg>
-  );
-}
-
-function ProIcon() {
-  return (
-    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7 sm:h-8 sm:w-8">
-      <circle cx="16" cy="11" r="5" />
-      <path d="M5 27c0-5 5-9 11-9s11 4 11 9" />
-      <path d="M22 6l3-2 1 3-2 1z" fill="currentColor" opacity="0.2" />
-    </svg>
-  );
-}
-
-function BeginnerIcon() {
-  return (
-    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7 sm:h-8 sm:w-8">
-      <circle cx="16" cy="16" r="11" />
-      <path d="M11 16l4 4 8-8" />
-      <path d="M16 6c2 0 3.5 1 5 2" opacity="0.4" />
-    </svg>
   );
 }

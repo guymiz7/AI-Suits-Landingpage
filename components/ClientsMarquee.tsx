@@ -2,6 +2,9 @@
 
 import Image from "next/image";
 
+const ASSET_PREFIX =
+  process.env.NODE_ENV === "production" ? "/AI-Suits-Landingpage" : "";
+
 const clients = [
   { src: "/clients/azrieli.png", name: "Azrieli Group" },
   { src: "/clients/discount.png", name: "Discount Bank" },
@@ -15,31 +18,57 @@ const clients = [
   { src: "/clients/rotstein.png", name: "Rotstein" },
 ];
 
-// Configure basePath for assets
-const ASSET_PREFIX =
-  process.env.NODE_ENV === "production" ? "/AI-Suits-Landingpage" : "";
-
 export function ClientsMarquee() {
-  // Two copies for seamless infinite loop
   const items = [...clients, ...clients];
 
   return (
-    <section className="relative overflow-hidden border-y border-white/[0.04] bg-graphite-900/40 py-14">
-      <div className="container-luxe relative">
-        <p className="eyebrow mb-8 text-center">— Trusted by · ארגונים ומותגים שעבדנו איתם</p>
+    <section
+      className="pinstripe-cream relative"
+      style={{ paddingTop: 80, paddingBottom: 80, color: "var(--charcoal)" }}
+    >
+      {/* Top chrome */}
+      <div className="container-page chrome" style={{ color: "var(--smoke)", marginBottom: 40 }}>
+        <span>— ארגונים שעבדנו איתם</span>
+        <span>Trusted by</span>
       </div>
 
-      <div className="relative">
-        {/* Edge fades */}
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-32 bg-gradient-to-l from-onyx to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-32 bg-gradient-to-r from-onyx to-transparent" />
+      {/* Section header */}
+      <div className="container-page" style={{ marginBottom: 40 }}>
+        <h3
+          className="font-serif"
+          style={{
+            fontWeight: 300,
+            fontSize: "clamp(28px, 3.8vw, 48px)",
+            lineHeight: 1.1,
+            letterSpacing: "-0.015em",
+            color: "var(--charcoal)",
+          }}
+        >
+          ניסיון עם <em className="italic-script" style={{ color: "var(--bordeaux)" }}>חברות וארגונים</em> מובילים.
+        </h3>
+        <hr style={{ marginTop: 32, border: 0, borderTop: "1px solid var(--line)" }} />
+      </div>
 
-        <div className="flex w-max animate-marquee items-center gap-16 px-8 [will-change:transform]">
+      {/* Logos marquee */}
+      <div className="relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-32" style={{ background: "linear-gradient(to left, var(--cream), transparent)" }} />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-32" style={{ background: "linear-gradient(to right, var(--cream), transparent)" }} />
+
+        <div className="flex w-max animate-marquee items-center gap-20 px-8 [will-change:transform]">
           {items.map((c, i) => (
             <div
               key={`${c.name}-${i}`}
-              className="relative flex h-12 w-32 shrink-0 items-center justify-center grayscale opacity-60 transition-all duration-500 hover:opacity-100 hover:grayscale-0 sm:h-16 sm:w-44"
+              className="relative flex h-12 w-32 shrink-0 items-center justify-center sm:h-16 sm:w-44"
+              style={{ filter: "grayscale(1)", opacity: 0.45, transition: "all 0.5s" }}
               title={c.name}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.filter = "grayscale(0)";
+                e.currentTarget.style.opacity = "1";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.filter = "grayscale(1)";
+                e.currentTarget.style.opacity = "0.45";
+              }}
             >
               <Image
                 src={`${ASSET_PREFIX}${c.src}`}
@@ -52,6 +81,12 @@ export function ClientsMarquee() {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Bottom chrome */}
+      <div className="container-page chrome" style={{ color: "var(--smoke)", marginTop: 40 }}>
+        <span>Suits AI</span>
+        <span>03 / III</span>
       </div>
     </section>
   );

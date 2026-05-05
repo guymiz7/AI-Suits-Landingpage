@@ -1,62 +1,35 @@
 import { cn } from "@/lib/utils";
 
 /**
- * Brand Book wordmark:
- * - "Suits" in Cormorant Garamond Light
- * - "AI" in JetBrains Mono inside a hairline-bordered pill
- * - Small italic "ai" embedded in the wordmark on alternate variant
+ * Brand Book wordmark — exactly as in the screenshot:
+ *   "Suits" upright Cormorant Garamond Light
+ *   "AI" italic Cormorant Garamond
+ *   No pill, no underline, no decorations.
  */
 export function Logo({
   className,
   size = "default",
-  variant = "wordmark",
 }: {
   className?: string;
-  size?: "default" | "lg" | "xl";
-  variant?: "wordmark" | "italic";
+  size?: "default" | "lg" | "xl" | "display";
 }) {
-  const sizeClasses = {
-    default: { suits: "text-2xl", ai: "text-[9px]", padding: "px-2 py-0.5" },
-    lg: { suits: "text-4xl", ai: "text-[11px]", padding: "px-2.5 py-1" },
-    xl: { suits: "text-6xl", ai: "text-[14px]", padding: "px-3 py-1" },
+  const sizes: Record<string, string> = {
+    default: "text-3xl",
+    lg: "text-5xl",
+    xl: "text-7xl",
+    display: "text-[clamp(72px,13vw,200px)]",
   };
-  const s = sizeClasses[size];
-
-  if (variant === "italic") {
-    // Wordmark with embedded italic em — like "Suits AI"
-    return (
-      <div className={cn("flex select-none items-baseline gap-2", className)}>
-        <span
-          className={cn("font-serif font-light leading-none text-cream", s.suits)}
-          style={{ letterSpacing: "-0.02em" }}
-        >
-          Suits<em className="not-italic font-serif italic text-bordeaux-300">AI</em>
-        </span>
-      </div>
-    );
-  }
 
   return (
-    <div className={cn("flex select-none items-baseline gap-3", className)}>
-      <span
-        className={cn(
-          "font-serif font-light leading-none text-cream",
-          s.suits
-        )}
-        style={{ letterSpacing: "-0.02em" }}
-      >
-        Suits
-      </span>
-      <span
-        className={cn(
-          "inline-flex items-center justify-center border border-cream/70 font-mono uppercase text-cream",
-          s.ai,
-          s.padding
-        )}
-        style={{ letterSpacing: "0.3em", paddingTop: "2px" }}
-      >
-        AI
-      </span>
-    </div>
+    <span
+      className={cn(
+        "inline-block select-none font-serif font-light leading-[0.9] text-cream",
+        sizes[size],
+        className
+      )}
+      style={{ letterSpacing: "-0.025em" }}
+    >
+      Suits<em className="font-serif italic font-light">AI</em>
+    </span>
   );
 }

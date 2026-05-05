@@ -6,30 +6,42 @@ import { motion } from "framer-motion";
 const ASSET_PREFIX =
   process.env.NODE_ENV === "production" ? "/AI-Suits-Landingpage" : "";
 
-const founders = [
+type Founder = {
+  idx: string;
+  company: string;
+  name: string;
+  photo: string;
+  skills: string[];
+  bio: string[];
+  layout: "image-first" | "text-first";
+};
+
+const founders: Founder[] = [
   {
-    name: "מתן יעקובסון",
+    idx: "I",
     company: "DIGITECH",
+    name: "מתן יעקובסון",
     photo: "/founders/matan.png",
-    skills: ["AI יישומי", "שיווק דיגיטלי", "אסטרטגיה", "תוכן ומיתוג", "הכשרה פרקטית"],
-    bio: `יזם ומומחה בעולמות ה־AI, הדיגיטל והחינוך הטכנולוגי. חי, נושם וחוקר את עולמות הדיגיטל כבר מעל 11 שנים, במהלכן ליווה מאות בעלי עסקים בתחומים שונים, וכן ניהל מחלקות דיגיטל בחברות ומותגים מהגדולים ביותר.
-
-מתן ראה מקרוב מה המשמעות של ניהול עסק בלי צוות ובלי שיטה מדויקת — וזה עורר אצלו את הצורך להבין איך מנהלים עסק בצורה חכמה עם כלים דיגיטליים, כדי לדעת לנהל עסק באמת בלי צורך בשעות עבודה שלא נגמרות.
-
-כל הידע שלו על עסקים, כסף, שיווק וטכנולוגיה עוזר לעסקים רבים מאוד ליצור סיסטם חכם שמייצר רווח, יציבות וראש שקט.`,
-    layout: "image-first" as const,
+    skills: ["AI יישומי", "שיווק דיגיטלי", "אסטרטגיה", "תוכן ומיתוג"],
+    bio: [
+      "יזם ומומחה בעולמות ה־AI, הדיגיטל והחינוך הטכנולוגי. חי, נושם וחוקר את עולמות הדיגיטל כבר מעל 11 שנים — במהלכן ליווה מאות בעלי עסקים בתחומים שונים, וניהל מחלקות דיגיטל בחברות ומותגים מהגדולים ביותר.",
+      "מתן ראה מקרוב מה המשמעות של ניהול עסק בלי צוות ובלי שיטה מדויקת — וזה עורר אצלו את הצורך להבין איך מנהלים עסק חכם עם כלים דיגיטליים, בלי שעות עבודה שלא נגמרות.",
+      "כל הידע שלו על עסקים, כסף, שיווק וטכנולוגיה עוזר לעסקים רבים מאוד ליצור סיסטם חכם שמייצר רווח, יציבות וראש שקט.",
+    ],
+    layout: "image-first",
   },
   {
-    name: "גיא מיזינסקי",
+    idx: "II",
     company: "GROUP OCT",
+    name: "גיא מיזינסקי",
     photo: "/founders/guy.png",
-    skills: ["יישומי AI", "אוטומציה עסקית", "אינטגרציות", "בוטים ומערכות", "הטמעה"],
-    bio: `יזם, מרצה באקדמיה ומומחה לאוטומציה, AI ותהליכים עסקיים, שמלווה כבר שנים בעלי עסקים, חברות וארגונים בתהליכי צמיחה, דיגיטציה והטמעת טכנולוגיות מתקדמות.
-
-לאורך הדרך גיא הכשיר מאות בעלי עסקים ואנשי מקצוע, עבד עם ארגונים גדולים ומובילים, וצבר ניסיון מעשי עמוק בחיבור בין אסטרטגיה עסקית, שיווק, מכירות, מערכות ואוטומציה.
-
-אחרי שראה מקרוב את האבולוציה של עולם ה־AI לאורך 15 השנים האחרונות — מהימים שבהם הטכנולוגיה הייתה כלי מורכב למעטים ועד לעידן שבו כל עסק יכול לבנות, לדייק ולהאיץ תהליכים בעזרת AI — גיא מביא לבוטקמפ גישה פרקטית, ישירה ומבוססת ניסיון: לא רק להבין מה אפשר לעשות עם AI, אלא לצאת עם תוצר אמיתי, מקצועי ושימושי שאפשר להציג, לשווק ולהמשיך לפתח כבר עכשיו.`,
-    layout: "text-first" as const,
+    skills: ["יישומי AI", "אוטומציה עסקית", "אינטגרציות", "מערכות"],
+    bio: [
+      "יזם, מרצה באקדמיה ומומחה לאוטומציה, AI ותהליכים עסקיים — שמלווה כבר שנים בעלי עסקים, חברות וארגונים בתהליכי צמיחה, דיגיטציה והטמעת טכנולוגיות מתקדמות.",
+      "לאורך הדרך גיא הכשיר מאות בעלי עסקים ואנשי מקצוע, עבד עם ארגונים גדולים ומובילים, וצבר ניסיון מעשי עמוק בחיבור בין אסטרטגיה עסקית, שיווק, מכירות, מערכות ואוטומציה.",
+      "אחרי שראה מקרוב את האבולוציה של עולם ה־AI לאורך 15 השנים האחרונות, גיא מביא גישה פרקטית, ישירה ומבוססת ניסיון: לא רק להבין מה אפשר לעשות עם AI, אלא לצאת עם תוצר אמיתי, מקצועי ושימושי.",
+    ],
+    layout: "text-first",
   },
 ];
 
@@ -37,94 +49,115 @@ export function Founders() {
   return (
     <section
       id="founders"
-      className="relative overflow-hidden border-t border-white/[0.04] py-28 lg:py-36"
+      className="pinstripe-onyx relative"
+      style={{ paddingTop: 120, paddingBottom: 120 }}
     >
-      <div className="container-luxe relative">
+      <div className="container-page chrome" style={{ marginBottom: 60, opacity: 0.55 }}>
+        <span>VIII · המנטורים</span>
+        <span>The Mentors</span>
+      </div>
+
+      <div className="container-page">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="mx-auto max-w-3xl text-center"
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.7 }}
+          className="section-header"
+          style={{ minHeight: "auto", marginBottom: 40 }}
         >
-          <span
-            className="eyebrow-bordeaux"
-            style={{ letterSpacing: "0.45em" }}
-          >
-            המנטורים
-          </span>
-          <h2 className="heading-display mt-5 font-serif font-light leading-[1.05] text-cream text-4xl sm:text-5xl lg:text-6xl">
-            הניסיון שעומד{" "}
-            <span className="italic-accent">מאחורי החליפה</span>
-          </h2>
-          <div className="mx-auto mt-6 h-px w-16 bg-gradient-to-r from-transparent via-bordeaux-500 to-transparent" />
+          <div>
+            <div className="caption" style={{ marginBottom: 12 }}>Chapter VIII</div>
+            <div className="roman">VIII</div>
+          </div>
+          <div>
+            <div className="caption" style={{ marginBottom: 18 }}>השותפות</div>
+            <h2 className="h1">
+              שני אנשים, <em className="italic-script" style={{ color: "var(--bordeaux-cream)" }}>מעטפת</em>
+              <br />
+              אחת.
+            </h2>
+          </div>
         </motion.div>
 
-        <div className="mx-auto mt-20 max-w-6xl space-y-16 lg:space-y-20">
+        <hr className="hairline" style={{ marginTop: 40, marginBottom: 80 }} />
+
+        <div className="space-y-24 lg:space-y-32">
           {founders.map((f, i) => (
-            <FounderRow key={f.name} founder={f} index={i} />
+            <FounderRow key={f.name} f={f} index={i} />
           ))}
         </div>
+      </div>
+
+      <div className="container-page chrome" style={{ marginTop: 80, opacity: 0.55 }}>
+        <span>Suits AI · Mentors</span>
+        <span>08 / VIII</span>
       </div>
     </section>
   );
 }
 
-function FounderRow({
-  founder,
-  index,
-}: {
-  founder: (typeof founders)[number];
-  index: number;
-}) {
-  const imageFirst = founder.layout === "image-first";
+function FounderRow({ f, index }: { f: Founder; index: number }) {
+  const imageFirst = f.layout === "image-first";
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7, delay: index * 0.15 }}
-      className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12"
+      transition={{ duration: 0.8, delay: index * 0.1 }}
+      className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16"
     >
-      {/* Photo block — order swaps to create diagonal */}
-      <div
-        className={`lg:col-span-5 ${imageFirst ? "lg:order-1" : "lg:order-2"}`}
-      >
-        <PhotoCard photo={founder.photo} name={founder.name} />
+      <div className={`lg:col-span-5 ${imageFirst ? "lg:order-1" : "lg:order-2"}`}>
+        <PhotoCard photo={f.photo} name={f.name} />
       </div>
 
-      {/* Text block */}
-      <div
-        className={`lg:col-span-7 ${imageFirst ? "lg:order-2" : "lg:order-1"}`}
-      >
-        <div className="relative overflow-hidden rounded-3xl border border-white/[0.06] bg-gradient-to-bl from-graphite-800/60 to-graphite-900/90 p-8 lg:p-10">
-          <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-bordeaux-900/20 blur-3xl" />
-
-          <span className="eyebrow-bordeaux" style={{ letterSpacing: "0.45em" }}>
-            {founder.company}
-          </span>
-          <h3 className="heading-display mt-2 text-3xl font-bold text-white sm:text-4xl">
-            {founder.name}
+      <div className={`lg:col-span-7 ${imageFirst ? "lg:order-2" : "lg:order-1"}`}>
+        <div
+          style={{
+            border: "1px solid var(--line-cream)",
+            padding: "40px",
+            background: "var(--graphite)",
+            color: "var(--cream)",
+            position: "relative",
+          }}
+        >
+          <div className="caption" style={{ marginBottom: 14 }}>
+            {f.idx} · {f.company}
+          </div>
+          <h3
+            className="font-serif"
+            style={{ fontWeight: 300, fontSize: "clamp(34px, 4vw, 52px)", lineHeight: 1, letterSpacing: "-0.015em" }}
+          >
+            {f.name}
           </h3>
 
-          <div className="mt-6 space-y-4 text-[15px] font-light leading-relaxed text-graphite-200 sm:text-base">
-            {founder.bio.split("\n\n").map((p, i) => (
-              <p key={i}>{p}</p>
+          <hr style={{ marginTop: 28, marginBottom: 28, border: 0, borderTop: "1px solid var(--line-cream)" }} />
+
+          <div style={{ display: "grid", gap: 16 }}>
+            {f.bio.map((p, i) => (
+              <p
+                key={i}
+                style={{ fontSize: 15, fontWeight: 300, lineHeight: 1.7, color: "rgba(245,239,230,0.78)" }}
+              >
+                {p}
+              </p>
             ))}
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-2">
-            {founder.skills.map((s) => (
+          <div className="mt-8 flex flex-wrap" style={{ gap: "6px 14px" }}>
+            {f.skills.map((s, j, arr) => (
               <span
                 key={s}
-                className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs font-light text-graphite-200"
+                className="font-serif"
+                style={{ fontSize: 15, fontWeight: 300, fontStyle: "italic", color: "var(--cream)" }}
               >
                 {s}
+                {j < arr.length - 1 && (
+                  <span style={{ marginRight: 14, color: "var(--smoke)" }}>·</span>
+                )}
               </span>
             ))}
           </div>
-
-          <div className="absolute inset-x-8 bottom-0 h-px bg-gradient-to-r from-transparent via-bordeaux-700/40 to-transparent" />
         </div>
       </div>
     </motion.div>
@@ -133,11 +166,13 @@ function FounderRow({
 
 function PhotoCard({ photo, name }: { photo: string; name: string }) {
   return (
-    <div className="group relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/[0.08] bg-graphite-900">
-      {/* Backdrop gradient */}
-      <div className="absolute inset-0 bg-gradient-to-bl from-bordeaux-900/30 via-graphite-900 to-onyx" />
-
-      {/* The photo */}
+    <div
+      className="group relative aspect-[4/5] overflow-hidden"
+      style={{
+        background: "var(--charcoal)",
+        border: "1px solid var(--line-cream)",
+      }}
+    >
       <Image
         src={`${ASSET_PREFIX}${photo}`}
         alt={name}
@@ -148,39 +183,38 @@ function PhotoCard({ photo, name }: { photo: string; name: string }) {
         priority
       />
 
-      {/* Vignette + pinstripe overlay */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-onyx via-onyx/30 to-transparent" />
-      <div className="pointer-events-none absolute inset-0 pinstripe opacity-30 mix-blend-overlay" />
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: "linear-gradient(to top, rgba(10,10,11,0.85), transparent 60%)",
+          zIndex: 2,
+        }}
+      />
 
-      {/* Suit-electric overlay — the "glowing suit" animation */}
       <SuitElectricOverlay />
 
-      {/* Bottom name tag */}
-      <div className="absolute inset-x-0 bottom-0 z-10 p-6">
-        <div className="eyebrow-bordeaux" style={{ letterSpacing: "0.5em" }}>
-          MENTOR
+      <div className="absolute inset-x-0 bottom-0 p-6" style={{ zIndex: 4 }}>
+        <div className="caption" style={{ color: "rgba(245,239,230,0.6)" }}>
+          — Mentor
         </div>
-        <div
-          className="mt-1 h-px w-12 bg-gradient-to-l from-transparent via-bordeaux-400 to-transparent"
-        />
+        <p
+          className="mt-2 font-serif"
+          style={{ fontWeight: 300, fontSize: 22, color: "var(--cream)", letterSpacing: "-0.005em" }}
+        >
+          {name}
+        </p>
       </div>
     </div>
   );
 }
 
-/**
- * Animated overlay simulating an electrified glowing suit:
- * - Outline of suit lapels stitched in white
- * - Pulsing bordeaux glow around shoulders
- * - Periodic flicker like an electrical surge
- */
 function SuitElectricOverlay() {
   return (
-    <div className="pointer-events-none absolute inset-0 z-[5]">
-      {/* Pulsing radial halo from shoulders */}
-      <div className="absolute inset-x-0 top-[35%] mx-auto h-48 w-48 -translate-y-1/2 rounded-full bg-bordeaux-500/40 blur-3xl suit-electric" />
-
-      {/* Suit silhouette outline */}
+    <div className="pointer-events-none absolute inset-0" style={{ zIndex: 3 }}>
+      <div
+        className="absolute inset-x-0 top-[35%] mx-auto h-48 w-48 -translate-y-1/2 suit-electric"
+        style={{ background: "rgba(199, 169, 155, 0.4)", filter: "blur(60px)" }}
+      />
       <svg
         viewBox="0 0 200 250"
         className="absolute inset-0 h-full w-full"
@@ -189,47 +223,24 @@ function SuitElectricOverlay() {
       >
         <defs>
           <linearGradient id="suitGlow" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#dc8a9b" stopOpacity="0.9" />
-            <stop offset="50%" stopColor="#962637" stopOpacity="0.7" />
-            <stop offset="100%" stopColor="#5a141d" stopOpacity="0.3" />
+            <stop offset="0%" stopColor="rgba(220,138,155,0.9)" />
+            <stop offset="50%" stopColor="rgba(150,38,55,0.7)" />
+            <stop offset="100%" stopColor="rgba(63,15,28,0.3)" />
           </linearGradient>
           <filter id="elecBlur">
-            <feGaussianBlur stdDeviation="0.8" />
+            <feGaussianBlur stdDeviation="0.6" />
           </filter>
         </defs>
-
-        {/* Lapels outline that flickers */}
-        <g
-          stroke="url(#suitGlow)"
-          strokeWidth="1.4"
-          filter="url(#elecBlur)"
-          className="suit-flicker"
-        >
+        <g stroke="url(#suitGlow)" strokeWidth="1.4" filter="url(#elecBlur)" className="suit-flicker">
           <path d="M 60 90 L 100 130 L 100 240 L 60 200 Z" />
           <path d="M 140 90 L 100 130 L 100 240 L 140 200 Z" />
           <line x1="100" y1="130" x2="100" y2="240" />
         </g>
-
-        {/* Soft white seam */}
-        <g
-          stroke="rgba(255,255,255,0.45)"
-          strokeWidth="0.6"
-          className="suit-electric"
-        >
+        <g stroke="rgba(245,239,230,0.4)" strokeWidth="0.5" className="suit-electric">
           <path d="M 60 90 L 100 130 L 100 240 L 60 200 Z" />
           <path d="M 140 90 L 100 130 L 100 240 L 140 200 Z" />
         </g>
       </svg>
-
-      {/* Subtle scan-line shimmer */}
-      <div
-        className="absolute inset-0 opacity-0 suit-electric"
-        style={{
-          background:
-            "linear-gradient(180deg, transparent 0%, transparent 45%, rgba(220,138,155,0.12) 50%, transparent 55%, transparent 100%)",
-          backgroundSize: "100% 200%",
-        }}
-      />
     </div>
   );
 }

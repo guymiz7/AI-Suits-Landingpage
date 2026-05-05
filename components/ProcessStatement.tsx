@@ -2,68 +2,86 @@
 
 import { motion } from "framer-motion";
 
-const phrases = ["תהליך קצר.", "תוצר אמיתי.", "יכולת שימושית."];
-
 export function ProcessStatement() {
   return (
-    <section className="relative overflow-hidden py-28 lg:py-36">
-      {/* Decorative pinstripe */}
-      <div className="pointer-events-none absolute inset-0 pinstripe opacity-40" />
-      <div className="pointer-events-none absolute inset-x-0 top-1/2 -z-10 h-[300px] -translate-y-1/2 bg-radial-bordeaux opacity-50" />
+    <section
+      className="pinstripe-charcoal relative"
+      style={{ paddingTop: 140, paddingBottom: 140 }}
+    >
+      <div className="container-page chrome" style={{ marginBottom: 60, opacity: 0.55 }}>
+        <span>— ההצהרה</span>
+        <span>Promise</span>
+      </div>
 
-      <div className="container-luxe relative">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
+      <div className="container-page">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
-          className="mx-auto max-w-4xl text-center text-3xl font-bold leading-[1.3] text-white sm:text-4xl md:text-5xl lg:text-6xl"
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.8 }}
+          className="mx-auto text-center"
+          style={{ maxWidth: 1200 }}
         >
-          {phrases.map((p, i) => (
-            <motion.span
-              key={p}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.6, delay: i * 0.18 }}
-              className="inline-block"
-            >
-              <span className={i === 1 ? "italic-accent" : ""}>
-                {p}
-              </span>
-              {i < phrases.length - 1 && <span>&nbsp;&nbsp;</span>}
-            </motion.span>
-          ))}
-        </motion.h2>
+          <div
+            className="font-serif"
+            style={{
+              fontStyle: "italic",
+              fontWeight: 400,
+              fontSize: "clamp(140px, 18vw, 260px)",
+              lineHeight: 0.6,
+              color: "var(--bordeaux-cream)",
+              opacity: 0.4,
+            }}
+          >
+            &ldquo;
+          </div>
+          <h2
+            className="font-serif"
+            style={{
+              fontWeight: 300,
+              fontSize: "clamp(36px, 5.4vw, 76px)",
+              lineHeight: 1.15,
+              letterSpacing: "-0.02em",
+              marginTop: -40,
+            }}
+          >
+            תהליך <em className="italic-script" style={{ color: "var(--bordeaux-cream)" }}>קצר</em>.
+            <br />
+            תוצר <em className="italic-script" style={{ color: "var(--bordeaux-cream)" }}>אמיתי</em>.
+            <br />
+            יכולת <em className="italic-script" style={{ color: "var(--bordeaux-cream)" }}>שימושית</em>.
+          </h2>
+        </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row"
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="mt-20 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
-          <a href="#contact" className="btn-primary group">
+          <a href="#contact" className="btn-primary">
             <span>אני רוצה לשמור מקום</span>
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="transition-transform group-hover:-translate-x-1 rtl:rotate-180"
-            >
-              <path d="M5 12h14M13 5l7 7-7 7" />
-            </svg>
+            <Arrow />
           </a>
           <a href="#contact-info" className="btn-ghost">
             שלחו לי את כל הפרטים
           </a>
         </motion.div>
       </div>
+
+      <div className="container-page chrome" style={{ marginTop: 100, opacity: 0.55 }}>
+        <span>Suits AI · Promise</span>
+        <span>02 / II</span>
+      </div>
     </section>
+  );
+}
+
+function Arrow() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" style={{ transform: "scaleX(-1)" }}>
+      <path d="M5 12h14M13 5l7 7-7 7" />
+    </svg>
   );
 }
