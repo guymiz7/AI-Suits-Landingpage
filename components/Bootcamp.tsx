@@ -26,13 +26,13 @@ export function Bootcamp() {
           className="mx-auto max-w-3xl text-center"
         >
           <span
-            className="luxury-caps text-[11px] text-bordeaux-300"
+            className="eyebrow-bordeaux"
             style={{ letterSpacing: "0.45em" }}
           >
             הבוטקמפ
           </span>
-          <h2 className="heading-display mt-5 text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
-            <span className="text-bordeaux-gradient">AI Suits</span> Bootcamp
+          <h2 className="heading-display mt-5 font-serif font-light leading-[1.05] text-cream text-4xl sm:text-5xl lg:text-6xl">
+            <span className="italic-accent">AI Suits</span> Bootcamp
           </h2>
           <div className="mx-auto mt-6 h-px w-16 bg-gradient-to-r from-transparent via-bordeaux-500 to-transparent" />
         </motion.div>
@@ -45,11 +45,11 @@ export function Bootcamp() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="mx-auto mt-12 max-w-3xl text-center text-2xl font-semibold leading-relaxed text-white sm:text-3xl"
         >
-          ההכשרה הזו לא עוסקת רק ב<span className="text-bordeaux-gradient">בנייה</span>.{" "}
+          ההכשרה הזו לא עוסקת רק ב<span className="italic-accent">בנייה</span>.{" "}
           <br className="hidden sm:block" />
           היא תעזור לכם להבין{" "}
-          <span className="text-bordeaux-gradient">מה לבנות</span> ו
-          <span className="text-bordeaux-gradient">איך לבנות את זה נכון</span>.
+          <span className="italic-accent">מה לבנות</span> ו
+          <span className="italic-accent">איך לבנות את זה נכון</span>.
         </motion.p>
 
         {/* Pillars */}

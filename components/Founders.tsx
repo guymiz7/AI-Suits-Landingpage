@@ -48,14 +48,14 @@ export function Founders() {
           className="mx-auto max-w-3xl text-center"
         >
           <span
-            className="luxury-caps text-[11px] text-bordeaux-300"
+            className="eyebrow-bordeaux"
             style={{ letterSpacing: "0.45em" }}
           >
             המנטורים
           </span>
-          <h2 className="heading-display mt-5 text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+          <h2 className="heading-display mt-5 font-serif font-light leading-[1.05] text-cream text-4xl sm:text-5xl lg:text-6xl">
             הניסיון שעומד{" "}
-            <span className="text-bordeaux-gradient">מאחורי החליפה</span>
+            <span className="italic-accent">מאחורי החליפה</span>
           </h2>
           <div className="mx-auto mt-6 h-px w-16 bg-gradient-to-r from-transparent via-bordeaux-500 to-transparent" />
         </motion.div>
@@ -100,7 +100,7 @@ function FounderRow({
         <div className="relative overflow-hidden rounded-3xl border border-white/[0.06] bg-gradient-to-bl from-graphite-800/60 to-graphite-900/90 p-8 lg:p-10">
           <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-bordeaux-900/20 blur-3xl" />
 
-          <span className="luxury-caps text-[11px] text-bordeaux-300" style={{ letterSpacing: "0.45em" }}>
+          <span className="eyebrow-bordeaux" style={{ letterSpacing: "0.45em" }}>
             {founder.company}
           </span>
           <h3 className="heading-display mt-2 text-3xl font-bold text-white sm:text-4xl">
@@ -135,7 +135,7 @@ function PhotoCard({ photo, name }: { photo: string; name: string }) {
   return (
     <div className="group relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/[0.08] bg-graphite-900">
       {/* Backdrop gradient */}
-      <div className="absolute inset-0 bg-gradient-to-bl from-bordeaux-900/30 via-graphite-900 to-ink-900" />
+      <div className="absolute inset-0 bg-gradient-to-bl from-bordeaux-900/30 via-graphite-900 to-onyx" />
 
       {/* The photo */}
       <Image
@@ -149,7 +149,7 @@ function PhotoCard({ photo, name }: { photo: string; name: string }) {
       />
 
       {/* Vignette + pinstripe overlay */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/30 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-onyx via-onyx/30 to-transparent" />
       <div className="pointer-events-none absolute inset-0 pinstripe opacity-30 mix-blend-overlay" />
 
       {/* Suit-electric overlay — the "glowing suit" animation */}
@@ -157,7 +157,7 @@ function PhotoCard({ photo, name }: { photo: string; name: string }) {
 
       {/* Bottom name tag */}
       <div className="absolute inset-x-0 bottom-0 z-10 p-6">
-        <div className="luxury-caps text-[10px] text-bordeaux-200" style={{ letterSpacing: "0.5em" }}>
+        <div className="eyebrow-bordeaux" style={{ letterSpacing: "0.5em" }}>
           MENTOR
         </div>
         <div

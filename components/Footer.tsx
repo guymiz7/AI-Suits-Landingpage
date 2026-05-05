@@ -2,7 +2,7 @@ import { Logo } from "./Logo";
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-white/[0.05] bg-ink-900">
+    <footer className="relative border-t border-white/[0.05] bg-onyx">
       <div className="container-luxe py-14">
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-6">
@@ -20,7 +20,7 @@ export function Footer() {
           <div className="grid grid-cols-2 gap-8 lg:col-span-6 lg:grid-cols-3">
             <div>
               <p
-                className="luxury-caps text-[10px] text-bordeaux-300"
+                className="eyebrow-bordeaux text-[10px]"
                 style={{ letterSpacing: "0.45em" }}
               >
                 הבוטקמפ
@@ -33,7 +33,7 @@ export function Footer() {
             </div>
             <div>
               <p
-                className="luxury-caps text-[10px] text-bordeaux-300"
+                className="eyebrow-bordeaux text-[10px]"
                 style={{ letterSpacing: "0.45em" }}
               >
                 המנטורים
@@ -45,7 +45,7 @@ export function Footer() {
             </div>
             <div>
               <p
-                className="luxury-caps text-[10px] text-bordeaux-300"
+                className="eyebrow-bordeaux text-[10px]"
                 style={{ letterSpacing: "0.45em" }}
               >
                 הרשמה

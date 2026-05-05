@@ -26,15 +26,13 @@ export function ClientsMarquee() {
   return (
     <section className="relative overflow-hidden border-y border-white/[0.04] bg-graphite-900/40 py-14">
       <div className="container-luxe relative">
-        <p className="luxury-caps mb-8 text-center text-[10px] text-graphite-400" style={{ letterSpacing: "0.45em" }}>
-          ארגונים ומותגים שעבדנו איתם
-        </p>
+        <p className="eyebrow mb-8 text-center">— Trusted by · ארגונים ומותגים שעבדנו איתם</p>
       </div>
 
       <div className="relative">
         {/* Edge fades */}
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-32 bg-gradient-to-l from-ink-900 to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-32 bg-gradient-to-r from-ink-900 to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-32 bg-gradient-to-l from-onyx to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-32 bg-gradient-to-r from-onyx to-transparent" />
 
         <div className="flex w-max animate-marquee items-center gap-16 px-8 [will-change:transform]">
           {items.map((c, i) => (

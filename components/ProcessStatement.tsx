@@ -28,7 +28,7 @@ export function ProcessStatement() {
               transition={{ duration: 0.6, delay: i * 0.18 }}
               className="inline-block"
             >
-              <span className={i === 1 ? "text-bordeaux-gradient" : ""}>
+              <span className={i === 1 ? "italic-accent" : ""}>
                 {p}
               </span>
               {i < phrases.length - 1 && <span>&nbsp;&nbsp;</span>}

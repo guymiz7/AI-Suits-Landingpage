@@ -8,74 +8,66 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Suit palette — luxury black + burgundy accents
-        ink: {
-          DEFAULT: "#0a0a0b",
-          900: "#0a0a0b",
-          800: "#111114",
-          700: "#16161a",
-          600: "#1c1c21",
-          500: "#222228",
-        },
+        // === Suits AI Brand Book palette ===
+        onyx: "#0A0A0B",
+        charcoal: "#1A1A1D",
         graphite: {
-          900: "#1a1a1d",
+          DEFAULT: "#2A2A2E",
+          900: "#1A1A1D",
           800: "#222228",
-          700: "#2a2a30",
-          600: "#34343c",
-          500: "#42424b",
-          400: "#5a5a64",
-          300: "#7a7a85",
-          200: "#a8a8b3",
-          100: "#d4d4d8",
+          700: "#2A2A2E",
+          600: "#3A3A40",
+          500: "#4A4A50",
+          400: "#6B6B70",
+          300: "#9A9AA0",
+          200: "#C4C4CA",
+          100: "#E4E4E8",
         },
+        smoke: "#6B6B70",
         bordeaux: {
-          DEFAULT: "#5a141d",
-          900: "#2a0a10",
-          800: "#3d0f15",
-          700: "#5a141d",
-          600: "#7a1f2b",
-          500: "#962637",
-          400: "#b2334a",
-          300: "#c95871",
-          200: "#dc8a9b",
+          DEFAULT: "#5C1A2B",
+          900: "#3F0F1C",
+          800: "#4D1422",
+          700: "#5C1A2B",
+          600: "#6E2236",
+          500: "#7A2B3D",
+          400: "#9C4757",
+          300: "#B96C7B",
+          200: "#C7A99B",
         },
         cream: {
-          DEFAULT: "#ede4d3",
-          900: "#3a3528",
-          800: "#5a5040",
-          700: "#7a7060",
-          600: "#a89c84",
-          500: "#c4b89e",
-          400: "#d6cdb5",
-          300: "#e2d9c4",
-          200: "#ede4d3",
-          100: "#f5efe2",
+          DEFAULT: "#F5EFE6",
+          warm: "#EDE4D3",
+          paper: "#FAF6EE",
+        },
+        // Backwards-compat aliases
+        ink: {
+          DEFAULT: "#0A0A0B",
+          900: "#0A0A0B",
+          800: "#111114",
+          700: "#16161A",
+          600: "#1C1C21",
+          500: "#222228",
         },
       },
       fontFamily: {
         sans: ["var(--font-heebo)", "system-ui", "sans-serif"],
-        display: ["var(--font-heebo)", "system-ui", "sans-serif"],
+        serif: ["var(--font-serif)", "Georgia", "serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+        display: ["var(--font-serif)", "var(--font-heebo)", "serif"],
       },
       backgroundImage: {
-        "noise":
-          "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E\")",
         "radial-bordeaux":
-          "radial-gradient(ellipse at 50% 0%, rgba(90,20,29,0.18), transparent 65%)",
-        "radial-gold":
-          "radial-gradient(ellipse at 50% 0%, rgba(201,169,97,0.10), transparent 60%)",
+          "radial-gradient(ellipse at 50% 0%, rgba(92,26,43,0.18), transparent 65%)",
         "radial-spot":
-          "radial-gradient(circle at 30% 20%, rgba(201,169,97,0.07), transparent 55%)",
+          "radial-gradient(circle at 30% 20%, rgba(237,228,211,0.06), transparent 55%)",
       },
       boxShadow: {
-        "luxury": "0 20px 60px -20px rgba(90,20,29,0.35), 0 0 0 1px rgba(201,169,97,0.08)",
-        "gold": "0 20px 60px -20px rgba(201,169,97,0.25), 0 0 0 1px rgba(201,169,97,0.15)",
-        "soft": "0 1px 0 0 rgba(255,255,255,0.04) inset, 0 0 0 1px rgba(255,255,255,0.04)",
+        luxury:
+          "0 20px 60px -20px rgba(63,15,28,0.4), 0 0 0 1px rgba(245,239,230,0.04)",
+        soft: "0 1px 0 0 rgba(255,255,255,0.04) inset, 0 0 0 1px rgba(255,255,255,0.04)",
       },
       keyframes: {
-        "shimmer": {
-          "0%": { backgroundPosition: "-200% 0" },
-          "100%": { backgroundPosition: "200% 0" },
-        },
         "fade-up": {
           "0%": { opacity: "0", transform: "translateY(20px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
@@ -86,7 +78,6 @@ const config: Config = {
         },
       },
       animation: {
-        "shimmer": "shimmer 3s linear infinite",
         "fade-up": "fade-up 0.8s ease-out forwards",
         "subtle-pulse": "subtle-pulse 4s ease-in-out infinite",
       },

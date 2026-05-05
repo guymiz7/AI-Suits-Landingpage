@@ -3,119 +3,153 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-  }
+  html { scroll-behavior: smooth; }
   body {
-    @apply bg-ink-900 text-graphite-200 antialiased selection:bg-bordeaux-700 selection:text-white;
+    @apply bg-onyx text-graphite-200 antialiased selection:bg-bordeaux-700 selection:text-cream;
     font-feature-settings: "kern", "liga", "calt";
     font-weight: 300;
     letter-spacing: 0.005em;
+    line-height: 1.6;
   }
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #0a0a0b;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #2a2a30;
-    border-radius: 4px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #5a141d;
-  }
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #0A0A0B; }
+  ::-webkit-scrollbar-thumb { background: #2A2A2E; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #5C1A2B; }
 }
 
 @layer components {
-  .container-luxe {
-    @apply mx-auto w-full max-w-7xl px-6 md:px-10;
-  }
+  .container-luxe { @apply mx-auto w-full max-w-7xl px-6 md:px-10; }
 
-  /* Couture-style heading: tight, refined */
+  /* === Brand Book Type System === */
+
+  /* Display headlines — Cormorant Garamond Light */
   .heading-display {
-    @apply font-display;
+    font-family: var(--font-serif), var(--font-heebo), serif;
+    font-weight: 300;
     letter-spacing: -0.02em;
-    font-weight: 600;
-    font-feature-settings: "ss01", "kern", "liga";
+    line-height: 1;
   }
 
-  /* Couture spaced uppercase used in luxury houses */
-  .luxury-caps {
-    letter-spacing: 0.32em;
+  /* Italic accent — italicized fragment, often bordeaux */
+  .italic-accent {
+    font-family: var(--font-serif), var(--font-heebo), serif;
+    font-style: italic;
+    font-weight: 300;
+    color: #9C4757; /* bordeaux-400 — softer for emphasis on dark bgs */
+  }
+
+  /* Eyebrow — JetBrains Mono small caps */
+  .eyebrow {
+    font-family: var(--font-mono), monospace;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
-    font-weight: 500;
+    color: #9A9AA0;
+  }
+  .eyebrow-bordeaux {
+    font-family: var(--font-mono), monospace;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #B96C7B;
   }
 
-  /* Cream / white refined gradient text */
-  .text-luxe-gradient {
-    background: linear-gradient(
-      180deg,
-      #ffffff 0%,
-      #ede4d3 60%,
-      #a8a8b3 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  /* Caption — small mono uppercase, used in captions/page chrome */
+  .caption-mono {
+    font-family: var(--font-mono), monospace;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #6B6B70;
   }
 
-  .text-bordeaux-gradient {
-    background: linear-gradient(
-      135deg,
-      #dc8a9b 0%,
-      #962637 60%,
-      #5a141d 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  /* Lead body — slightly larger, very light weight */
+  .lead {
+    font-size: 19px;
+    line-height: 1.6;
+    font-weight: 200;
+    max-width: 62ch;
   }
 
+  /* Standard body — relaxed line-height for legibility */
+  .body-text {
+    font-size: 16px;
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  /* Roman numeral — italic serif, bordeaux */
+  .roman-num {
+    font-family: var(--font-serif), serif;
+    font-style: italic;
+    font-weight: 300;
+    color: #9C4757;
+  }
+
+  /* === Surfaces === */
   .surface-card {
-    @apply relative overflow-hidden rounded-2xl border border-white/[0.06] bg-gradient-to-b from-graphite-800/40 to-graphite-900/60 backdrop-blur-sm;
+    @apply relative overflow-hidden border border-white/10 bg-charcoal/60 backdrop-blur-sm;
   }
 
-  .surface-card-hover {
-    @apply transition-all duration-500 hover:border-bordeaux-700/40 hover:shadow-luxury;
-  }
-
-  /* Primary CTA — bordeaux */
+  /* === Buttons === */
   .btn-primary {
-    @apply relative inline-flex items-center justify-center gap-2 rounded-full bg-bordeaux-700 px-8 py-4 text-sm font-medium text-white transition-all duration-300 hover:bg-bordeaux-600 hover:shadow-luxury active:scale-[0.98];
-    letter-spacing: 0.02em;
+    @apply relative inline-flex items-center justify-center gap-2 rounded-none bg-bordeaux-700 px-9 py-4 text-sm font-normal text-cream transition-all duration-300 hover:bg-bordeaux-600 active:scale-[0.98];
+    letter-spacing: 0.04em;
+    border: 1px solid rgba(245, 239, 230, 0.12);
   }
 
-  /* Secondary CTA — outlined ghost */
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-8 py-4 text-sm font-medium text-white transition-all duration-300 hover:border-white/50 hover:bg-white/5 active:scale-[0.98];
-    letter-spacing: 0.02em;
+    @apply inline-flex items-center justify-center gap-2 rounded-none border border-white/20 px-9 py-4 text-sm font-normal text-cream transition-all duration-300 hover:border-cream/50 hover:bg-white/5 active:scale-[0.98];
+    letter-spacing: 0.04em;
   }
 
-  .pill {
-    @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-xs font-light text-graphite-300;
+  /* === Hairlines === */
+  .hairline {
+    border: 0;
+    border-top: 1px solid rgba(245, 239, 230, 0.14);
+  }
+  .hairline-soft {
+    border: 0;
+    border-top: 1px solid rgba(245, 239, 230, 0.08);
   }
 
-  .divider-bordeaux {
-    background: linear-gradient(
-      to left,
-      transparent,
-      rgba(90, 20, 29, 0.5),
-      transparent
+  /* === Pinstripe — vertical 38px = signature suit fabric === */
+  .pinstripe-onyx {
+    background-color: #0A0A0B;
+    background-image: repeating-linear-gradient(
+      90deg,
+      transparent 0 38px,
+      rgba(245, 239, 230, 0.04) 38px 39px
     );
-    height: 1px;
   }
-
-  .divider-cream {
-    background: linear-gradient(
-      to left,
-      transparent,
-      rgba(237, 228, 211, 0.18),
-      transparent
+  .pinstripe-charcoal {
+    background-color: #1A1A1D;
+    background-image: repeating-linear-gradient(
+      90deg,
+      transparent 0 38px,
+      rgba(245, 239, 230, 0.04) 38px 39px
     );
-    height: 1px;
+  }
+  .pinstripe-bordeaux {
+    background-color: #5C1A2B;
+    background-image: repeating-linear-gradient(
+      90deg,
+      transparent 0 38px,
+      rgba(245, 239, 230, 0.05) 38px 39px
+    );
+  }
+  .pinstripe-overlay {
+    background-image: repeating-linear-gradient(
+      90deg,
+      transparent 0 38px,
+      rgba(245, 239, 230, 0.03) 38px 39px
+    );
   }
 
+  /* Diagonal pinstripe (legacy support) */
   .pinstripe {
     background-image: repeating-linear-gradient(
       135deg,
@@ -125,81 +159,77 @@
       rgba(255, 255, 255, 0.018) 7px
     );
   }
+
+  /* === Registration corner marks === */
+  .reg-marks::before,
+  .reg-marks::after,
+  .reg-marks > .tl,
+  .reg-marks > .tr,
+  .reg-marks > .bl,
+  .reg-marks > .br {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-color: rgba(245, 239, 230, 0.25);
+  }
+
+  /* === Pills (lexicon style) === */
+  .pill-mono {
+    font-family: var(--font-mono), monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border: 1px solid rgba(245, 239, 230, 0.18);
+    border-radius: 999px;
+    font-weight: 400;
+    color: #C4C4CA;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .pill-serif {
+    font-family: var(--font-serif), serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 16px;
+    padding: 6px 16px;
+    border: 1px solid rgba(245, 239, 230, 0.18);
+    border-radius: 999px;
+    color: #E4E4E8;
+    display: inline-flex;
+    align-items: center;
+  }
 }
 
-/* Couture animations */
-@keyframes seam-shine {
-  0% { background-position: -200% 50%; }
-  100% { background-position: 200% 50%; }
-}
-
+/* === Animations === */
 @keyframes electric-pulse {
-  0%, 100% {
-    opacity: 0.0;
-    filter: blur(0px);
-  }
-  20% {
-    opacity: 0.6;
-    filter: blur(0.5px);
-  }
-  25% {
-    opacity: 0.2;
-  }
-  30% {
-    opacity: 0.8;
-    filter: blur(1px);
-  }
-  60% {
-    opacity: 0.3;
-  }
-  80% {
-    opacity: 0.0;
-  }
+  0%, 100% { opacity: 0.0; filter: blur(0px); }
+  20% { opacity: 0.6; filter: blur(0.5px); }
+  25% { opacity: 0.2; }
+  30% { opacity: 0.8; filter: blur(1px); }
+  60% { opacity: 0.3; }
+  80% { opacity: 0.0; }
 }
-
 @keyframes electric-flicker {
-  0%, 100% {
-    opacity: 0;
-  }
-  10%, 12%, 18% {
-    opacity: 0.9;
-  }
-  11% {
-    opacity: 0;
-  }
-  20%, 65% {
-    opacity: 0;
-  }
-  70%, 72% {
-    opacity: 0.7;
-  }
-  71% {
-    opacity: 0;
-  }
+  0%, 100% { opacity: 0; }
+  10%, 12%, 18% { opacity: 0.9; }
+  11% { opacity: 0; }
+  20%, 65% { opacity: 0; }
+  70%, 72% { opacity: 0.7; }
+  71% { opacity: 0; }
 }
-
 @keyframes marquee-scroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-
 @keyframes glow-pulse {
   0%, 100% { opacity: 0.25; }
   50% { opacity: 0.5; }
 }
 
-.animate-marquee {
-  animation: marquee-scroll 40s linear infinite;
-}
-
-.animate-glow-pulse {
-  animation: glow-pulse 6s ease-in-out infinite;
-}
-
-.suit-electric {
-  animation: electric-pulse 8s ease-in-out infinite;
-}
-
-.suit-flicker {
-  animation: electric-flicker 7s ease-in-out infinite;
-}
+.animate-marquee { animation: marquee-scroll 40s linear infinite; }
+.animate-glow-pulse { animation: glow-pulse 6s ease-in-out infinite; }
+.suit-electric { animation: electric-pulse 8s ease-in-out infinite; }
+.suit-flicker { animation: electric-flicker 7s ease-in-out infinite; }

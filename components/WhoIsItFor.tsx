@@ -35,14 +35,14 @@ export function WhoIsItFor() {
           className="mx-auto max-w-3xl text-center"
         >
           <span
-            className="luxury-caps text-[11px] text-bordeaux-300"
+            className="eyebrow-bordeaux"
             style={{ letterSpacing: "0.45em" }}
           >
             קהל היעד
           </span>
-          <h2 className="heading-display mt-5 text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+          <h2 className="heading-display mt-5 font-serif font-light leading-[1.05] text-cream text-4xl sm:text-5xl lg:text-6xl">
             למי ההכשרה הזאת{" "}
-            <span className="text-bordeaux-gradient">מתאימה?</span>
+            <span className="italic-accent">מתאימה?</span>
           </h2>
           <div className="mx-auto mt-6 h-px w-16 bg-gradient-to-r from-transparent via-bordeaux-500 to-transparent" />
         </motion.div>
@@ -59,7 +59,7 @@ export function WhoIsItFor() {
             >
               <div className="pointer-events-none absolute -top-16 left-1/2 h-32 w-32 -translate-x-1/2 rounded-full bg-bordeaux-700/0 blur-3xl transition-all duration-700 group-hover:bg-bordeaux-700/15" />
 
-              <div className="flex h-16 w-16 items-center justify-center rounded-xl border border-white/10 bg-graphite-800/60 text-cream-200 transition-colors group-hover:border-bordeaux-700/40">
+              <div className="flex h-16 w-16 items-center justify-center rounded-xl border border-white/10 bg-graphite-800/60 text-cream-warm transition-colors group-hover:border-bordeaux-700/40">
                 {a.icon}
               </div>
 

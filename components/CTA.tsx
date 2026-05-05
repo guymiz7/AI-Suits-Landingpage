@@ -26,9 +26,9 @@ export function CTA() {
           <div className="relative">
             <p className="text-center text-2xl font-semibold leading-relaxed text-white sm:text-3xl lg:text-[36px] lg:leading-[1.4]">
               אם אתם רוצים לדעת לבנות{" "}
-              <span className="text-bordeaux-gradient">דפי נחיתה</span> עם
+              <span className="italic-accent">דפי נחיתה</span> עם
               מסרים מחודדים שמוכרים, נכסים דיגיטליים שיקדמו תנועה, ועבודה עם
-              כלי <span className="text-bordeaux-gradient">AI</span> שייתנו לכם
+              כלי <span className="italic-accent">AI</span> שייתנו לכם
               יכולת אמיתית לעבוד מהר יותר —{" "}
               <span className="text-white">זה המקום להתחיל ממנו.</span>
             </p>

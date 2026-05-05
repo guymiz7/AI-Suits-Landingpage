@@ -50,14 +50,14 @@ export function ValueProp() {
           className="mx-auto max-w-3xl text-center"
         >
           <span
-            className="luxury-caps text-[11px] text-bordeaux-300"
+            className="eyebrow-bordeaux"
             style={{ letterSpacing: "0.45em" }}
           >
             הצעת הערך
           </span>
-          <h2 className="heading-display mt-5 text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+          <h2 className="heading-display mt-5 font-serif font-light leading-[1.05] text-cream text-4xl sm:text-5xl lg:text-6xl">
             הכשרה מוכוונת{" "}
-            <span className="text-bordeaux-gradient">תוצאה ותוצר</span>
+            <span className="italic-accent">תוצאה ותוצר</span>
           </h2>
           <div className="mx-auto mt-6 h-px w-16 bg-gradient-to-r from-transparent via-bordeaux-500 to-transparent" />
           <p className="mt-6 text-base font-light leading-relaxed text-graphite-300 sm:text-lg">
@@ -78,7 +78,7 @@ export function ValueProp() {
                 transition={{ duration: 0.5, delay: i * 0.07 }}
                 className="group flex items-start gap-5 rounded-xl border border-white/[0.04] bg-graphite-900/40 p-5 transition-all duration-300 hover:border-bordeaux-700/40 hover:bg-graphite-800/40 sm:p-6"
               >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-graphite-800/60 text-cream-200 transition-colors group-hover:border-bordeaux-700/50 group-hover:text-cream-100 sm:h-14 sm:w-14">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-graphite-800/60 text-cream-warm transition-colors group-hover:border-bordeaux-700/50 group-hover:text-cream sm:h-14 sm:w-14">
                   {it.icon}
                 </div>
                 <div className="flex-1 pt-0.5">

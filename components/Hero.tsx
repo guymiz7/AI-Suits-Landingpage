@@ -4,53 +4,54 @@ import { motion } from "framer-motion";
 
 export function Hero() {
   return (
-    <section className="relative isolate overflow-hidden pt-36 pb-32 lg:pt-44 lg:pb-40">
-      {/* Base */}
-      <div className="absolute inset-0 -z-10 bg-ink-900" />
-      <div className="absolute inset-0 -z-10 pinstripe opacity-40" />
-
-      {/* Subtle bordeaux halo */}
+    <section className="relative isolate overflow-hidden pinstripe-onyx pt-44 pb-32 lg:pt-56 lg:pb-40">
+      {/* Soft bordeaux halo */}
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[700px] bg-radial-bordeaux animate-glow-pulse" />
-      <div className="pointer-events-none absolute -top-32 left-1/2 -z-10 h-[420px] w-[400px] -translate-x-1/2 rounded-full bg-bordeaux-900/15 blur-[140px] sm:w-[600px] lg:w-[820px]" />
 
       <div className="container-luxe relative">
-        {/* Couture eyebrow */}
+        {/* Document eyebrow */}
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <span
-            className="luxury-caps text-[11px] text-bordeaux-300"
-            style={{ letterSpacing: "0.45em" }}
-          >
-            AI Suits Bootcamp
-          </span>
-          <div className="mx-auto mt-3 h-px w-16 bg-gradient-to-r from-transparent via-bordeaux-500 to-transparent" />
+          <div className="caption-mono">— Bootcamp · Edition I / 2026</div>
         </motion.div>
 
-        {/* Main headline */}
+        {/* Display headline — Cormorant Garamond + Hebrew serif blend */}
         <motion.h1
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="heading-display mx-auto mt-10 max-w-5xl text-center text-3xl leading-[1.25] text-white sm:text-4xl md:text-5xl lg:text-[56px]"
+          transition={{ duration: 0.8, delay: 0.15 }}
+          className="heading-display mx-auto mt-10 max-w-5xl text-center text-cream"
+          style={{
+            fontSize: "clamp(48px, 8vw, 110px)",
+            lineHeight: 0.96,
+          }}
         >
-          בשני מפגשים ממוקדים תלמדו לבנות{" "}
-          <span className="text-bordeaux-gradient font-bold">
-            דפי מכירה מקצועיים וממותגים
-          </span>
-          , עם דיוק בהצעה, בתכנון ובאסטרטגיה — בלי רקע קודם, בחיסכון בזמן,
-          בכסף ובתלות באנשי מקצוע.
+          תפור <em className="italic-accent">לבנייה</em> של
+          <br />
+          דפי מכירה <em className="italic-accent">מקצועיים</em>.
         </motion.h1>
+
+        {/* Lead paragraph */}
+        <motion.p
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="lead mx-auto mt-12 max-w-3xl text-center text-graphite-200"
+        >
+          בשני מפגשים ממוקדים תלמדו לבנות דפי מכירה מקצועיים וממותגים — עם
+          דיוק בהצעה, בתכנון ובאסטרטגיה. בלי רקע קודם, בלי תלות באנשי מקצוע.
+        </motion.p>
 
         {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.35 }}
-          className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row"
+          transition={{ duration: 0.7, delay: 0.45 }}
+          className="mt-14 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <a href="#contact" className="btn-primary group">
             <span>אני רוצה לשמור מקום</span>
@@ -61,16 +62,22 @@ export function Hero() {
           </a>
         </motion.div>
 
-        {/* Couture pinstripe divider */}
+        {/* Document chrome footer — small captions */}
         <motion.div
-          initial={{ opacity: 0, scaleX: 0 }}
-          animate={{ opacity: 1, scaleX: 1 }}
-          transition={{ duration: 1.2, delay: 0.6 }}
-          className="mx-auto mt-20 h-px max-w-md origin-center divider-bordeaux"
-        />
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.8 }}
+          className="mt-24"
+        >
+          <hr className="hairline mx-auto max-w-3xl" />
+          <div className="mx-auto mt-6 flex max-w-3xl items-center justify-between">
+            <span className="caption-mono">חליפה. אוטומציה. AI.</span>
+            <span className="caption-mono">00 / Hero</span>
+          </div>
+        </motion.div>
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-ink-900 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-onyx to-transparent" />
     </section>
   );
 }
@@ -83,7 +90,7 @@ function ArrowIcon() {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="2"
+      strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
       className="transition-transform group-hover:-translate-x-1 rtl:rotate-180"

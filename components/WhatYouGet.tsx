@@ -35,12 +35,12 @@ export function WhatYouGet() {
           className="mx-auto max-w-3xl text-center"
         >
           <span
-            className="luxury-caps text-[11px] text-bordeaux-300"
+            className="eyebrow-bordeaux"
             style={{ letterSpacing: "0.45em" }}
           >
             התוצרים
           </span>
-          <h2 className="heading-display mt-5 text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+          <h2 className="heading-display mt-5 font-serif font-light leading-[1.05] text-cream text-4xl sm:text-5xl lg:text-6xl">
             מה יוצא לך מזה בפועל?
           </h2>
           <div className="mx-auto mt-6 h-px w-16 bg-gradient-to-r from-transparent via-bordeaux-500 to-transparent" />
@@ -73,7 +73,7 @@ export function WhatYouGet() {
                   {/* Icon */}
                   <div className="relative shrink-0">
                     <div className="flex h-16 w-16 items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br from-graphite-700/60 to-graphite-900 transition-colors group-hover:border-bordeaux-700/40 sm:h-20 sm:w-20">
-                      <div className="text-cream-200 transition-transform duration-500 group-hover:scale-110">
+                      <div className="text-cream-warm transition-transform duration-500 group-hover:scale-110">
                         {it.icon}
                       </div>
                     </div>
