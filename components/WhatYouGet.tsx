@@ -5,18 +5,18 @@ import { motion } from "framer-motion";
 const items = [
   {
     n: "01",
-    label: "דף נחיתה מקצועי",
-    desc: "עם מסר ברור שמוכר לקהל היעד שלך — לא רעיון, נכס.",
+    label: "דף נחיתה מקצועי עם מסר ברור",
+    desc: "שמוכר לקהל היעד שלך.",
   },
   {
     n: "02",
-    label: "עצמאות עם AI",
-    desc: "שיטת עבודה מהירה. צרכן שירות הופך לבונה.",
+    label: "עצמאות ושיטת עבודה מהירה בעזרת AI",
+    desc: "צרכן שירות הופך לבונה.",
   },
   {
     n: "03",
     label: "חיסכון בזמן ובהוצאות",
-    desc: "יודעים מה לבקש, איך לבצע ומה התוצר הנכון.",
+    desc: "על כל שלב קטן בתהליך.",
   },
 ];
 
@@ -48,7 +48,7 @@ export function WhatYouGet() {
           <div>
             <div className="caption" style={{ marginBottom: 18 }}>התוצרים</div>
             <h2 className="h1">
-              מה <em className="italic-script" style={{ color: "var(--bordeaux-cream)" }}>יוצא</em> לך
+              מה <em className="italic-script">יוצא</em> לך
               <br />
               מזה בפועל.
             </h2>

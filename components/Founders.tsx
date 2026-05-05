@@ -125,7 +125,7 @@ function FounderRow({ f, index }: { f: Founder; index: number }) {
             {f.idx} · {f.company}
           </div>
           <h3
-            className="font-serif"
+            className=""
             style={{ fontWeight: 300, fontSize: "clamp(34px, 4vw, 52px)", lineHeight: 1, letterSpacing: "-0.015em" }}
           >
             {f.name}
@@ -148,8 +148,7 @@ function FounderRow({ f, index }: { f: Founder; index: number }) {
             {f.skills.map((s, j, arr) => (
               <span
                 key={s}
-                className="font-serif"
-                style={{ fontSize: 15, fontWeight: 300, fontStyle: "italic", color: "var(--cream)" }}
+                style={{ fontSize: 15, fontWeight: 300, color: "rgba(245,239,230,0.85)" }}
               >
                 {s}
                 {j < arr.length - 1 && (
@@ -167,7 +166,7 @@ function FounderRow({ f, index }: { f: Founder; index: number }) {
 function PhotoCard({ photo, name }: { photo: string; name: string }) {
   return (
     <div
-      className="group relative aspect-[4/5] overflow-hidden"
+      className="relative aspect-[4/5] overflow-hidden"
       style={{
         background: "var(--charcoal)",
         border: "1px solid var(--line-cream)",
@@ -177,70 +176,11 @@ function PhotoCard({ photo, name }: { photo: string; name: string }) {
         src={`${ASSET_PREFIX}${photo}`}
         alt={name}
         fill
-        className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+        className="object-cover object-center"
         sizes="(min-width:1024px) 40vw, 100vw"
         unoptimized
         priority
       />
-
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background: "linear-gradient(to top, rgba(10,10,11,0.85), transparent 60%)",
-          zIndex: 2,
-        }}
-      />
-
-      <SuitElectricOverlay />
-
-      <div className="absolute inset-x-0 bottom-0 p-6" style={{ zIndex: 4 }}>
-        <div className="caption" style={{ color: "rgba(245,239,230,0.6)" }}>
-          — Mentor
-        </div>
-        <p
-          className="mt-2 font-serif"
-          style={{ fontWeight: 300, fontSize: 22, color: "var(--cream)", letterSpacing: "-0.005em" }}
-        >
-          {name}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-function SuitElectricOverlay() {
-  return (
-    <div className="pointer-events-none absolute inset-0" style={{ zIndex: 3 }}>
-      <div
-        className="absolute inset-x-0 top-[35%] mx-auto h-48 w-48 -translate-y-1/2 suit-electric"
-        style={{ background: "rgba(199, 169, 155, 0.4)", filter: "blur(60px)" }}
-      />
-      <svg
-        viewBox="0 0 200 250"
-        className="absolute inset-0 h-full w-full"
-        fill="none"
-        preserveAspectRatio="xMidYMid slice"
-      >
-        <defs>
-          <linearGradient id="suitGlow" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="rgba(220,138,155,0.9)" />
-            <stop offset="50%" stopColor="rgba(150,38,55,0.7)" />
-            <stop offset="100%" stopColor="rgba(63,15,28,0.3)" />
-          </linearGradient>
-          <filter id="elecBlur">
-            <feGaussianBlur stdDeviation="0.6" />
-          </filter>
-        </defs>
-        <g stroke="url(#suitGlow)" strokeWidth="1.4" filter="url(#elecBlur)" className="suit-flicker">
-          <path d="M 60 90 L 100 130 L 100 240 L 60 200 Z" />
-          <path d="M 140 90 L 100 130 L 100 240 L 140 200 Z" />
-          <line x1="100" y1="130" x2="100" y2="240" />
-        </g>
-        <g stroke="rgba(245,239,230,0.4)" strokeWidth="0.5" className="suit-electric">
-          <path d="M 60 90 L 100 130 L 100 240 L 60 200 Z" />
-          <path d="M 140 90 L 100 130 L 100 240 L 140 200 Z" />
-        </g>
-      </svg>
     </div>
   );
 }

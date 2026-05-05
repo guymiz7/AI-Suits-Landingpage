@@ -23,7 +23,7 @@ export function ProcessStatement() {
           style={{ maxWidth: 1200 }}
         >
           <div
-            className="font-serif"
+            className=""
             style={{
               fontStyle: "italic",
               fontWeight: 400,
@@ -36,7 +36,7 @@ export function ProcessStatement() {
             &ldquo;
           </div>
           <h2
-            className="font-serif"
+            className=""
             style={{
               fontWeight: 300,
               fontSize: "clamp(36px, 5.4vw, 76px)",

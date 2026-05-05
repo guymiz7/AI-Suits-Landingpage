@@ -46,7 +46,7 @@ export function Header() {
             <a
               key={item.href}
               href={item.href}
-              className="font-serif text-base font-light transition-colors"
+              className="text-base font-light transition-colors"
               style={{ color: "rgba(245,239,230,0.65)" }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "var(--cream)")}
               onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(245,239,230,0.65)")}

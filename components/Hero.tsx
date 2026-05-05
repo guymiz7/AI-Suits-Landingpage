@@ -82,7 +82,7 @@ export function Hero() {
             ].map((m) => (
               <div key={m.l}>
                 <div className="caption">{m.l}</div>
-                <p className="mt-2 font-serif text-lg font-light" style={{ lineHeight: 1.3 }}>
+                <p className="mt-2 text-lg font-light" style={{ lineHeight: 1.3 }}>
                   {m.v}
                 </p>
               </div>

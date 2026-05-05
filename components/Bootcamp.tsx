@@ -5,23 +5,23 @@ import { motion } from "framer-motion";
 const steps = [
   {
     idx: "I",
-    name: "AI לקיצור תהליכים",
-    desc: "שימוש מדויק בכלי AI כדי לקצר זמן ולמקסם את איכות התוצאה — לא קסם, שיטה.",
+    name: "שימוש ב־AI לקיצור תהליכים",
+    desc: "ולמקסום איכות התוצאה.",
   },
   {
     idx: "II",
     name: "תכנון נכון של העמוד",
-    desc: "מבנה שיווקי שעובד. הצעה מדויקת. שפה שמדברת ללקוח.",
+    desc: "כדי להביא הצעה מדויקת למוצר.",
   },
   {
     idx: "III",
-    name: "החשיבה של הלקוח",
-    desc: "מבינים את הקהל לפני שכותבים מילה. מסגרת אחת, מסר חד.",
+    name: "הבנת החשיבה של הלקוח",
+    desc: "עם מבנה שיווקי שעובד נכון.",
   },
   {
     idx: "IV",
-    name: "מסר · נראות · תוצאה",
-    desc: "החיבור בין מה שאומרים, איך זה נראה ומה זה מייצר — בקצה אחד.",
+    name: "חיבור בין מסר, נראות ותוצאה",
+    desc: "מקצה לקצה.",
   },
 ];
 
@@ -53,14 +53,12 @@ export function Bootcamp() {
           <div>
             <div className="caption" style={{ marginBottom: 18 }}>התוכנית</div>
             <h2 className="h1">
-              לא רק <em className="italic-script" style={{ color: "var(--bordeaux-cream)" }}>בנייה</em>.
+              ההכשרה הזו לא עוסקת רק
               <br />
-              גם <em className="italic-script" style={{ color: "var(--bordeaux-cream)" }}>מה</em> ו
-              <em className="italic-script" style={{ color: "var(--bordeaux-cream)" }}>איך</em>.
+              ב<em className="italic-script">בנייה</em>.
             </h2>
-            <p className="lead" style={{ marginTop: 32, color: "rgba(245,239,230,0.7)" }}>
-              ההכשרה לא עוסקת רק בבנייה. היא תעזור לכם להבין מה לבנות —
-              ואיך לבנות את זה נכון.
+            <p className="lead" style={{ marginTop: 32, color: "rgba(245,239,230,0.78)" }}>
+              היא תעזור לכם להבין מה לבנות — ואיך לבנות את זה נכון.
             </p>
           </div>
         </motion.div>

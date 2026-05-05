@@ -99,7 +99,7 @@ export function Differentiation() {
                 "שיווק, מכירות, מערכות ואוטומציה — תחת קורת גג אחת.",
                 "יכולת מקצועית, וגם יכולת עסקית.",
               ].map((t) => (
-                <li key={t} className="font-serif" style={{ fontSize: 22, fontWeight: 300, lineHeight: 1.35 }}>
+                <li key={t} className="" style={{ fontSize: 22, fontWeight: 300, lineHeight: 1.35 }}>
                   · {t}
                 </li>
               ))}

@@ -4,23 +4,20 @@ import { motion } from "framer-motion";
 
 const audiences = [
   {
-    role: "Primary · קהל יעד ראשי",
+    role: "Primary",
     name: "בעלי עסקים",
-    sub: "שרוצים שהעסק שלהם יביא תוצאות טובות יותר — בנכסים, בתהליכים ובאסטרטגיה.",
-    bullets: ["לשפר תהליכים", "לייצר נכסים טובים יותר", "לבנות פתרונות לעצמם", "להכניס AI לעסק"],
+    sub: "שרוצים שהעסק שלהם יביא תוצאות טובות יותר.",
     primary: true,
   },
   {
-    role: "Secondary · אנשי מקצוע",
-    name: "מעצבים · שיווק · שירות",
-    sub: "שרוצים לתת ערך מוסף ללקוחות שלהם, להרחיב יכולות ולעבוד מהר יותר עם AI.",
-    bullets: ["לפתח יכולת מקצועית", "לבנות לעסקים", "להציע שירותי AI", "להיכנס לתחום"],
+    role: "Secondary",
+    name: "מעצבים, אנשי שיווק ואנשי שירות",
+    sub: "שרוצים לתת ערך מוסף ללקוחות שלהם.",
   },
   {
-    role: "Tertiary · בלי רקע",
-    name: "אנשים ללא ניסיון",
-    sub: "שרוצים ללמוד את התחום הכי מבוקש היום — בצורה פרקטית, מהבסיס ועד תוצר אמיתי.",
-    bullets: ["להיכנס לתחום מהר", "ללמוד נכון מההתחלה", "לבנות תוצר עובד", "להפוך לבילדרס"],
+    role: "Tertiary",
+    name: "אנשים ללא ניסיון או רקע בתחום",
+    sub: "שרוצים ללמוד את התחום הכי מבוקש היום.",
   },
 ];
 
@@ -46,9 +43,12 @@ export function WhoIsItFor() {
         >
           <div className="caption" style={{ marginBottom: 14 }}>V</div>
           <h2 className="h1" style={{ maxWidth: "20ch" }}>
-            למי אנחנו <em className="italic-script" style={{ color: "var(--bordeaux-cream)" }}>תופרים</em>.
+            למי ההכשרה הזאת{" "}
+            <em className="italic-script">מתאימה?</em>
           </h2>
         </motion.div>
+
+        <hr className="hairline" style={{ marginTop: 40, marginBottom: 60 }} />
 
         <div className="grid gap-6 md:grid-cols-3">
           {audiences.map((a, i) => (
@@ -62,6 +62,7 @@ export function WhoIsItFor() {
               style={{
                 background: a.primary ? "var(--bordeaux-deep)" : "var(--graphite)",
                 borderColor: a.primary ? "var(--bordeaux)" : "var(--line-cream)",
+                minHeight: 280,
               }}
             >
               <div className="role">{a.role}</div>
@@ -69,24 +70,10 @@ export function WhoIsItFor() {
                 <div className="name">
                   <em>{a.name}</em>
                 </div>
-                <p className="mt-4" style={{ color: "rgba(245,239,230,0.7)", fontSize: 14, lineHeight: 1.6 }}>
+                <p className="mt-4" style={{ color: "rgba(245,239,230,0.7)", fontSize: 15, lineHeight: 1.6, fontWeight: 300 }}>
                   {a.sub}
                 </p>
               </div>
-              <ul className="flex flex-wrap" style={{ listStyle: "none", padding: 0, margin: 0, gap: "6px 14px" }}>
-                {a.bullets.map((b, j) => (
-                  <li
-                    key={b}
-                    className="font-serif"
-                    style={{ fontSize: 15, fontWeight: 300, fontStyle: "italic", color: "var(--cream)" }}
-                  >
-                    {b}
-                    {j < a.bullets.length - 1 && (
-                      <span style={{ marginRight: 14, color: "var(--smoke)" }}>·</span>
-                    )}
-                  </li>
-                ))}
-              </ul>
             </motion.div>
           ))}
         </div>

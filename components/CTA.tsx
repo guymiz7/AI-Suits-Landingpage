@@ -6,7 +6,7 @@ export function CTA() {
   return (
     <section
       id="contact"
-      className="pinstripe-bordeaux relative"
+      className="pinstripe-onyx relative"
       style={{ paddingTop: 140, paddingBottom: 140, color: "var(--cream)" }}
     >
       <div className="container-page chrome" style={{ marginBottom: 60, opacity: 0.55 }}>
@@ -23,7 +23,7 @@ export function CTA() {
         >
           <div className="caption" style={{ marginBottom: 24 }}>— זה המקום להתחיל ממנו</div>
           <h2
-            className="font-serif"
+            className=""
             style={{
               fontWeight: 300,
               fontSize: "clamp(40px, 6vw, 84px)",
@@ -53,20 +53,11 @@ export function CTA() {
           </p>
 
           <div className="mt-12 flex flex-col gap-4 sm:flex-row">
-            <a
-              href="#contact"
-              className="btn-ghost"
-              style={{ borderColor: "var(--cream)", color: "var(--cream)" }}
-            >
+            <a href="#contact" className="btn-primary">
               <span>אני רוצה לשמור מקום</span>
               <Arrow />
             </a>
-            <a
-              id="contact-info"
-              href="#contact-info"
-              className="btn-ghost"
-              style={{ borderColor: "rgba(245,239,230,0.4)" }}
-            >
+            <a id="contact-info" href="#contact-info" className="btn-ghost">
               שלחו לי את כל הפרטים
             </a>
           </div>
@@ -82,7 +73,7 @@ export function CTA() {
           ].map((b) => (
             <div key={b.l}>
               <div className="caption" style={{ color: "var(--cream-warm)", marginBottom: 8 }}>— {b.l}</div>
-              <p className="font-serif" style={{ fontWeight: 300, fontSize: 20, lineHeight: 1.4 }}>
+              <p className="" style={{ fontWeight: 300, fontSize: 20, lineHeight: 1.4 }}>
                 {b.v}
               </p>
             </div>

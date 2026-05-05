@@ -35,7 +35,7 @@ export function ClientsMarquee() {
       {/* Section header */}
       <div className="container-page" style={{ marginBottom: 40 }}>
         <h3
-          className="font-serif"
+          className=""
           style={{
             fontWeight: 300,
             fontSize: "clamp(28px, 3.8vw, 48px)",
