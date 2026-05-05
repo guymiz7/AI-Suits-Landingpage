@@ -1,12 +1,13 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { BrandEssence } from "@/components/BrandEssence";
-import { Promise } from "@/components/Promise";
+import { WhatYouGet } from "@/components/WhatYouGet";
+import { ProcessStatement } from "@/components/ProcessStatement";
+import { ClientsMarquee } from "@/components/ClientsMarquee";
 import { ValueProp } from "@/components/ValueProp";
-import { ThreeWorlds } from "@/components/ThreeWorlds";
-import { Products } from "@/components/Products";
+import { WhoIsItFor } from "@/components/WhoIsItFor";
+import { Differentiation } from "@/components/Differentiation";
+import { Bootcamp } from "@/components/Bootcamp";
 import { Founders } from "@/components/Founders";
-import { Values } from "@/components/Values";
 import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
 
@@ -15,13 +16,14 @@ export default function HomePage() {
     <main className="relative">
       <Header />
       <Hero />
-      <BrandEssence />
-      <Promise />
+      <WhatYouGet />
+      <ProcessStatement />
+      <ClientsMarquee />
       <ValueProp />
-      <ThreeWorlds />
-      <Products />
+      <WhoIsItFor />
+      <Differentiation />
+      <Bootcamp />
       <Founders />
-      <Values />
       <CTA />
       <Footer />
     </main>

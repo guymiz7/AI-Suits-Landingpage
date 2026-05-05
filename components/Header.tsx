@@ -5,11 +5,10 @@ import { Logo } from "./Logo";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { href: "#about", label: "מהות" },
-  { href: "#value", label: "הצעת הערך" },
-  { href: "#products", label: "מוצרים" },
-  { href: "#founders", label: "מובילי המותג" },
-  { href: "#contact", label: "צור קשר" },
+  { href: "#what-you-get", label: "מה תקבלו" },
+  { href: "#audience", label: "למי זה מתאים" },
+  { href: "#bootcamp", label: "הבוטקמפ" },
+  { href: "#founders", label: "מי אנחנו" },
 ];
 
 export function Header() {
@@ -39,38 +38,16 @@ export function Header() {
             <a
               key={item.href}
               href={item.href}
-              className="rounded-full px-4 py-2 text-sm text-graphite-200 transition-colors hover:text-white"
+              className="rounded-full px-4 py-2 text-sm font-light text-graphite-300 transition-colors hover:text-white"
             >
               {item.label}
             </a>
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
-          <a href="#contact" className="btn-primary">
-            <span>הזמינו פגישה</span>
-            <ArrowIcon />
-          </a>
-        </div>
+        {/* Empty right slot — clean, minimalist (no top CTA per spec) */}
+        <div className="w-[120px] lg:w-[120px]" aria-hidden="true" />
       </div>
     </header>
-  );
-}
-
-function ArrowIcon() {
-  return (
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="rtl:rotate-180"
-    >
-      <path d="M5 12h14M13 5l7 7-7 7" />
-    </svg>
   );
 }

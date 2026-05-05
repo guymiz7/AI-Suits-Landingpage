@@ -1,25 +1,18 @@
 import type { Metadata } from "next";
-import { Heebo, Rubik } from "next/font/google";
+import { Heebo } from "next/font/google";
 import "./globals.css";
 
 const heebo = Heebo({
   subsets: ["hebrew", "latin"],
   variable: "--font-heebo",
   display: "swap",
-  weight: ["300", "400", "500", "600", "700", "800"],
-});
-
-const rubik = Rubik({
-  subsets: ["hebrew", "latin"],
-  variable: "--font-rubik",
-  display: "swap",
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["200", "300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "AI Suits — חליפה חכמה לעסק שלך",
+  title: "AI Suits Bootcamp — בונים דפי מכירה מקצועיים עם AI",
   description:
-    "מותג הכשרה פרקטי שמכשיר בעלי עסקים, יזמים ואנשי ביצוע לבנות, ליישם ולשווק טוב יותר עם AI, אוטומציה ומערכות חכמות.",
+    "בשני מפגשים ממוקדים תלמדו לבנות דפי מכירה מקצועיים וממותגים, עם דיוק בהצעה, בתכנון ובאסטרטגיה — בלי רקע קודם, בחיסכון בזמן ובכסף.",
   keywords: [
     "AI Suits",
     "AI",
@@ -37,8 +30,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="he" dir="rtl" className={`${heebo.variable} ${rubik.variable}`}>
-      <body className="min-h-screen overflow-x-hidden font-sans">
+    <html lang="he" dir="rtl" className={heebo.variable}>
+      <body className="min-h-screen overflow-x-hidden font-sans font-light">
         {children}
       </body>
     </html>
