@@ -6,181 +6,167 @@ import { motion } from "framer-motion";
 const ASSET_PREFIX =
   process.env.NODE_ENV === "production" ? "/AI-Suits-Landingpage" : "";
 
-type Founder = {
-  idx: string;
+type Mentor = {
   company: string;
   name: string;
   photo: string;
-  skills: string[];
-  bio: string[];
+  bio: string;
+  tags: string[];
   layout: "image-first" | "text-first";
 };
 
-const founders: Founder[] = [
+const mentors: Mentor[] = [
   {
-    idx: "I",
     company: "DIGITECH",
     name: "מתן יעקובסון",
     photo: "/founders/matan.png",
-    skills: ["AI יישומי", "שיווק דיגיטלי", "אסטרטגיה", "תוכן ומיתוג"],
-    bio: [
-      "יזם ומומחה בעולמות ה־AI, הדיגיטל והחינוך הטכנולוגי. חי, נושם וחוקר את עולמות הדיגיטל כבר מעל 11 שנים — במהלכן ליווה מאות בעלי עסקים בתחומים שונים, וניהל מחלקות דיגיטל בחברות ומותגים מהגדולים ביותר.",
-      "מתן ראה מקרוב מה המשמעות של ניהול עסק בלי צוות ובלי שיטה מדויקת — וזה עורר אצלו את הצורך להבין איך מנהלים עסק חכם עם כלים דיגיטליים, בלי שעות עבודה שלא נגמרות.",
-      "כל הידע שלו על עסקים, כסף, שיווק וטכנולוגיה עוזר לעסקים רבים מאוד ליצור סיסטם חכם שמייצר רווח, יציבות וראש שקט.",
-    ],
+    bio: `יזם ומומחה בעולמות ה־AI, הדיגיטל והחינוך הטכנולוגי. חי, נושם וחוקר את עולמות הדיגיטל כבר מעל 11 שנים, במהלכן ליווה מאות בעלי עסקים בתחומים שונים, וכן ניהל מחלקות דיגיטל בחברות ומותגים מהגדולים ביותר.
+
+מתן ראה מקרוב מה המשמעות של ניהול עסק בלי צוות ובלי שיטה מדויקת — וזה עורר אצלו את הצורך להבין איך מנהלים עסק בצורה חכמה עם כלים דיגיטליים, כדי לדעת לנהל עסק באמת בלי צורך בשעות עבודה שלא נגמרות.
+
+כל הידע שלו על עסקים, כסף, שיווק וטכנולוגיה עוזר לעסקים רבים מאוד ליצור סיסטם חכם שמייצר רווח, יציבות וראש שקט.`,
+    tags: ["שיווק דיגיטלי", "תוכן", "אסטרטגיה", "יישומי AI"],
     layout: "image-first",
   },
   {
-    idx: "II",
-    company: "GROUP OCT",
+    company: "OCT GROUP",
     name: "גיא מיזינסקי",
     photo: "/founders/guy.png",
-    skills: ["יישומי AI", "אוטומציה עסקית", "אינטגרציות", "מערכות"],
-    bio: [
-      "יזם, מרצה באקדמיה ומומחה לאוטומציה, AI ותהליכים עסקיים — שמלווה כבר שנים בעלי עסקים, חברות וארגונים בתהליכי צמיחה, דיגיטציה והטמעת טכנולוגיות מתקדמות.",
-      "לאורך הדרך גיא הכשיר מאות בעלי עסקים ואנשי מקצוע, עבד עם ארגונים גדולים ומובילים, וצבר ניסיון מעשי עמוק בחיבור בין אסטרטגיה עסקית, שיווק, מכירות, מערכות ואוטומציה.",
-      "אחרי שראה מקרוב את האבולוציה של עולם ה־AI לאורך 15 השנים האחרונות, גיא מביא גישה פרקטית, ישירה ומבוססת ניסיון: לא רק להבין מה אפשר לעשות עם AI, אלא לצאת עם תוצר אמיתי, מקצועי ושימושי.",
-    ],
+    bio: `יזם, מרצה באקדמיה ומומחה לאוטומציה, AI ותהליכים עסקיים, שמלווה כבר שנים בעלי עסקים, חברות וארגונים בתהליכי צמיחה, דיגיטציה והטמעת טכנולוגיות מתקדמות.
+
+לאורך הדרך גיא הכשיר מאות בעלי עסקים ואנשי מקצוע, עבד עם ארגונים גדולים ומובילים, וצבר ניסיון מעשי עמוק בחיבור בין אסטרטגיה עסקית, שיווק, מכירות, מערכות ואוטומציה.
+
+אחרי שראה מקרוב את האבולוציה של עולם ה־AI לאורך 15 השנים האחרונות — מהימים שבהם הטכנולוגיה הייתה כלי מורכב למעטים ועד לעידן שבו כל עסק יכול לבנות, לדייק ולהאיץ תהליכים בעזרת AI — גיא מביא לבוטקמפ גישה פרקטית, ישירה ומבוססת ניסיון: לא רק להבין מה אפשר לעשות עם AI, אלא לצאת עם תוצר אמיתי, מקצועי ושימושי שאפשר להציג, לשווק ולהמשיך לפתח כבר עכשיו.`,
+    tags: ["אוטומציה עסקית", "טרנספורמציה דיגיטלית", "אפיון והטמעת מערכות", "יישומי AI"],
     layout: "text-first",
   },
 ];
 
 export function Founders() {
   return (
-    <section
-      id="founders"
-      className="pinstripe-onyx relative"
-      style={{ paddingTop: 120, paddingBottom: 120 }}
-    >
-      <div className="container-page chrome" style={{ marginBottom: 60, opacity: 0.55 }}>
-        <span>VIII · המנטורים</span>
-        <span>The Mentors</span>
-      </div>
-
+    <section id="mentors" className="section">
       <div className="container-page">
         <motion.div
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
-          className="section-header"
-          style={{ minHeight: "auto", marginBottom: 40 }}
+          className="text-center"
         >
-          <div>
-            <div className="caption" style={{ marginBottom: 12 }}>Chapter VIII</div>
-            <div className="roman">VIII</div>
-          </div>
-          <div>
-            <div className="caption" style={{ marginBottom: 18 }}>השותפות</div>
-            <h2 className="h1">
-              שני אנשים, <em className="italic-script" style={{ color: "var(--bordeaux-cream)" }}>מעטפת</em>
-              <br />
-              אחת.
-            </h2>
-          </div>
+          <p className="eyebrow-bordeaux">— המנטורים</p>
+          <h2 className="display-lg mt-5 text-cream">
+            הניסיון שעומד מאחורי החליפה
+          </h2>
         </motion.div>
 
-        <hr className="hairline" style={{ marginTop: 40, marginBottom: 80 }} />
-
-        <div className="space-y-24 lg:space-y-32">
-          {founders.map((f, i) => (
-            <FounderRow key={f.name} f={f} index={i} />
+        <div className="mx-auto mt-16 max-w-6xl space-y-16 lg:space-y-24">
+          {mentors.map((m, i) => (
+            <MentorRow key={m.name} m={m} index={i} />
           ))}
         </div>
-      </div>
-
-      <div className="container-page chrome" style={{ marginTop: 80, opacity: 0.55 }}>
-        <span>Suits AI · Mentors</span>
-        <span>08 / VIII</span>
       </div>
     </section>
   );
 }
 
-function FounderRow({ f, index }: { f: Founder; index: number }) {
-  const imageFirst = f.layout === "image-first";
+function MentorRow({ m, index }: { m: Mentor; index: number }) {
+  const imageFirst = m.layout === "image-first";
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.8, delay: index * 0.1 }}
-      className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16"
+      className="grid items-stretch gap-8 lg:grid-cols-12 lg:gap-12"
     >
+      {/* Photo */}
       <div className={`lg:col-span-5 ${imageFirst ? "lg:order-1" : "lg:order-2"}`}>
-        <PhotoCard photo={f.photo} name={f.name} />
-      </div>
-
-      <div className={`lg:col-span-7 ${imageFirst ? "lg:order-2" : "lg:order-1"}`}>
         <div
+          className="relative aspect-[4/5] overflow-hidden"
           style={{
-            border: "1px solid var(--line-cream)",
-            padding: "40px",
-            background: "var(--graphite)",
-            color: "var(--cream)",
-            position: "relative",
+            background: "var(--charcoal)",
+            border: "1px solid var(--line)",
           }}
         >
-          <div className="caption" style={{ marginBottom: 14 }}>
-            {f.idx} · {f.company}
-          </div>
-          <h3
-            className=""
-            style={{ fontWeight: 300, fontSize: "clamp(34px, 4vw, 52px)", lineHeight: 1, letterSpacing: "-0.015em" }}
+          <Image
+            src={`${ASSET_PREFIX}${m.photo}`}
+            alt={`תמונת ${m.name}`}
+            fill
+            className="object-cover object-center"
+            sizes="(min-width:1024px) 40vw, 100vw"
+            unoptimized
+            priority={index === 0}
+          />
+        </div>
+      </div>
+
+      {/* Text card */}
+      <div className={`lg:col-span-7 ${imageFirst ? "lg:order-2" : "lg:order-1"}`}>
+        <div
+          className="h-full"
+          style={{
+            background: "var(--charcoal)",
+            border: "1px solid var(--line)",
+            padding: "clamp(24px, 4vw, 44px)",
+          }}
+        >
+          <p
+            className="eyebrow-bordeaux"
+            style={{ fontSize: 10, letterSpacing: "0.36em" }}
           >
-            {f.name}
+            {m.company}
+          </p>
+          <h3
+            className="mt-3 text-cream"
+            style={{
+              fontWeight: 300,
+              fontSize: "clamp(28px, 3.6vw, 44px)",
+              lineHeight: 1.05,
+              letterSpacing: "-0.015em",
+            }}
+          >
+            {m.name}
           </h3>
 
-          <hr style={{ marginTop: 28, marginBottom: 28, border: 0, borderTop: "1px solid var(--line-cream)" }} />
+          <hr className="hairline" style={{ marginTop: 24, marginBottom: 24 }} />
 
-          <div style={{ display: "grid", gap: 16 }}>
-            {f.bio.map((p, i) => (
+          <div className="space-y-4">
+            {m.bio.split("\n\n").map((p, k) => (
               <p
-                key={i}
-                style={{ fontSize: 15, fontWeight: 300, lineHeight: 1.7, color: "rgba(245,239,230,0.78)" }}
+                key={k}
+                style={{
+                  fontWeight: 300,
+                  fontSize: 15,
+                  lineHeight: 1.75,
+                  color: "rgba(245,239,230,0.78)",
+                }}
               >
                 {p}
               </p>
             ))}
           </div>
 
-          <div className="mt-8 flex flex-wrap" style={{ gap: "6px 14px" }}>
-            {f.skills.map((s, j, arr) => (
+          {/* Tags */}
+          <div className="mt-8 flex flex-wrap gap-2">
+            {m.tags.map((t) => (
               <span
-                key={s}
-                style={{ fontSize: 15, fontWeight: 300, color: "rgba(245,239,230,0.85)" }}
+                key={t}
+                style={{
+                  fontWeight: 400,
+                  fontSize: 11,
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
+                  padding: "8px 14px",
+                  border: "1px solid var(--line)",
+                  color: "rgba(245,239,230,0.7)",
+                }}
               >
-                {s}
-                {j < arr.length - 1 && (
-                  <span style={{ marginRight: 14, color: "var(--smoke)" }}>·</span>
-                )}
+                {t}
               </span>
             ))}
           </div>
         </div>
       </div>
     </motion.div>
-  );
-}
-
-function PhotoCard({ photo, name }: { photo: string; name: string }) {
-  return (
-    <div
-      className="relative aspect-[4/5] overflow-hidden"
-      style={{
-        background: "var(--charcoal)",
-        border: "1px solid var(--line-cream)",
-      }}
-    >
-      <Image
-        src={`${ASSET_PREFIX}${photo}`}
-        alt={name}
-        fill
-        className="object-cover object-center"
-        sizes="(min-width:1024px) 40vw, 100vw"
-        unoptimized
-        priority
-      />
-    </div>
   );
 }

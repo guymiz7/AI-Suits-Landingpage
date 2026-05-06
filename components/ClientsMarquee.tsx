@@ -5,7 +5,7 @@ import Image from "next/image";
 const ASSET_PREFIX =
   process.env.NODE_ENV === "production" ? "/AI-Suits-Landingpage" : "";
 
-const clients = [
+const partners = [
   { src: "/clients/azrieli.png", name: "Azrieli Group" },
   { src: "/clients/discount.png", name: "Discount Bank" },
   { src: "/clients/hagag.png", name: "Hagag Europe" },
@@ -19,63 +19,49 @@ const clients = [
 ];
 
 export function ClientsMarquee() {
-  const items = [...clients, ...clients];
+  // Duplicate items for seamless infinite loop
+  const items = [...partners, ...partners];
 
   return (
     <section
-      className="pinstripe-cream relative"
-      style={{ paddingTop: 80, paddingBottom: 80, color: "var(--charcoal)" }}
+      aria-label="Partners — לקוחות שעבדנו איתם"
+      className="relative overflow-hidden py-12 sm:py-16"
+      style={{
+        background: "var(--charcoal)",
+        borderTop: "1px solid var(--line-soft)",
+        borderBottom: "1px solid var(--line-soft)",
+      }}
     >
-      {/* Top chrome */}
-      <div className="container-page chrome" style={{ color: "var(--smoke)", marginBottom: 40 }}>
-        <span>— ארגונים שעבדנו איתם</span>
-        <span>Trusted by</span>
-      </div>
-
-      {/* Section header */}
-      <div className="container-page" style={{ marginBottom: 40 }}>
-        <h3
-          className=""
+      <div className="relative">
+        {/* Edge fades */}
+        <div
+          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 sm:w-24"
           style={{
-            fontWeight: 300,
-            fontSize: "clamp(28px, 3.8vw, 48px)",
-            lineHeight: 1.1,
-            letterSpacing: "-0.015em",
-            color: "var(--charcoal)",
+            background: "linear-gradient(to left, var(--charcoal), transparent)",
           }}
-        >
-          ניסיון עם <em className="italic-script" style={{ color: "var(--bordeaux)" }}>חברות וארגונים</em> מובילים.
-        </h3>
-        <hr style={{ marginTop: 32, border: 0, borderTop: "1px solid var(--line)" }} />
-      </div>
+        />
+        <div
+          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 sm:w-24"
+          style={{
+            background: "linear-gradient(to right, var(--charcoal), transparent)",
+          }}
+        />
 
-      {/* Logos marquee */}
-      <div className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-32" style={{ background: "linear-gradient(to left, var(--cream), transparent)" }} />
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-32" style={{ background: "linear-gradient(to right, var(--cream), transparent)" }} />
-
-        <div className="flex w-max animate-marquee items-center gap-20 px-8 [will-change:transform]">
-          {items.map((c, i) => (
+        <div className="flex w-max animate-marquee items-center gap-10 px-4 sm:gap-16 sm:px-8">
+          {items.map((p, i) => (
             <div
-              key={`${c.name}-${i}`}
-              className="relative flex h-12 w-32 shrink-0 items-center justify-center sm:h-16 sm:w-44"
-              style={{ filter: "grayscale(1)", opacity: 0.45, transition: "all 0.5s" }}
-              title={c.name}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.filter = "grayscale(0)";
-                e.currentTarget.style.opacity = "1";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.filter = "grayscale(1)";
-                e.currentTarget.style.opacity = "0.45";
-              }}
+              key={`${p.name}-${i}`}
+              className="marquee-logo relative flex shrink-0 items-center justify-center"
+              aria-hidden={i >= partners.length}
+              title={p.name}
             >
               <Image
-                src={`${ASSET_PREFIX}${c.src}`}
-                alt={c.name}
+                src={`${ASSET_PREFIX}${p.src}`}
+                alt={p.name}
                 fill
                 className="object-contain"
-                sizes="176px"
+                sizes="(max-width: 640px) 96px, 144px"
+                style={{ filter: "grayscale(1) brightness(1.4)", opacity: 0.65 }}
                 unoptimized
               />
             </div>
@@ -83,11 +69,6 @@ export function ClientsMarquee() {
         </div>
       </div>
 
-      {/* Bottom chrome */}
-      <div className="container-page chrome" style={{ color: "var(--smoke)", marginTop: 40 }}>
-        <span>Suits AI</span>
-        <span>03 / III</span>
-      </div>
     </section>
   );
 }

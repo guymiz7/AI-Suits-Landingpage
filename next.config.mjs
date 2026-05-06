@@ -9,6 +9,8 @@ const nextConfig = {
   images: { unoptimized: true },
   basePath: isProd ? `/${repo}` : "",
   assetPrefix: isProd ? `/${repo}/` : "",
+  // Allow extra time for Google Fonts fetch during static export
+  staticPageGenerationTimeout: 300,
 };
 
 export default nextConfig;

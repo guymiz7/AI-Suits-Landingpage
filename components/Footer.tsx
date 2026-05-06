@@ -3,44 +3,39 @@ import { Logo } from "./Logo";
 export function Footer() {
   return (
     <footer
-      className="relative"
-      style={{ background: "var(--onyx)", borderTop: "1px solid var(--line-cream)" }}
+      style={{
+        background: "var(--onyx)",
+        borderTop: "1px solid var(--line-soft)",
+      }}
     >
-      <div
-        className="container-page flex flex-col items-center"
-        style={{ paddingTop: 80, paddingBottom: 60, gap: 32 }}
-      >
-        <Logo size="lg" />
+      <div className="container-page" style={{ paddingTop: 56, paddingBottom: 40 }}>
+        <div className="flex flex-col items-center gap-7">
+          <Logo size="md" />
 
-        <p
-          className="text-center"
-          style={{
-            fontFamily: "var(--font-heebo), sans-serif",
-            fontWeight: 200,
-            fontSize: 22,
-            lineHeight: 1.3,
-            color: "var(--cream-warm)",
-            letterSpacing: "-0.005em",
-          }}
-        >
-          חליפה חכמה לעסק שלך.
-        </p>
+          <nav
+            aria-label="קישורים תחתונים"
+            className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2"
+          >
+            <a href="/privacy" className="footer-link">מדיניות פרטיות</a>
+            <span aria-hidden="true" style={{ color: "rgba(245,239,230,0.25)" }}>·</span>
+            <a href="/accessibility" className="footer-link">נגישות</a>
+          </nav>
 
-        <hr className="hairline" style={{ width: 80, marginTop: 8, marginBottom: 8 }} />
+          <hr className="hairline" style={{ width: 80 }} />
 
-        <p
-          className="text-center"
-          style={{
-            fontFamily: "var(--font-mono), monospace",
-            fontSize: 11,
-            letterSpacing: "0.18em",
-            textTransform: "uppercase",
-            color: "var(--smoke)",
-            fontWeight: 400,
-          }}
-        >
-          © {new Date().getFullYear()} Suits AI · כל הזכויות שמורות
-        </p>
+          <p
+            className="text-center"
+            style={{
+              fontSize: 12,
+              fontWeight: 400,
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: "rgba(245,239,230,0.5)",
+            }}
+          >
+            © {new Date().getFullYear()} Suits AI · כל הזכויות שמורות
+          </p>
+        </div>
       </div>
     </footer>
   );

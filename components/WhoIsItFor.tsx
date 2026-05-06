@@ -1,87 +1,91 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { CTAButtons } from "./CTAButtons";
 
-const audiences = [
+const items = [
   {
-    role: "Primary",
-    name: "בעלי עסקים",
-    sub: "שרוצים שהעסק שלהם יביא תוצאות טובות יותר.",
-    primary: true,
+    label: "בעלי עסקים",
+    desc: "שרוצים שהעסק שלהם יביא תוצאות טובות יותר.",
   },
   {
-    role: "Secondary",
-    name: "מעצבים, אנשי שיווק ואנשי שירות",
-    sub: "שרוצים לתת ערך מוסף ללקוחות שלהם.",
+    label: "מעצבים, אנשי שיווק ואנשי שירות",
+    desc: "שרוצים לתת ערך מוסף ללקוחות שלהם.",
   },
   {
-    role: "Tertiary",
-    name: "אנשים ללא ניסיון או רקע בתחום",
-    sub: "שרוצים ללמוד את התחום הכי מבוקש היום.",
+    label: "אנשים ללא ניסיון או רקע בתחום",
+    desc: "שרוצים ללמוד את התחום הכי מבוקש היום.",
   },
 ];
 
 export function WhoIsItFor() {
   return (
-    <section
-      id="audience"
-      className="pinstripe-charcoal relative"
-      style={{ paddingTop: 120, paddingBottom: 120 }}
-    >
-      <div className="container-page chrome" style={{ marginBottom: 80, opacity: 0.55 }}>
-        <span>V · קהל היעד</span>
-        <span>Audience</span>
-      </div>
-
+    <section id="audience" className="section">
       <div className="container-page">
         <motion.div
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
-          style={{ marginBottom: 60 }}
+          className="text-center"
         >
-          <div className="caption" style={{ marginBottom: 14 }}>V</div>
-          <h2 className="h1" style={{ maxWidth: "20ch" }}>
-            למי ההכשרה הזאת{" "}
-            <em className="italic-script">מתאימה?</em>
+          <p className="eyebrow-bordeaux">— קהל היעד</p>
+          <h2 className="display-lg mt-5 text-cream">
+            למי ההכשרה הזאת מתאימה?
           </h2>
         </motion.div>
 
-        <hr className="hairline" style={{ marginTop: 40, marginBottom: 60 }} />
-
-        <div className="grid gap-6 md:grid-cols-3">
-          {audiences.map((a, i) => (
-            <motion.div
-              key={a.name}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.55, delay: i * 0.1 }}
-              className="card"
-              style={{
-                background: a.primary ? "var(--bordeaux-deep)" : "var(--graphite)",
-                borderColor: a.primary ? "var(--bordeaux)" : "var(--line-cream)",
-                minHeight: 280,
-              }}
-            >
-              <div className="role">{a.role}</div>
-              <div>
-                <div className="name">
-                  <em>{a.name}</em>
+        <div className="mx-auto mt-16 max-w-5xl">
+          <ul className="space-y-3">
+            {items.map((it, i) => (
+              <motion.li
+                key={it.label}
+                initial={{ opacity: 0, x: 24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="grid items-baseline gap-6 sm:grid-cols-[80px_1fr] sm:gap-8"
+                style={{
+                  borderBottom: "1px solid var(--line)",
+                  padding: "26px 0",
+                }}
+              >
+                <span
+                  className="eyebrow"
+                  style={{ fontSize: 11, letterSpacing: "0.25em" }}
+                >
+                  0{i + 1}
+                </span>
+                <div>
+                  <p
+                    className="text-cream"
+                    style={{
+                      fontWeight: 400,
+                      fontSize: "clamp(20px, 2.6vw, 28px)",
+                      lineHeight: 1.3,
+                      letterSpacing: "-0.01em",
+                    }}
+                  >
+                    {it.label}
+                  </p>
+                  <p
+                    className="mt-2"
+                    style={{
+                      fontWeight: 300,
+                      fontSize: 15,
+                      lineHeight: 1.65,
+                      color: "rgba(245,239,230,0.65)",
+                    }}
+                  >
+                    {it.desc}
+                  </p>
                 </div>
-                <p className="mt-4" style={{ color: "rgba(245,239,230,0.7)", fontSize: 15, lineHeight: 1.6, fontWeight: 300 }}>
-                  {a.sub}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+              </motion.li>
+            ))}
+          </ul>
         </div>
-      </div>
 
-      <div className="container-page chrome" style={{ marginTop: 80, opacity: 0.55 }}>
-        <span>Suits AI · Audience</span>
-        <span>05 / V</span>
+        <CTAButtons />
       </div>
     </section>
   );
