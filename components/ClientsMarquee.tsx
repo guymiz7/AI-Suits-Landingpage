@@ -61,7 +61,6 @@ export function ClientsMarquee() {
                 fill
                 className="object-contain"
                 sizes="(max-width: 640px) 96px, 144px"
-                style={{ filter: "grayscale(1) brightness(1.4)", opacity: 0.65 }}
                 unoptimized
               />
             </div>

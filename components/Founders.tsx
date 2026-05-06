@@ -82,7 +82,7 @@ function MentorRow({ m, index }: { m: Mentor; index: number }) {
       {/* Photo */}
       <div className={`lg:col-span-5 ${imageFirst ? "lg:order-1" : "lg:order-2"}`}>
         <div
-          className="relative aspect-[4/5] overflow-hidden"
+          className="founder-photo relative overflow-hidden"
           style={{
             background: "var(--charcoal)",
             border: "1px solid var(--line)",
