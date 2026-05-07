@@ -1,9 +1,10 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
+import { ClientsMarquee } from "@/components/ClientsMarquee";
+import { Testimonials } from "@/components/Testimonials";
 import { WhatYouGet } from "@/components/WhatYouGet";
 import { ProcessStatement } from "@/components/ProcessStatement";
 import { Founders } from "@/components/Founders";
-import { ClientsMarquee } from "@/components/ClientsMarquee";
 import { WhoIsItFor } from "@/components/WhoIsItFor";
 import { WhyUs } from "@/components/WhyUs";
 import { Curriculum } from "@/components/Curriculum";
@@ -16,10 +17,11 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
+        <ClientsMarquee />
+        <Testimonials />
         <WhatYouGet />
         <ProcessStatement />
         <Founders />
-        <ClientsMarquee />
         <WhoIsItFor />
         <WhyUs />
         <Curriculum />

@@ -50,19 +50,12 @@ export function WhyUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.55, delay: i * 0.1 }}
-              className="text-center"
+              className="lift-on-hover text-center"
               style={{
                 background: "var(--onyx)",
                 border: "1px solid var(--line)",
                 padding: "40px 28px",
-                transition: "border-color 0.4s ease",
               }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.borderColor = "rgba(122,43,61,0.55)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.borderColor = "rgba(245,239,230,0.14)")
-              }
             >
               <div
                 className="mx-auto flex items-center justify-center"

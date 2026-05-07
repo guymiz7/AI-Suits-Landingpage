@@ -44,19 +44,12 @@ export function WhatYouGet() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.55, delay: i * 0.08 }}
-                className="group relative"
+                className="lift-on-hover group relative"
                 style={{
                   background: "var(--charcoal)",
                   border: "1px solid var(--line)",
                   padding: "28px",
-                  transition: "all 0.4s ease",
                 }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.borderColor = "rgba(122,43,61,0.6)")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.borderColor = "rgba(245,239,230,0.14)")
-                }
               >
                 <div className="flex items-start gap-6 sm:gap-8">
                   {/* Icon */}

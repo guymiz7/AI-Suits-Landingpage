@@ -221,13 +221,12 @@
   }
 }
 .marquee-logo img {
-  filter: grayscale(1) brightness(1.4);
-  opacity: 0.65;
-  transition: filter 0.4s ease, opacity 0.4s ease;
+  opacity: 0.95;
+  transition: transform 0.5s ease, opacity 0.4s ease;
 }
 .marquee-logo:hover img {
-  filter: none;
   opacity: 1;
+  transform: scale(1.05);
 }
 
 /* === Founder cards — equal heights === */
@@ -262,4 +261,63 @@
 }
 .footer-link:hover {
   color: var(--cream);
+}
+
+/* === Testimonials — Runway-style cinematic cards === */
+.testimonial-card {
+  transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1),
+    border-color 0.5s ease, box-shadow 0.6s ease;
+  will-change: transform;
+}
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(122, 43, 61, 0.6);
+  box-shadow: 0 30px 60px -20px rgba(92, 26, 43, 0.4),
+    0 0 0 1px rgba(245, 239, 230, 0.04) inset;
+}
+.testimonial-card:hover img {
+  transform: scale(1.06);
+}
+.testimonial-card:hover .testimonial-play {
+  transform: translate(-50%, -50%) scale(1.1);
+  background: var(--cream) !important;
+}
+.testimonial-trigger {
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+.testimonial-trigger:focus-visible {
+  outline: 2px solid var(--bordeaux);
+  outline-offset: -2px;
+}
+
+/* === Smooth section transitions / Linear-app feel === */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* === Card lift hover (used across audience/why-us cards) === */
+.lift-on-hover {
+  transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+    border-color 0.4s ease;
+}
+.lift-on-hover:hover {
+  transform: translateY(-2px);
+  border-color: rgba(122, 43, 61, 0.55) !important;
+}
+
+/* === Section divider — hairline between sections === */
+.section-divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    to left,
+    transparent,
+    rgba(245, 239, 230, 0.1),
+    transparent
+  );
 }
