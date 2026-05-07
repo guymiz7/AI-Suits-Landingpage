@@ -441,21 +441,21 @@
 .stagger-children > *:nth-child(5) { animation-delay: 0.33s; }
 .stagger-children > *:nth-child(6) { animation-delay: 0.4s; }
 
-/* === Display headlines — bold, dominant === */
+/* === Display headlines — light & elegant === */
 .display-hero {
-  font-weight: 800;
-  font-size: clamp(64px, 13vw, 180px);
-  line-height: 0.9;
-  letter-spacing: -0.03em;
-}
-.display-bold {
-  font-weight: 700;
-  font-size: clamp(40px, 7vw, 92px);
-  line-height: 0.96;
+  font-weight: 200;
+  font-size: clamp(36px, 5.6vw, 76px);
+  line-height: 1.1;
   letter-spacing: -0.02em;
 }
+.display-bold {
+  font-weight: 300;
+  font-size: clamp(32px, 5vw, 64px);
+  line-height: 1.08;
+  letter-spacing: -0.018em;
+}
 .subtitle-spaced {
-  font-weight: 400;
+  font-weight: 300;
   font-size: clamp(15px, 1.4vw, 18px);
   line-height: 1.6;
   letter-spacing: 0.04em;
@@ -593,4 +593,185 @@
 }
 @keyframes letter-fall-in {
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====================================================================
+   HERO VIDEO — cinematic AI/suit composition
+   ==================================================================== */
+.hero-video-frame {
+  position: relative;
+  width: 100%;
+  max-width: 1080px;
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+  background: var(--charcoal);
+  border: 1px solid rgba(245, 239, 230, 0.1);
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow:
+    0 60px 120px -40px rgba(92, 26, 43, 0.55),
+    0 0 0 1px rgba(245, 239, 230, 0.04) inset;
+}
+
+.hv-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hv-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center, transparent 40%, rgba(10, 10, 11, 0.55) 100%),
+    linear-gradient(to top, rgba(10, 10, 11, 0.4), transparent 30%, transparent 70%, rgba(10, 10, 11, 0.4));
+}
+
+/* Pulsing dots */
+@keyframes hv-dot-pulse {
+  0%, 100% { opacity: 0.12; }
+  50% { opacity: 0.55; }
+}
+.hv-dot {
+  animation: hv-dot-pulse 4.5s ease-in-out infinite;
+}
+
+/* Soft halo behind suit — gentle pulse */
+@keyframes hv-halo-pulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.06); }
+}
+.hv-halo {
+  transform-origin: 600px 320px;
+  animation: hv-halo-pulse 7s ease-in-out infinite;
+}
+
+/* Suit silhouette gentle drift */
+@keyframes hv-suit-drift {
+  0%, 100% { transform: translate(600px, 320px) rotate(0deg); }
+  50% { transform: translate(600px, 318px) rotate(0.4deg); }
+}
+.hv-suit {
+  animation: hv-suit-drift 10s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Stroke draw + erase loop for suit lines */
+@keyframes hv-stroke-cycle {
+  0% { stroke-dashoffset: 1400; opacity: 0; }
+  10% { opacity: 1; }
+  45% { stroke-dashoffset: 0; opacity: 1; }
+  70% { stroke-dashoffset: 0; opacity: 1; }
+  90% { stroke-dashoffset: -1400; opacity: 0.5; }
+  100% { stroke-dashoffset: -1400; opacity: 0; }
+}
+.hv-draw {
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 1400;
+  animation: hv-stroke-cycle 8s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+.hv-draw-2 {
+  animation-delay: 0.6s;
+}
+@keyframes hv-seam-shimmer {
+  0%, 100% { stroke-dashoffset: 0; opacity: 0.6; }
+  50% { stroke-dashoffset: -10; opacity: 0.95; }
+}
+.hv-seam {
+  animation: hv-seam-shimmer 3s linear infinite;
+}
+@keyframes hv-pin-glow {
+  0%, 100% { opacity: 0.7; r: 3; }
+  50% { opacity: 1; r: 4; filter: drop-shadow(0 0 6px rgba(245,239,230,0.8)); }
+}
+.hv-pin {
+  animation: hv-pin-glow 4s ease-in-out infinite;
+}
+
+/* Neural connection lines */
+@keyframes hv-link-pulse {
+  0%, 100% { opacity: 0; }
+  20% { opacity: 1; }
+  60% { opacity: 0.6; }
+  90% { opacity: 0; }
+}
+.hv-link {
+  opacity: 0;
+  animation: hv-link-pulse 6s ease-in-out infinite;
+}
+
+/* Floating particles */
+@keyframes hv-particle-float {
+  0% { transform: translate(0, 0); opacity: 0; }
+  10% { opacity: 1; }
+  50% { transform: translate(40px, -30px); opacity: 0.8; }
+  90% { opacity: 0.4; }
+  100% { transform: translate(80px, -60px); opacity: 0; }
+}
+.hv-particle {
+  animation: hv-particle-float 14s linear infinite;
+}
+
+/* Frame corner marks */
+.hv-mark {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(245, 239, 230, 0.35);
+  z-index: 3;
+  pointer-events: none;
+}
+.hv-mark.tl { top: 14px; left: 14px; border-right: 0; border-bottom: 0; }
+.hv-mark.tr { top: 14px; right: 14px; border-left: 0; border-bottom: 0; }
+.hv-mark.bl { bottom: 14px; left: 14px; border-right: 0; border-top: 0; }
+.hv-mark.br { bottom: 14px; right: 14px; border-left: 0; border-top: 0; }
+
+/* Bottom info strip */
+.hv-info {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 16px;
+  background: rgba(10, 10, 11, 0.55);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(245, 239, 230, 0.1);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(245, 239, 230, 0.75);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.hv-info-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--bordeaux-soft);
+  box-shadow: 0 0 8px var(--bordeaux-soft);
+  animation: hv-dot-blink 2s ease-in-out infinite;
+}
+@keyframes hv-dot-blink {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+.hv-info-time {
+  color: rgba(245, 239, 230, 0.4);
+  border-left: 1px solid rgba(245, 239, 230, 0.18);
+  padding-left: 12px;
+  margin-left: 4px;
+}
+
+@media (max-width: 640px) {
+  .hv-info { font-size: 9px; padding: 7px 12px; bottom: 12px; }
+  .hv-mark { width: 12px; height: 12px; }
 }

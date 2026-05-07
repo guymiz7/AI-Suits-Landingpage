@@ -33,17 +33,17 @@ export function Header() {
           : "1px solid transparent",
       }}
     >
-      <div className="container-page flex h-20 items-center justify-between">
+      <div className="container-page flex h-[88px] items-center justify-between sm:h-[100px]">
         <a href="#top" aria-label="Suits AI — חזרה לראש העמוד">
-          <Logo size="sm" />
+          <Logo size="md" />
         </a>
 
-        <nav className="hidden items-center gap-9 lg:flex">
+        <nav className="hidden items-center gap-10 lg:flex">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="text-sm font-light text-cream-dim transition-colors hover:text-cream"
+              className="text-[15px] font-light transition-colors"
               style={{ color: "rgba(245,239,230,0.7)" }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "#F5EFE6")}
               onMouseLeave={(e) =>
