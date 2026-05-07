@@ -674,21 +674,18 @@
 }
 
 /* ====================================================================
-   HERO VIDEO — full-bleed cinematic
+   HERO — full-bleed cinematic video, edge-to-edge
    ==================================================================== */
-.hero-video-frame {
+.hero-fullscreen {
   position: relative;
-  width: 100%;
-  max-width: 1320px;
-  aspect-ratio: 16 / 9;
-  margin: 0 auto;
-  background: var(--charcoal);
-  border: 1px solid rgba(245, 239, 230, 0.1);
+  width: 100vw;
+  height: 100vh;
+  min-height: 600px;
+  max-height: 1080px;
+  margin-inline: calc(50% - 50vw);
+  background: var(--onyx);
   overflow: hidden;
   isolation: isolate;
-  box-shadow:
-    0 60px 120px -40px rgba(92, 26, 43, 0.55),
-    0 0 0 1px rgba(245, 239, 230, 0.04) inset;
 }
 .hero-video-el {
   position: absolute;
@@ -698,6 +695,23 @@
   object-fit: cover;
   object-position: center;
   z-index: 1;
+  display: block;
+}
+
+/* Mobile: keep full viewport but slightly shorter for usability */
+@media (max-width: 640px) {
+  .hero-fullscreen {
+    height: 80vh;
+    min-height: 480px;
+  }
+}
+
+/* Hero tagline — Suits AI — AI Tailored to you */
+.hero-tagline {
+  font-weight: 200;
+  font-size: clamp(28px, 5.5vw, 76px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 .hv-svg {
