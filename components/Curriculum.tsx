@@ -15,14 +15,9 @@ export function Curriculum() {
     <section id="curriculum" className="section">
       <div className="container-page">
         <div className="mx-auto max-w-4xl">
-          <div className="text-center">
-            <FadeUp>
-              <span className="section-index">VII · התוכנית</span>
-            </FadeUp>
-          </div>
           <h2
-            className="display-lg text-cream text-center"
-            style={{ maxWidth: "26ch", margin: "32px auto 0" }}
+            className="display-bold text-cream text-center"
+            style={{ maxWidth: "26ch", margin: "0 auto" }}
           >
             <RevealWords
               text="ההכשרה הזו לא עוסקת רק בבנייה. היא תעזור לכם להבין מה לבנות ואיך לבנות את זה נכון."
@@ -31,8 +26,17 @@ export function Curriculum() {
           </h2>
 
           <FadeUp delay={0.6}>
-            <p className="eyebrow-bordeaux mt-12 text-center">
-              — מה תלמדו בשני המפגשים
+            <p
+              className="mt-14 text-center"
+              style={{
+                fontSize: 13,
+                fontWeight: 500,
+                letterSpacing: "0.32em",
+                textTransform: "uppercase",
+                color: "rgba(245,239,230,0.5)",
+              }}
+            >
+              מה תלמדו בשני המפגשים
             </p>
           </FadeUp>
 

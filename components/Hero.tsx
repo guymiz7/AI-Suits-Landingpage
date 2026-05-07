@@ -1,23 +1,42 @@
 "use client";
 
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useTransform,
+  useReducedMotion,
+} from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Logo } from "./Logo";
 import { CTAButtons } from "./CTAButtons";
+
+const KEYWORDS = ["מדויק", "אישי", "יוקרתי", "חדשני", "תפור במידה"];
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
   const [pointer, setPointer] = useState({ x: 50, y: 30 });
+  const [keywordIdx, setKeywordIdx] = useState(0);
 
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
   const yLogo = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
-  const yLead = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]);
+  const yKey = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
+  // Cycle keywords
+  useEffect(() => {
+    if (reduce) return;
+    const id = window.setInterval(() => {
+      setKeywordIdx((i) => (i + 1) % KEYWORDS.length);
+    }, 2400);
+    return () => window.clearInterval(id);
+  }, [reduce]);
+
+  // Cursor-following spotlight
   useEffect(() => {
     if (reduce) return;
     const onMove = (e: MouseEvent) => {
@@ -37,181 +56,177 @@ export function Hero() {
       id="top"
       ref={ref}
       className="pinstripe-bg relative overflow-hidden"
-      style={{ minHeight: "100vh", paddingTop: "140px", paddingBottom: "80px" }}
+      style={{ minHeight: "100vh", paddingTop: "120px", paddingBottom: "60px" }}
     >
-      {/* Cursor-following spotlight */}
+      {/* Cursor-following bordeaux spotlight */}
       <div
         className="pointer-events-none absolute inset-0 -z-10 transition-[background] duration-[400ms] ease-out"
         style={{
-          background: `radial-gradient(700px circle at ${pointer.x}% ${pointer.y}%, rgba(122,43,61,0.18), transparent 50%)`,
+          background: `radial-gradient(800px circle at ${pointer.x}% ${pointer.y}%, rgba(122,43,61,0.22), transparent 50%)`,
         }}
       />
 
-      {/* Top gradient halo */}
+      {/* Top halo */}
       <div
         className="pointer-events-none absolute inset-x-0 top-0 -z-10"
         style={{
-          height: 800,
+          height: 880,
           background:
-            "radial-gradient(ellipse at 50% 0%, rgba(92,26,43,0.30), transparent 60%)",
+            "radial-gradient(ellipse at 50% 0%, rgba(92,26,43,0.34), transparent 60%)",
         }}
       />
 
-      {/* Static ambient orbs */}
-      <div
+      {/* Floating ambient orbs */}
+      <motion.div
+        animate={
+          reduce
+            ? {}
+            : {
+                x: [0, 40, 0],
+                y: [0, -30, 0],
+              }
+        }
+        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
         className="pointer-events-none absolute -left-32 top-1/3 -z-10"
         style={{
-          width: 480,
-          height: 480,
-          background: "rgba(92,26,43,0.10)",
+          width: 520,
+          height: 520,
+          background: "rgba(92,26,43,0.18)",
+          filter: "blur(140px)",
+          borderRadius: "50%",
+        }}
+      />
+      <motion.div
+        animate={
+          reduce
+            ? {}
+            : {
+                x: [0, -30, 0],
+                y: [0, 40, 0],
+              }
+        }
+        transition={{ duration: 28, repeat: Infinity, ease: "easeInOut", delay: 4 }}
+        className="pointer-events-none absolute -right-24 top-2/3 -z-10"
+        style={{
+          width: 460,
+          height: 460,
+          background: "rgba(245,239,230,0.04)",
           filter: "blur(120px)",
+          borderRadius: "50%",
         }}
       />
 
       <div className="container-page relative">
-        <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
-          {/* Couture marker badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.05 }}
-            className="mb-12 inline-flex items-center gap-3"
-            style={{
-              padding: "8px 16px 8px 18px",
-              border: "1px solid rgba(245,239,230,0.14)",
-              borderRadius: 999,
-              background: "rgba(245,239,230,0.02)",
-              backdropFilter: "blur(8px)",
-            }}
-          >
-            <span
-              style={{
-                width: 6,
-                height: 6,
-                background: "var(--bordeaux-soft)",
-                borderRadius: "50%",
-                boxShadow: "0 0 8px var(--bordeaux-soft)",
-              }}
-            />
-            <span
-              style={{
-                fontSize: 11,
-                fontWeight: 400,
-                letterSpacing: "0.32em",
-                textTransform: "uppercase",
-                color: "rgba(245,239,230,0.7)",
-              }}
-            >
-              Bootcamp · Edition I
-            </span>
-          </motion.div>
-
+        <div className="mx-auto flex max-w-6xl flex-col items-center text-center">
           {/* Massive logo */}
           <motion.div
             style={{ y: yLogo, opacity }}
-            initial={{ opacity: 0, scale: 0.96 }}
+            initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="relative"
+            transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="relative pt-12"
           >
             <Logo size="display" />
           </motion.div>
 
-          {/* Subtitle (word reveal) */}
-          <motion.h1
-            style={{ y: yLead }}
-            className="display-md mt-12 text-cream"
-            initial="hidden"
-            animate="show"
-            variants={{
-              hidden: {},
-              show: { transition: { staggerChildren: 0.045, delayChildren: 0.5 } },
-            }}
+          {/* Stitch line — animated dashed hairline beneath the wordmark */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="stitch-line mt-8"
+            style={{ width: "min(560px, 80%)" }}
+            aria-hidden="true"
           >
-            {[
-              "בשני",
-              "מפגשים",
-              "ממוקדים,",
-              "בליווי",
-              "מלא",
-              "—",
-              "תלמדו",
-              "לבנות",
-              "דפי",
-              "מכירה",
-              "מקצועיים",
-              "וממותגים.",
-            ].map((w, i) => (
+            <svg
+              viewBox="0 0 600 2"
+              preserveAspectRatio="none"
+              style={{ display: "block", width: "100%", height: 2, overflow: "visible" }}
+            >
+              <line
+                x1="0"
+                y1="1"
+                x2="600"
+                y2="1"
+                stroke="var(--bordeaux)"
+                strokeWidth="1.2"
+                strokeLinecap="round"
+              />
+            </svg>
+          </motion.div>
+
+          {/* Morphing keyword — the WOW moment */}
+          <motion.div
+            style={{ y: yKey }}
+            className="relative mt-12 flex h-[1.1em] items-center justify-center overflow-visible"
+            aria-live="polite"
+          >
+            <AnimatePresence mode="wait">
               <motion.span
-                key={i}
-                style={{ display: "inline-block", whiteSpace: "pre" }}
-                variants={{
-                  hidden: { opacity: 0, y: 24, filter: "blur(8px)" },
-                  show: {
-                    opacity: 1,
-                    y: 0,
-                    filter: "blur(0px)",
-                    transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] },
-                  },
+                key={KEYWORDS[keywordIdx]}
+                initial={{ opacity: 0, y: 60, filter: "blur(24px)" }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  filter: "blur(0px)",
+                }}
+                exit={{ opacity: 0, y: -60, filter: "blur(24px)" }}
+                transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+                className="display-hero text-cream"
+                style={{
+                  background:
+                    "linear-gradient(180deg, #FFFFFF 0%, #F5EFE6 50%, rgba(245,239,230,0.55) 100%)",
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  display: "inline-block",
+                  whiteSpace: "nowrap",
                 }}
               >
-                {w}{" "}
+                {KEYWORDS[keywordIdx]}.
               </motion.span>
-            ))}
-          </motion.h1>
+            </AnimatePresence>
+          </motion.div>
 
-          {/* Lead body */}
+          {/* Subtitle — small, spaced, premium */}
           <motion.p
-            style={{ y: yLead }}
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
-            className="lead mx-auto mt-8 text-center"
+            className="subtitle-spaced mx-auto mt-14 max-w-3xl"
           >
-            עם דיוק בהצעה, בתכנון ובאסטרטגיה. בלי רקע קודם — חיסכון בזמן,
-            בכסף ובתלות באנשי מקצוע.
+            בשני מפגשים ממוקדים, בליווי מלא — תלמדו לבנות דפי מכירה מקצועיים וממותגים.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 1.55, ease: [0.16, 1, 0.3, 1] }}
+            className="mx-auto mt-4 max-w-2xl"
+            style={{
+              fontSize: 14,
+              fontWeight: 300,
+              lineHeight: 1.7,
+              color: "rgba(245,239,230,0.55)",
+              letterSpacing: "0.02em",
+            }}
+          >
+            עם דיוק בהצעה, בתכנון ובאסטרטגיה. בלי רקע קודם — חיסכון בזמן, בכסף ובתלות באנשי מקצוע.
           </motion.p>
 
           {/* CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 1.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.9, delay: 1.7, ease: [0.16, 1, 0.3, 1] }}
             className="w-full"
           >
             <CTAButtons />
           </motion.div>
-
-          {/* Hero corner ornaments — tailoring marks */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.6 }}
-            transition={{ duration: 1, delay: 1.8 }}
-            className="absolute inset-x-0 bottom-0 flex items-center justify-center gap-3"
-            style={{ pointerEvents: "none" }}
-          >
-            <span
-              style={{
-                fontSize: 10,
-                letterSpacing: "0.4em",
-                textTransform: "uppercase",
-                color: "rgba(245,239,230,0.4)",
-              }}
-            >
-              גלול לחקור
-            </span>
-            <motion.span
-              animate={{ y: [0, 6, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              style={{ color: "rgba(245,239,230,0.5)" }}
-            >
-              ↓
-            </motion.span>
-          </motion.div>
         </div>
       </div>
 
-      {/* Bottom fade-out into next section */}
+      {/* Bottom fade */}
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 h-32"
         style={{

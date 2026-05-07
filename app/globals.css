@@ -441,21 +441,35 @@
 .stagger-children > *:nth-child(5) { animation-delay: 0.33s; }
 .stagger-children > *:nth-child(6) { animation-delay: 0.4s; }
 
-/* Refined section index marker */
-.section-index {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  font-family: inherit;
-  font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: rgba(245, 239, 230, 0.55);
+/* === Display headlines — bold, dominant === */
+.display-hero {
+  font-weight: 800;
+  font-size: clamp(56px, 11vw, 144px);
+  line-height: 0.92;
+  letter-spacing: -0.025em;
 }
-.section-index::before {
-  content: "";
-  width: 36px;
-  height: 1px;
-  background: var(--bordeaux-soft);
+.display-bold {
+  font-weight: 700;
+  font-size: clamp(40px, 7vw, 92px);
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+}
+.subtitle-spaced {
+  font-weight: 400;
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  color: rgba(245, 239, 230, 0.7);
+}
+
+/* Stitch — animated dashed hairline */
+@keyframes stitch-draw {
+  from { stroke-dashoffset: 600; }
+  to { stroke-dashoffset: 0; }
+}
+.stitch-line path,
+.stitch-line line {
+  stroke-dasharray: 4 6;
+  stroke-dashoffset: 600;
+  animation: stitch-draw 2.5s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
 }

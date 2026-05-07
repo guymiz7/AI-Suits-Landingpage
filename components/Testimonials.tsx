@@ -31,10 +31,7 @@ export function Testimonials() {
 
       <div className="container-page relative">
         <div className="text-center">
-          <FadeUp>
-            <span className="section-index">II · ממליצים</span>
-          </FadeUp>
-          <h2 className="display-lg mt-6 text-cream">
+          <h2 className="display-bold text-cream">
             <RevealWords text="סיפורים אמיתיים, מהבוטקמפ." delay={0.1} />
           </h2>
         </div>

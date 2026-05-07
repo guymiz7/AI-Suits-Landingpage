@@ -27,10 +27,7 @@ export function WhatYouGet() {
     <section id="what-you-get" className="section">
       <div className="container-page">
         <div className="text-center">
-          <FadeUp>
-            <span className="section-index">I · התוצרים</span>
-          </FadeUp>
-          <h2 className="display-lg mt-6 text-cream">
+          <h2 className="display-bold mt-2 text-cream">
             <RevealWords text="מה יוצא לך מזה בפועל?" delay={0.1} />
           </h2>
         </div>

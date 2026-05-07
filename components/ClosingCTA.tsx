@@ -21,16 +21,13 @@ export function ClosingCTA() {
 
       <div className="container-page relative">
         <div className="mx-auto max-w-4xl text-center">
-          <FadeUp>
-            <span className="section-index">IX · השלב הבא</span>
-          </FadeUp>
           <h2
-            className="text-cream mt-8"
+            className="text-cream"
             style={{
-              fontWeight: 300,
-              fontSize: "clamp(28px, 4.6vw, 56px)",
-              lineHeight: 1.25,
-              letterSpacing: "-0.015em",
+              fontWeight: 600,
+              fontSize: "clamp(30px, 5vw, 60px)",
+              lineHeight: 1.2,
+              letterSpacing: "-0.02em",
             }}
           >
             <RevealWords

@@ -24,10 +24,7 @@ export function WhoIsItFor() {
     <section id="audience" className="section">
       <div className="container-page">
         <div className="text-center">
-          <FadeUp>
-            <span className="section-index">V · קהל היעד</span>
-          </FadeUp>
-          <h2 className="display-lg mt-6 text-cream">
+          <h2 className="display-bold text-cream">
             <RevealWords text="למי ההכשרה הזאת מתאימה?" delay={0.1} />
           </h2>
         </div>

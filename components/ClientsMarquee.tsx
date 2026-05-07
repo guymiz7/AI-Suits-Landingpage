@@ -8,14 +8,17 @@ const ASSET_PREFIX =
 const partners = [
   { src: "/clients/azrieli.png", name: "Azrieli Group" },
   { src: "/clients/discount.png", name: "Discount Bank" },
-  { src: "/clients/hagag.png", name: "Hagag Europe" },
   { src: "/clients/meuhedet.png", name: "Meuhedet" },
+  { src: "/clients/lenovo.png", name: "Lenovo" },
+  { src: "/clients/herbalife.png", name: "Herbalife" },
+  { src: "/clients/yes.png", name: "Yes" },
   { src: "/clients/peres.png", name: "Peres Academic Center" },
-  { src: "/clients/levinstein.png", name: "Levinstein" },
-  { src: "/clients/smoove.webp", name: "Smoove" },
+  { src: "/clients/hagag.png", name: "Hagag Europe" },
   { src: "/clients/israel-canada.png", name: "Israel Canada" },
-  { src: "/clients/tzemach-hamerman.png", name: "Tzemach Hamerman" },
-  { src: "/clients/rotstein.png", name: "Rotstein" },
+  { src: "/clients/partner-1.png", name: "Partner" },
+  { src: "/clients/partner-2.png", name: "Partner" },
+  { src: "/clients/partner-3.png", name: "Partner" },
+  { src: "/clients/partner-4.png", name: "Partner" },
 ];
 
 export function ClientsMarquee() {
@@ -33,7 +36,6 @@ export function ClientsMarquee() {
       }}
     >
       <div className="relative">
-        {/* Edge fades */}
         <div
           className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 sm:w-24"
           style={{
@@ -67,7 +69,6 @@ export function ClientsMarquee() {
           ))}
         </div>
       </div>
-
     </section>
   );
 }
