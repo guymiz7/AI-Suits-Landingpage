@@ -11,7 +11,7 @@ const partners = [
   { src: "/clients/meuhedet.png", name: "Meuhedet" },
   { src: "/clients/lenovo.png", name: "Lenovo" },
   { src: "/clients/herbalife.png", name: "Herbalife" },
-  { src: "/clients/yes.png", name: "Yes" },
+  { src: "/clients/yes.png", name: "Yes", invert: true },
   { src: "/clients/peres.png", name: "Peres Academic Center" },
   { src: "/clients/hagag.png", name: "Hagag Europe" },
   { src: "/clients/israel-canada.png", name: "Israel Canada" },
@@ -22,8 +22,8 @@ const partners = [
 ];
 
 export function ClientsMarquee() {
-  // Duplicate items for seamless infinite loop
-  const items = [...partners, ...partners];
+  // Triple the array for seamless infinite loop on wide screens
+  const items = [...partners, ...partners, ...partners];
 
   return (
     <section
@@ -49,7 +49,7 @@ export function ClientsMarquee() {
           }}
         />
 
-        <div className="flex w-max animate-marquee items-center gap-10 px-4 sm:gap-16 sm:px-8">
+        <div className="marquee-track flex w-max items-center gap-10 px-4 sm:gap-16 sm:px-8">
           {items.map((p, i) => (
             <div
               key={`${p.name}-${i}`}
@@ -61,7 +61,7 @@ export function ClientsMarquee() {
                 src={`${ASSET_PREFIX}${p.src}`}
                 alt={p.name}
                 fill
-                className="object-contain"
+                className={`object-contain ${p.invert ? "logo-invert" : ""}`}
                 sizes="(max-width: 640px) 96px, 144px"
                 unoptimized
               />

@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { CTAButtons } from "./CTAButtons";
 import { RevealWords, FadeUp } from "./Reveal";
 
@@ -21,15 +20,7 @@ export function ClosingCTA() {
 
       <div className="container-page relative">
         <div className="mx-auto max-w-4xl text-center">
-          <h2
-            className="text-cream"
-            style={{
-              fontWeight: 600,
-              fontSize: "clamp(30px, 5vw, 60px)",
-              lineHeight: 1.2,
-              letterSpacing: "-0.02em",
-            }}
-          >
+          <h2 className="display-bold text-cream">
             <RevealWords
               text="אם אתם רוצים לדעת לבנות דפי נחיתה עם מסרים מחודדים שמוכרים, נכסים דיגיטליים שיקדמו תנועה ועבודה עם כלי AI שייתנו לכם יכולת אמיתית לעבוד מהר יותר — זה המקום להתחיל ממנו."
               delay={0.1}

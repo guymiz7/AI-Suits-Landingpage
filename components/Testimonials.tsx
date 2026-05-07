@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { RevealWords, FadeUp } from "./Reveal";
+import { RevealWords } from "./Reveal";
 
 type Video = {
   id: string;
@@ -32,11 +32,12 @@ export function Testimonials() {
       <div className="container-page relative">
         <div className="text-center">
           <h2 className="display-bold text-cream">
-            <RevealWords text="סיפורים אמיתיים, מהבוטקמפ." delay={0.1} />
+            <RevealWords text="מה הלקוחות שלנו מספרים עלינו" delay={0.1} />
           </h2>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+        {/* Bigger video grid — 2 cols on tablet, 4 on desktop, with bigger sizes */}
+        <div className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4 lg:gap-6">
           {videos.map((v, i) => (
             <VideoCard key={v.id} video={v} index={i} />
           ))}
@@ -54,8 +55,8 @@ function VideoCard({ video, index }: { video: Video; index: number }) {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.7, delay: index * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
-      className="testimonial-card relative overflow-hidden"
+      transition={{ duration: 0.8, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+      className="testimonial-card-runway relative overflow-hidden"
       style={{
         background: "var(--charcoal)",
         border: "1px solid var(--line)",
@@ -85,8 +86,7 @@ function VideoCard({ video, index }: { video: Video; index: number }) {
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
             unoptimized
-            className="object-cover transition-transform duration-[1200ms] ease-out"
-            style={{ objectPosition: "center" }}
+            className="testimonial-thumb object-cover"
           />
 
           {/* Top + bottom vignette */}
@@ -99,16 +99,26 @@ function VideoCard({ video, index }: { video: Video; index: number }) {
             }}
           />
 
+          {/* Bordeaux glow that pulses on hover */}
+          <span
+            aria-hidden="true"
+            className="testimonial-glow pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(ellipse at 50% 50%, rgba(122,43,61,0.45), transparent 60%)",
+            }}
+          />
+
           {/* Index */}
           <span
             aria-hidden="true"
-            className="absolute right-4 top-4"
+            className="absolute right-5 top-5"
             style={{
               fontFamily: "var(--font-serif), Georgia, serif",
               fontStyle: "italic",
               fontWeight: 300,
-              fontSize: 28,
-              color: "rgba(245,239,230,0.85)",
+              fontSize: 32,
+              color: "rgba(245,239,230,0.92)",
               letterSpacing: "-0.01em",
             }}
           >
@@ -119,16 +129,8 @@ function VideoCard({ video, index }: { video: Video; index: number }) {
           <span
             aria-hidden="true"
             className="testimonial-play absolute left-1/2 top-1/2 flex items-center justify-center"
-            style={{
-              width: 64,
-              height: 64,
-              transform: "translate(-50%, -50%)",
-              background: "rgba(245,239,230,0.94)",
-              borderRadius: "50%",
-              transition: "transform 0.5s ease, background 0.3s ease",
-            }}
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--bordeaux)" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="var(--bordeaux)" aria-hidden="true">
               <path d="M8 5v14l11-7z" />
             </svg>
           </span>
@@ -142,9 +144,9 @@ function VideoCard({ video, index }: { video: Video; index: number }) {
               style={{
                 fontWeight: 400,
                 fontSize: 11,
-                letterSpacing: "0.28em",
+                letterSpacing: "0.32em",
                 textTransform: "uppercase",
-                color: "rgba(245,239,230,0.85)",
+                color: "rgba(245,239,230,0.92)",
               }}
             >
               צפה בסרטון →
