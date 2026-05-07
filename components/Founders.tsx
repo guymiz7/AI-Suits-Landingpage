@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { MouseGlowCard } from "./MouseGlowCard";
+import { RevealWords, FadeUp } from "./Reveal";
 
 const ASSET_PREFIX =
   process.env.NODE_ENV === "production" ? "/AI-Suits-Landingpage" : "";
@@ -46,18 +48,14 @@ export function Founders() {
   return (
     <section id="mentors" className="section">
       <div className="container-page">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
-          className="text-center"
-        >
-          <p className="eyebrow-bordeaux">— המנטורים</p>
-          <h2 className="display-lg mt-5 text-cream">
-            הניסיון שעומד מאחורי החליפה
+        <div className="text-center">
+          <FadeUp>
+            <span className="section-index">III · המנטורים</span>
+          </FadeUp>
+          <h2 className="display-lg mt-6 text-cream">
+            <RevealWords text="הניסיון שעומד מאחורי החליפה." delay={0.1} />
           </h2>
-        </motion.div>
+        </div>
 
         <div className="mx-auto mt-16 max-w-6xl space-y-16 lg:space-y-24">
           {mentors.map((m, i) => (
@@ -102,7 +100,7 @@ function MentorRow({ m, index }: { m: Mentor; index: number }) {
 
       {/* Text card */}
       <div className={`lg:col-span-7 ${imageFirst ? "lg:order-2" : "lg:order-1"}`}>
-        <div
+        <MouseGlowCard
           className="h-full"
           style={{
             background: "var(--charcoal)",
@@ -165,7 +163,7 @@ function MentorRow({ m, index }: { m: Mentor; index: number }) {
               </span>
             ))}
           </div>
-        </div>
+        </MouseGlowCard>
       </div>
     </motion.div>
   );

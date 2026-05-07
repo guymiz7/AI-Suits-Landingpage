@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Heebo, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
+import { ScrollProgress } from "@/components/ScrollProgress";
 
 const heebo = Heebo({
   subsets: ["hebrew", "latin"],
@@ -86,6 +87,8 @@ export default function RootLayout({
       className={`${heebo.variable} ${cormorant.variable}`}
     >
       <body className="min-h-screen overflow-x-hidden font-sans">
+        <ScrollProgress />
+        <div className="ambient-grain" aria-hidden="true" />
         {children}
         {/* Structured data for SEO */}
         <script

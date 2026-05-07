@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { CTAButtons } from "./CTAButtons";
+import { RevealWords, FadeUp } from "./Reveal";
 
 export function ClosingCTA() {
   return (
@@ -19,15 +20,12 @@ export function ClosingCTA() {
       />
 
       <div className="container-page relative">
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.8 }}
-          className="mx-auto max-w-4xl text-center"
-        >
+        <div className="mx-auto max-w-4xl text-center">
+          <FadeUp>
+            <span className="section-index">IX · השלב הבא</span>
+          </FadeUp>
           <h2
-            className="text-cream"
+            className="text-cream mt-8"
             style={{
               fontWeight: 300,
               fontSize: "clamp(28px, 4.6vw, 56px)",
@@ -35,17 +33,18 @@ export function ClosingCTA() {
               letterSpacing: "-0.015em",
             }}
           >
-            אם אתם רוצים לדעת לבנות דפי נחיתה עם מסרים מחודדים שמוכרים,
-            נכסים דיגיטליים שיקדמו תנועה ועבודה עם כלי AI שייתנו לכם
-            יכולת אמיתית לעבוד מהר יותר —{" "}
-            <span style={{ color: "var(--cream)" }}>זה המקום להתחיל ממנו.</span>
+            <RevealWords
+              text="אם אתם רוצים לדעת לבנות דפי נחיתה עם מסרים מחודדים שמוכרים, נכסים דיגיטליים שיקדמו תנועה ועבודה עם כלי AI שייתנו לכם יכולת אמיתית לעבוד מהר יותר — זה המקום להתחיל ממנו."
+              delay={0.1}
+            />
           </h2>
 
-          <CTAButtons />
+          <FadeUp delay={0.5}>
+            <CTAButtons />
+          </FadeUp>
 
-          {/* Anchor for "send me details" — info section */}
           <a id="info" className="block" style={{ height: 0 }} aria-hidden="true" />
-        </motion.div>
+        </div>
       </div>
     </section>
   );

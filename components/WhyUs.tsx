@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { MouseGlowCard } from "./MouseGlowCard";
+import { RevealWords, FadeUp } from "./Reveal";
 
 const reasons = [
   {
@@ -31,67 +33,74 @@ export function WhyUs() {
       }}
     >
       <div className="container-page">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
-          className="text-center"
-        >
-          <p className="eyebrow-bordeaux">— הבידול</p>
-          <h2 className="display-lg mt-5 text-cream">למה דווקא אצלנו?</h2>
-        </motion.div>
+        <div className="text-center">
+          <FadeUp>
+            <span className="section-index">VI · הבידול</span>
+          </FadeUp>
+          <h2 className="display-lg mt-6 text-cream">
+            <RevealWords text="למה דווקא אצלנו?" delay={0.1} />
+          </h2>
+        </div>
 
         <div className="mt-16 grid gap-6 md:grid-cols-3">
           {reasons.map((r, i) => (
             <motion.div
               key={r.title}
-              initial={{ opacity: 0, y: 18 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.55, delay: i * 0.1 }}
-              className="lift-on-hover text-center"
-              style={{
-                background: "var(--onyx)",
-                border: "1px solid var(--line)",
-                padding: "40px 28px",
+              transition={{
+                duration: 0.8,
+                delay: i * 0.1,
+                ease: [0.16, 1, 0.3, 1],
               }}
             >
-              <div
-                className="mx-auto flex items-center justify-center"
+              <MouseGlowCard
+                as="div"
+                className="lift-on-hover h-full text-center"
                 style={{
-                  width: 64,
-                  height: 64,
-                  background: "var(--charcoal)",
+                  background: "var(--onyx)",
                   border: "1px solid var(--line)",
-                  color: "var(--cream)",
-                  marginBottom: 24,
+                  padding: "44px 28px",
                 }}
+                glowColor="rgba(122, 43, 61, 0.16)"
               >
-                {r.icon}
-              </div>
-              <h3
-                className="text-cream"
-                style={{
-                  fontWeight: 400,
-                  fontSize: "clamp(18px, 2.2vw, 22px)",
-                  lineHeight: 1.3,
-                  letterSpacing: "-0.005em",
-                }}
-              >
-                {r.title}
-              </h3>
-              <p
-                className="mt-3"
-                style={{
-                  fontWeight: 300,
-                  fontSize: 14,
-                  lineHeight: 1.7,
-                  color: "rgba(245,239,230,0.65)",
-                }}
-              >
-                {r.desc}
-              </p>
+                <div
+                  className="mx-auto flex items-center justify-center"
+                  style={{
+                    width: 64,
+                    height: 64,
+                    background: "var(--charcoal)",
+                    border: "1px solid var(--line)",
+                    color: "var(--cream)",
+                    marginBottom: 28,
+                  }}
+                >
+                  {r.icon}
+                </div>
+                <h3
+                  className="text-cream"
+                  style={{
+                    fontWeight: 400,
+                    fontSize: "clamp(18px, 2.2vw, 22px)",
+                    lineHeight: 1.3,
+                    letterSpacing: "-0.005em",
+                  }}
+                >
+                  {r.title}
+                </h3>
+                <p
+                  className="mt-3"
+                  style={{
+                    fontWeight: 300,
+                    fontSize: 14,
+                    lineHeight: 1.7,
+                    color: "rgba(245,239,230,0.65)",
+                  }}
+                >
+                  {r.desc}
+                </p>
+              </MouseGlowCard>
             </motion.div>
           ))}
         </div>

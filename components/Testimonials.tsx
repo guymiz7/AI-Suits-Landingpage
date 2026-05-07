@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { RevealWords, FadeUp } from "./Reveal";
 
 type Video = {
   id: string;
@@ -29,21 +30,14 @@ export function Testimonials() {
       />
 
       <div className="container-page relative">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
-          className="text-center"
-        >
-          <p className="eyebrow-bordeaux">— ממליצים</p>
-          <h2 className="display-lg mt-5 text-cream">
-            סיפורים אמיתיים, מהבוטקמפ.
+        <div className="text-center">
+          <FadeUp>
+            <span className="section-index">II · ממליצים</span>
+          </FadeUp>
+          <h2 className="display-lg mt-6 text-cream">
+            <RevealWords text="סיפורים אמיתיים, מהבוטקמפ." delay={0.1} />
           </h2>
-          <p className="lead mx-auto mt-6 text-center" style={{ marginInline: "auto" }}>
-            ארבעה מהבוגרים שלנו מספרים — בקצרה, ולעניין.
-          </p>
-        </motion.div>
+        </div>
 
         <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
           {videos.map((v, i) => (

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { RevealWords, FadeUp } from "./Reveal";
 
 const lessons = [
   "שימוש ב־AI לטובת קיצור תהליכים ומקסום איכות התוצאה.",
@@ -14,27 +15,26 @@ export function Curriculum() {
     <section id="curriculum" className="section">
       <div className="container-page">
         <div className="mx-auto max-w-4xl">
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7 }}
+          <div className="text-center">
+            <FadeUp>
+              <span className="section-index">VII · התוכנית</span>
+            </FadeUp>
+          </div>
+          <h2
             className="display-lg text-cream text-center"
-            style={{ maxWidth: "26ch", margin: "0 auto" }}
+            style={{ maxWidth: "26ch", margin: "32px auto 0" }}
           >
-            ההכשרה הזו לא עוסקת רק בבנייה. היא תעזור לכם להבין מה לבנות
-            ואיך לבנות את זה נכון.
-          </motion.h2>
+            <RevealWords
+              text="ההכשרה הזו לא עוסקת רק בבנייה. היא תעזור לכם להבין מה לבנות ואיך לבנות את זה נכון."
+              delay={0.1}
+            />
+          </h2>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="eyebrow-bordeaux mt-12 text-center"
-          >
-            — מה תלמדו בשני המפגשים
-          </motion.p>
+          <FadeUp delay={0.6}>
+            <p className="eyebrow-bordeaux mt-12 text-center">
+              — מה תלמדו בשני המפגשים
+            </p>
+          </FadeUp>
 
           <ul className="mt-10 space-y-0">
             {lessons.map((l, i) => (

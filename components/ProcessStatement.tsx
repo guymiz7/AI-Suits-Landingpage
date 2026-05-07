@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { CTAButtons } from "./CTAButtons";
+import { RevealWords } from "./Reveal";
 
 export function ProcessStatement() {
   return (
@@ -15,19 +16,15 @@ export function ProcessStatement() {
       />
 
       <div className="container-page relative">
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.8 }}
-          className="text-center"
-        >
+        <div className="text-center">
           <h2 className="display-xl text-cream" style={{ maxWidth: "20ch", margin: "0 auto" }}>
-            תהליך קצר.
-            <br className="hidden sm:block" /> תוצר אמיתי.
-            <br className="hidden sm:block" /> יכולת שימושית.
+            <RevealWords text="תהליך קצר." delay={0} />
+            <br className="hidden sm:block" />
+            <RevealWords text="תוצר אמיתי." delay={0.3} />
+            <br className="hidden sm:block" />
+            <RevealWords text="יכולת שימושית." delay={0.6} />
           </h2>
-        </motion.div>
+        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 12 }}

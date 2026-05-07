@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { CTAButtons } from "./CTAButtons";
+import { RevealWords, FadeUp } from "./Reveal";
 
 const items = [
   {
@@ -22,18 +23,14 @@ export function WhoIsItFor() {
   return (
     <section id="audience" className="section">
       <div className="container-page">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
-          className="text-center"
-        >
-          <p className="eyebrow-bordeaux">— קהל היעד</p>
-          <h2 className="display-lg mt-5 text-cream">
-            למי ההכשרה הזאת מתאימה?
+        <div className="text-center">
+          <FadeUp>
+            <span className="section-index">V · קהל היעד</span>
+          </FadeUp>
+          <h2 className="display-lg mt-6 text-cream">
+            <RevealWords text="למי ההכשרה הזאת מתאימה?" delay={0.1} />
           </h2>
-        </motion.div>
+        </div>
 
         <div className="mx-auto mt-16 max-w-5xl">
           <ul className="space-y-3">
