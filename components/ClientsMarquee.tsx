@@ -22,7 +22,7 @@ const partners = [
 ];
 
 export function ClientsMarquee() {
-  // Triple the array for seamless infinite loop on wide screens
+  // Triple the array — translateX(-33.333%) loops seamlessly through identical sets
   const items = [...partners, ...partners, ...partners];
 
   return (
@@ -49,11 +49,14 @@ export function ClientsMarquee() {
           }}
         />
 
-        <div className="marquee-track flex w-max items-center gap-10 px-4 sm:gap-16 sm:px-8">
+        {/* No gap on the track — spacing is on each item via mx, so width math is exact */}
+        <div className="marquee-track flex w-max items-center">
           {items.map((p, i) => (
             <div
               key={`${p.name}-${i}`}
-              className="marquee-logo relative flex shrink-0 items-center justify-center"
+              className={`marquee-logo relative flex shrink-0 items-center justify-center ${
+                p.invert ? "marquee-logo-invert" : ""
+              }`}
               aria-hidden={i >= partners.length}
               title={p.name}
             >
@@ -61,7 +64,7 @@ export function ClientsMarquee() {
                 src={`${ASSET_PREFIX}${p.src}`}
                 alt={p.name}
                 fill
-                className={`object-contain ${p.invert ? "logo-invert" : ""}`}
+                className="object-contain"
                 sizes="(max-width: 640px) 96px, 144px"
                 unoptimized
               />

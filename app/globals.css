@@ -234,11 +234,17 @@
 .marquee-logo {
   width: 96px;
   height: 36px;
+  /* equal margin on both sides replaces flex gap — required for exact 1/3 loop math */
+  margin-inline: 24px;
+  /* Charcoal backdrop = same as section bg (visually invisible) — enables mix-blend-mode */
+  background: var(--charcoal);
+  isolation: isolate;
 }
 @media (min-width: 640px) {
   .marquee-logo {
     width: 144px;
     height: 56px;
+    margin-inline: 36px;
   }
 }
 .marquee-logo img {
@@ -249,23 +255,28 @@
   opacity: 1;
   transform: scale(1.05);
 }
-/* Yes logo (and others with black bg) — invert dark pixels via blend */
-.marquee-logo .logo-invert {
+
+/* Yes logo (and others on black) — black blends into charcoal backdrop, light pixels show */
+.marquee-logo-invert {
+  /* a slightly different inner approach: render image with mix-blend-mode */
+}
+.marquee-logo-invert img {
   mix-blend-mode: screen;
-  filter: brightness(1.15);
 }
 
-/* Marquee track — triple set, scroll one third per loop for seamless tile */
+/* Marquee track — triple set, scroll exactly one third per loop for seamless tile.
+   With equal mx on every item, total width = 3N * (item + 2*margin),
+   so 33.333% lands precisely at the start of the second set. */
 @keyframes marquee-track {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-33.333%); }
+  100% { transform: translateX(-33.3333%); }
 }
 .marquee-track {
-  animation: marquee-track 28s linear infinite;
+  animation: marquee-track 32s linear infinite;
   will-change: transform;
 }
 @media (max-width: 640px) {
-  .marquee-track { animation-duration: 22s; }
+  .marquee-track { animation-duration: 24s; }
 }
 
 /* === Founder cards — equal heights === */
