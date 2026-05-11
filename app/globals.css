@@ -725,6 +725,73 @@
   letter-spacing: -0.02em;
 }
 
+/* ====================================================================
+   Hero TEXT overlay — appears at end of video
+   ==================================================================== */
+.hero-text-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+  pointer-events: none;
+}
+.hero-text-overlay.is-visible {
+  pointer-events: auto;
+}
+
+/* Each child fades + rises in independently with stagger */
+.hero-overlay-tagline,
+.hero-overlay-h1,
+.hero-overlay-lead,
+.hero-overlay-cta {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hero-text-overlay.is-visible .hero-overlay-tagline,
+.hero-text-overlay.is-visible .hero-overlay-h1,
+.hero-text-overlay.is-visible .hero-overlay-lead,
+.hero-text-overlay.is-visible .hero-overlay-cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-overlay-tagline {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(245, 239, 230, 0.78);
+  margin-bottom: 28px;
+}
+.hero-overlay-h1 {
+  /* uses display-hero base; just constraint width */
+  max-width: 22ch;
+  margin: 0 auto;
+  text-shadow: 0 2px 30px rgba(10, 10, 11, 0.5);
+}
+.hero-overlay-lead {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(245, 239, 230, 0.82);
+  margin: 24px auto 0;
+  max-width: 540px;
+  letter-spacing: 0.01em;
+}
+.hero-overlay-cta {
+  margin-top: 8px;
+}
+
+@media (max-width: 640px) {
+  .hero-overlay-tagline { font-size: 10px; letter-spacing: 0.28em; margin-bottom: 20px; }
+  .hero-overlay-lead { font-size: 14px; margin-top: 18px; }
+}
+
 .hv-svg {
   position: absolute;
   inset: 0;

@@ -1,98 +1,119 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CTAButtons } from "./CTAButtons";
-import { HeroVideo } from "./HeroVideo";
+
+const ASSET_PREFIX =
+  process.env.NODE_ENV === "production" ? "/AI-Suits-Landingpage" : "";
+
+/** Reveal-end window in seconds — how long before video ends the overlay fades in */
+const REVEAL_OFFSET = 2.2;
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [showOverlay, setShowOverlay] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
   const yShift = useTransform(scrollYProgress, [0, 1], ["0%", "8%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.85], [1, 0.4]);
+
+  // Reveal text overlay when video reaches its final moments.
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+
+    const handleTimeUpdate = () => {
+      if (!v.duration || !isFinite(v.duration)) return;
+      if (v.currentTime >= v.duration - REVEAL_OFFSET) {
+        setShowOverlay(true);
+      }
+    };
+
+    const handleEnded = () => setShowOverlay(true);
+
+    v.addEventListener("timeupdate", handleTimeUpdate);
+    v.addEventListener("ended", handleEnded);
+    v.play().catch(() => {});
+
+    // Failsafe: if video metadata never loads, reveal after 8 seconds
+    const fallback = window.setTimeout(() => setShowOverlay(true), 8000);
+
+    return () => {
+      v.removeEventListener("timeupdate", handleTimeUpdate);
+      v.removeEventListener("ended", handleEnded);
+      window.clearTimeout(fallback);
+    };
+  }, []);
 
   return (
     <section id="top" ref={ref} className="relative">
-      {/* Full-bleed cinematic video */}
-      <motion.div className="hero-fullscreen" style={{ y: yShift, opacity }}>
-        <HeroVideo />
-        {/* Bottom gradient transitions video into onyx */}
+      <motion.div className="hero-fullscreen" style={{ y: yShift }}>
+        <video
+          ref={videoRef}
+          className="hero-video-el"
+          src={`${ASSET_PREFIX}/videos/hero.mp4`}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+        />
+
+        {/* Vignette + bottom gradient — fades in WITH the overlay for legibility */}
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 z-[2]"
+          className="hero-overlay-vignette pointer-events-none absolute inset-0 z-[2] transition-opacity duration-[1400ms] ease-out"
           style={{
-            height: 200,
-            background: "linear-gradient(to top, var(--onyx), transparent)",
+            opacity: showOverlay ? 1 : 0,
+            background:
+              "linear-gradient(to top, rgba(10,10,11,0.92) 0%, rgba(10,10,11,0.55) 35%, rgba(10,10,11,0.15) 65%, rgba(10,10,11,0.0) 100%), radial-gradient(ellipse at center, rgba(10,10,11,0.45) 0%, transparent 70%)",
           }}
         />
-      </motion.div>
 
-      {/* Below video: small tagline + main headline + CTAs */}
-      <div
-        className="container-page relative"
-        style={{ paddingTop: 72, paddingBottom: 120 }}
-      >
-        <div className="mx-auto max-w-5xl text-center">
-          {/* Small tagline */}
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-8"
-            style={{
-              fontSize: 12,
-              fontWeight: 400,
-              letterSpacing: "0.32em",
-              textTransform: "uppercase",
-              color: "rgba(245,239,230,0.55)",
-            }}
-          >
-            Suits AI &mdash; AI Tailored to you
-          </motion.p>
+        {/* Text overlay — fades in at the end of the video */}
+        <div
+          className={`hero-text-overlay ${showOverlay ? "is-visible" : ""}`}
+          aria-hidden={!showOverlay}
+        >
+          <div className="container-page text-center">
+            {/* Small tagline */}
+            <p
+              className="hero-overlay-tagline"
+              style={{ transitionDelay: showOverlay ? "0.1s" : "0s" }}
+            >
+              Suits AI &mdash; AI Tailored to you
+            </p>
 
-          {/* Main Hebrew headline — original content */}
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="display-hero text-cream"
-          >
-            בשני מפגשים ממוקדים, בליווי מלא — תלמדו לבנות דפי מכירה מקצועיים וממותגים.
-          </motion.h1>
+            {/* Big Hebrew headline */}
+            <h1
+              className="display-hero hero-overlay-h1 text-cream"
+              style={{ transitionDelay: showOverlay ? "0.3s" : "0s" }}
+            >
+              בשני מפגשים ממוקדים, בליווי מלא — תלמדו לבנות דפי מכירה מקצועיים וממותגים.
+            </h1>
 
-          {/* Lead body — supporting text */}
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.9, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="mx-auto mt-8 max-w-2xl"
-            style={{
-              fontSize: 16,
-              fontWeight: 300,
-              lineHeight: 1.7,
-              color: "rgba(245,239,230,0.7)",
-              letterSpacing: "0.01em",
-            }}
-          >
-            עם דיוק בהצעה, בתכנון ובאסטרטגיה. בלי רקע קודם — חיסכון בזמן, בכסף ובתלות באנשי מקצוע.
-          </motion.p>
+            {/* Lead */}
+            <p
+              className="hero-overlay-lead"
+              style={{ transitionDelay: showOverlay ? "0.5s" : "0s" }}
+            >
+              עם דיוק בהצעה, בתכנון ובאסטרטגיה. בלי רקע קודם — חיסכון בזמן, בכסף ובתלות באנשי מקצוע.
+            </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <CTAButtons />
-          </motion.div>
+            {/* CTAs */}
+            <div
+              className="hero-overlay-cta"
+              style={{ transitionDelay: showOverlay ? "0.7s" : "0s" }}
+            >
+              <CTAButtons />
+            </div>
+          </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
