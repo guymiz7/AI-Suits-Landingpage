@@ -3,9 +3,8 @@
 import { MagneticLink } from "./MagneticLink";
 
 /**
- * Standard pair of CTA buttons used throughout the page.
- * Per spec: identical sizing, primary in bordeaux, secondary in cream.
- * Magnetic cursor attraction adds subtle Framer-style polish.
+ * Used in sections that should drive the visitor to the Hero registration form.
+ * Single CTA — scrolls smoothly to #register on the home page.
  */
 export function CTAButtons({
   align = "center",
@@ -21,20 +20,12 @@ export function CTAButtons({
       }`}
     >
       <MagneticLink
-        href="#contact"
+        href="#register"
         className="btn btn-primary btn-shimmer"
-        aria-label="אני רוצה לשמור מקום"
+        aria-label="לטופס ההרשמה למחזור הקרוב"
       >
         <span>אני רוצה לשמור מקום</span>
         <Arrow />
-      </MagneticLink>
-      <MagneticLink
-        href="#info"
-        className="btn btn-secondary"
-        aria-label="שלחו לי את כל הפרטים"
-        strength={0.12}
-      >
-        <span>שלחו לי את כל הפרטים</span>
       </MagneticLink>
     </div>
   );
