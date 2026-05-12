@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { RegistrationForm } from "./RegistrationForm";
 
 const ASSET_PREFIX =
@@ -9,6 +9,7 @@ const ASSET_PREFIX =
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -17,18 +18,71 @@ export function Hero() {
   const yShift = useTransform(scrollYProgress, [0, 1], ["0%", "8%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.85], [1, 0.4]);
 
+  // Mobile autoplay reliability — Safari iOS in particular needs:
+  //  - muted + playsinline (already on the element)
+  //  - an explicit play() after metadata loads
+  //  - a fallback on the first user interaction if autoplay was blocked
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+
+    let userGestureFallbackBound = false;
+
+    const tryPlay = () => {
+      const p = v.play();
+      if (p && typeof p.then === "function") {
+        p.catch(() => {
+          if (userGestureFallbackBound) return;
+          userGestureFallbackBound = true;
+          const onceFirstInteract = () => {
+            v.play().catch(() => {});
+            window.removeEventListener("touchstart", onceFirstInteract);
+            window.removeEventListener("click", onceFirstInteract);
+          };
+          window.addEventListener("touchstart", onceFirstInteract, {
+            once: true,
+            passive: true,
+          });
+          window.addEventListener("click", onceFirstInteract, { once: true });
+        });
+      }
+    };
+
+    if (v.readyState >= 2) {
+      tryPlay();
+    } else {
+      const onMeta = () => tryPlay();
+      v.addEventListener("loadeddata", onMeta, { once: true });
+      v.addEventListener("canplay", onMeta, { once: true });
+    }
+
+    // Resume when tab becomes visible again
+    const onVis = () => {
+      if (document.visibilityState === "visible") tryPlay();
+    };
+    document.addEventListener("visibilitychange", onVis);
+
+    return () => {
+      document.removeEventListener("visibilitychange", onVis);
+    };
+  }, []);
+
   return (
     <section id="top" ref={ref} className="relative">
       {/* Full-bleed cinematic video */}
       <motion.div className="hero-fullscreen" style={{ y: yShift, opacity }}>
         <video
+          ref={videoRef}
           className="hero-video-el"
           src={`${ASSET_PREFIX}/videos/hero.mp4`}
           autoPlay
           loop
           muted
+          {...{ "webkit-playsinline": "true" } /* legacy iOS attribute */}
           playsInline
           preload="auto"
+          disablePictureInPicture
+          controls={false}
           aria-hidden="true"
         />
         {/* Bottom gradient transitions video into onyx */}
@@ -99,7 +153,13 @@ export function Hero() {
             {" · "}
             שני מפגשים בלבד
             <br />
-            <span style={{ color: "rgba(245,239,230,0.65)", fontSize: 15, fontWeight: 300 }}>
+            <span
+              style={{
+                color: "rgba(245,239,230,0.65)",
+                fontSize: 15,
+                fontWeight: 300,
+              }}
+            >
               מספר המקומות מוגבל. ההטבה תקפה לזמן מוגבל.
             </span>
           </motion.p>

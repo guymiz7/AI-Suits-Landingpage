@@ -1,7 +1,7 @@
 "use client";
 
-import { CTAButtons } from "./CTAButtons";
 import { RevealWords, FadeUp } from "./Reveal";
+import { RegistrationForm } from "./RegistrationForm";
 
 export function ClosingCTA() {
   return (
@@ -28,10 +28,8 @@ export function ClosingCTA() {
           </h2>
 
           <FadeUp delay={0.5}>
-            <CTAButtons />
+            <RegistrationForm id="register-bottom" />
           </FadeUp>
-
-          <a id="info" className="block" style={{ height: 0 }} aria-hidden="true" />
         </div>
       </div>
     </section>

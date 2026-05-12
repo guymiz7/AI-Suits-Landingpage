@@ -18,7 +18,11 @@ import { FormEvent, useState } from "react";
  */
 const PAYMENT_PROVIDER_URL: string | null = null; // TODO: set when a payment gateway is provisioned
 
-export function RegistrationForm() {
+export function RegistrationForm({
+  id = "register",
+}: {
+  id?: string;
+} = {}) {
   const router = useRouter();
   const [data, setData] = useState({ name: "", phone: "", email: "" });
   const [loading, setLoading] = useState(false);
@@ -59,7 +63,7 @@ export function RegistrationForm() {
 
   return (
     <motion.form
-      id="register"
+      id={id}
       onSubmit={handleSubmit}
       className="registration-form"
       initial={{ opacity: 0, y: 24 }}
@@ -91,17 +95,18 @@ export function RegistrationForm() {
       {/* Fields */}
       <div className="form-fields">
         <div className="field-group">
-          <label htmlFor="reg-name" className="sr-only">
+          <label htmlFor={`${id}-name`} className="sr-only">
             שם מלא
           </label>
           <input
-            id="reg-name"
+            id={`${id}-name`}
             name="name"
             type="text"
             placeholder="שם מלא"
             required
             autoComplete="name"
             minLength={2}
+            maxLength={80}
             value={data.name}
             onChange={(e) => update("name", e.target.value)}
             className="form-input"
@@ -109,11 +114,11 @@ export function RegistrationForm() {
           />
         </div>
         <div className="field-group">
-          <label htmlFor="reg-phone" className="sr-only">
+          <label htmlFor={`${id}-phone`} className="sr-only">
             טלפון
           </label>
           <input
-            id="reg-phone"
+            id={`${id}-phone`}
             name="phone"
             type="tel"
             inputMode="tel"
@@ -121,6 +126,7 @@ export function RegistrationForm() {
             required
             autoComplete="tel"
             pattern="[0-9\-\+\s]{9,15}"
+            maxLength={20}
             value={data.phone}
             onChange={(e) => update("phone", e.target.value)}
             className="form-input"
@@ -128,16 +134,17 @@ export function RegistrationForm() {
           />
         </div>
         <div className="field-group">
-          <label htmlFor="reg-email" className="sr-only">
+          <label htmlFor={`${id}-email`} className="sr-only">
             אימייל
           </label>
           <input
-            id="reg-email"
+            id={`${id}-email`}
             name="email"
             type="email"
             placeholder="אימייל"
             required
             autoComplete="email"
+            maxLength={120}
             value={data.email}
             onChange={(e) => update("email", e.target.value)}
             className="form-input"

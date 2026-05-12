@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /thank-you/
+
+Sitemap: https://guymiz7.github.io/AI-Suits-Landingpage/sitemap.xml
