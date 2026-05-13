@@ -26,11 +26,7 @@ export function WhyUs() {
   return (
     <section
       className="section"
-      style={{
-        background: "var(--charcoal)",
-        borderTop: "1px solid var(--line-soft)",
-        borderBottom: "1px solid var(--line-soft)",
-      }}
+      style={{ background: "var(--onyx)" }}
     >
       <div className="container-page">
         <div className="text-center">
@@ -56,7 +52,7 @@ export function WhyUs() {
                 as="div"
                 className="lift-on-hover h-full text-center"
                 style={{
-                  background: "var(--onyx)",
+                  background: "var(--charcoal)",
                   border: "1px solid var(--line)",
                   padding: "44px 28px",
                 }}

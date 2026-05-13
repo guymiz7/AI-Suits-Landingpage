@@ -6,18 +6,16 @@ import { RevealWords } from "./Reveal";
 
 export function ProcessStatement() {
   return (
-    <section className="section relative" style={{ background: "var(--charcoal)" }}>
-      <div
-        className="pointer-events-none absolute inset-0 -z-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 50%, rgba(92,26,43,0.18), transparent 60%)",
-        }}
-      />
-
+    <section
+      className="section relative"
+      style={{ background: "var(--onyx)" }}
+    >
       <div className="container-page relative">
         <div className="text-center">
-          <h2 className="display-xl text-cream" style={{ maxWidth: "20ch", margin: "0 auto" }}>
+          <h2
+            className="display-xl text-cream"
+            style={{ maxWidth: "20ch", margin: "0 auto" }}
+          >
             <RevealWords text="תהליך קצר." delay={0} />
             <br className="hidden sm:block" />
             <RevealWords text="תוצר אמיתי." delay={0.3} />

@@ -173,7 +173,6 @@ export default function RootLayout({
     >
       <body className="min-h-screen overflow-x-hidden font-sans">
         <ScrollProgress />
-        <div className="ambient-grain" aria-hidden="true" />
         {children}
         {/* SEO — structured data */}
         <script

@@ -236,8 +236,8 @@
   height: 36px;
   /* equal margin on both sides replaces flex gap — required for exact 1/3 loop math */
   margin-inline: 24px;
-  /* Charcoal backdrop = same as section bg (visually invisible) — enables mix-blend-mode */
-  background: var(--charcoal);
+  /* Onyx backdrop = same as section bg (visually invisible) — enables mix-blend-mode */
+  background: var(--onyx);
   isolation: isolate;
 }
 @media (min-width: 640px) {

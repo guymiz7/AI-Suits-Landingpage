@@ -8,16 +8,8 @@ export function ClosingCTA() {
     <section
       id="contact"
       className="section relative"
-      style={{ background: "var(--charcoal)" }}
+      style={{ background: "var(--onyx)" }}
     >
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 50%, rgba(92,26,43,0.22), transparent 60%)",
-        }}
-      />
-
       <div className="container-page relative">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="display-bold text-cream">

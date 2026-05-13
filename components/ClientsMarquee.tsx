@@ -29,23 +29,19 @@ export function ClientsMarquee() {
     <section
       aria-label="Partners — לקוחות שעבדנו איתם"
       className="relative overflow-hidden py-12 sm:py-16"
-      style={{
-        background: "var(--charcoal)",
-        borderTop: "1px solid var(--line-soft)",
-        borderBottom: "1px solid var(--line-soft)",
-      }}
+      style={{ background: "var(--onyx)" }}
     >
       <div className="relative">
         <div
           className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 sm:w-24"
           style={{
-            background: "linear-gradient(to left, var(--charcoal), transparent)",
+            background: "linear-gradient(to left, var(--onyx), transparent)",
           }}
         />
         <div
           className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 sm:w-24"
           style={{
-            background: "linear-gradient(to right, var(--charcoal), transparent)",
+            background: "linear-gradient(to right, var(--onyx), transparent)",
           }}
         />
 

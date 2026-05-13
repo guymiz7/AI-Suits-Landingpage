@@ -18,10 +18,10 @@ export function Hero() {
   const yShift = useTransform(scrollYProgress, [0, 1], ["0%", "8%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.85], [1, 0.4]);
 
-  // Mobile autoplay reliability — Safari iOS in particular needs:
-  //  - muted + playsinline (already on the element)
+  // Mobile autoplay reliability — iOS Safari especially needs:
+  //  - muted + playsinline + webkit-playsinline
   //  - an explicit play() after metadata loads
-  //  - a fallback on the first user interaction if autoplay was blocked
+  //  - a fallback on the first user interaction
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
@@ -51,12 +51,11 @@ export function Hero() {
     if (v.readyState >= 2) {
       tryPlay();
     } else {
-      const onMeta = () => tryPlay();
-      v.addEventListener("loadeddata", onMeta, { once: true });
-      v.addEventListener("canplay", onMeta, { once: true });
+      const onReady = () => tryPlay();
+      v.addEventListener("loadeddata", onReady, { once: true });
+      v.addEventListener("canplay", onReady, { once: true });
     }
 
-    // Resume when tab becomes visible again
     const onVis = () => {
       if (document.visibilityState === "visible") tryPlay();
     };
@@ -68,7 +67,12 @@ export function Hero() {
   }, []);
 
   return (
-    <section id="top" ref={ref} className="relative">
+    <section
+      id="top"
+      ref={ref}
+      className="relative"
+      style={{ background: "var(--onyx)" }}
+    >
       {/* Full-bleed cinematic video */}
       <motion.div className="hero-fullscreen" style={{ y: yShift, opacity }}>
         <video
@@ -85,7 +89,7 @@ export function Hero() {
           controls={false}
           aria-hidden="true"
         />
-        {/* Bottom gradient transitions video into onyx */}
+        {/* Bottom transition from video to onyx (functional, not decorative) */}
         <div
           className="pointer-events-none absolute inset-x-0 bottom-0 z-[2]"
           style={{
@@ -101,7 +105,6 @@ export function Hero() {
         style={{ paddingTop: 72, paddingBottom: 120 }}
       >
         <div className="mx-auto max-w-5xl text-center">
-          {/* Small uppercase tagline */}
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -119,7 +122,6 @@ export function Hero() {
             Suits AI &mdash; AI Tailored to you
           </motion.p>
 
-          {/* FOMO headline */}
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -130,7 +132,6 @@ export function Hero() {
             המחזור הקרוב יוצא לדרך — שריינו את מקומכם.
           </motion.h1>
 
-          {/* Dates / urgency strip */}
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -164,7 +165,6 @@ export function Hero() {
             </span>
           </motion.p>
 
-          {/* Registration form replaces CTA buttons */}
           <RegistrationForm />
         </div>
       </div>

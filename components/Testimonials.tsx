@@ -19,16 +19,11 @@ const videos: Video[] = [
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="section relative">
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 -z-0"
-        style={{
-          height: 240,
-          background:
-            "radial-gradient(ellipse at 50% 0%, rgba(92,26,43,0.14), transparent 70%)",
-        }}
-      />
-
+    <section
+      id="testimonials"
+      className="section relative"
+      style={{ background: "var(--onyx)" }}
+    >
       <div className="container-page relative">
         <div className="text-center">
           <h2 className="display-bold text-cream">
