@@ -131,10 +131,12 @@ export default function TermsPage() {
           <h3>4.3 אופן הגשת בקשת ביטול</h3>
           <p>
             בקשת ביטול תוגש בכתב לכתובת{" "}
-            <a href="mailto:info@suitsai.com">info@suitsai.com</a> ותכלול
-            את שם המשתתף, מספר הטלפון, כתובת הדוא&quot;ל שעימה בוצעה ההרשמה,
-            ומספר ההזמנה (ככל שצוין באישור התשלום). מועד הגשת הבקשה ייחשב למועד
-            קבלת הדוא&quot;ל אצל החברה.
+            <a href="mailto:info@suitsai.com">info@suitsai.com</a> או ישירות
+            לאיש הקשר מתן יעקובסון בכתובת{" "}
+            <a href="mailto:matan@digi-tech.co.il">matan@digi-tech.co.il</a>,
+            ותכלול את שם המשתתף, מספר הטלפון, כתובת הדוא&quot;ל שעימה בוצעה
+            ההרשמה, ומספר ההזמנה (ככל שצוין באישור התשלום). מועד הגשת הבקשה
+            ייחשב למועד קבלת הדוא&quot;ל אצל החברה.
           </p>
 
           <h3>4.4 ביטול ביוזמת החברה</h3>
@@ -235,8 +237,10 @@ export default function TermsPage() {
           <h2>12. יצירת קשר</h2>
           <p>
             לפניות, שאלות, בקשות תמיכה או בקשות ביטול, ניתן ליצור עמנו קשר
-            בדוא&quot;ל:{" "}
-            <a href="mailto:info@suitsai.com">info@suitsai.com</a>.
+            בדוא&quot;ל{" "}
+            <a href="mailto:info@suitsai.com">info@suitsai.com</a> או ישירות
+            לאיש הקשר מתן יעקובסון בכתובת{" "}
+            <a href="mailto:matan@digi-tech.co.il">matan@digi-tech.co.il</a>.
           </p>
         </LegalPage>
       </main>

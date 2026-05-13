@@ -42,10 +42,17 @@ export default function PrivacyPage() {
           <h2>1. מי אחראי על המידע</h2>
           <p>
             המידע שייאסף באמצעות האתר מנוהל על ידי Suits AI, מפעילת תוכנית
-            ההכשרה <em>Suits AI Bootcamp</em>. לפניות בנושאי פרטיות:
+            ההכשרה <em>Suits AI Bootcamp</em>. לפניות בנושאי פרטיות ניתן ליצור
+            קשר באחד מן הערוצים הבאים:
           </p>
           <dl>
-            <dt>דוא&quot;ל</dt>
+            <dt>איש קשר</dt>
+            <dd>מתן יעקובסון</dd>
+            <dt>דוא&quot;ל ישיר</dt>
+            <dd>
+              <a href="mailto:matan@digi-tech.co.il">matan@digi-tech.co.il</a>
+            </dd>
+            <dt>פניות כלליות</dt>
             <dd>
               <a href="mailto:info@suitsai.com">info@suitsai.com</a>
             </dd>
@@ -177,7 +184,10 @@ export default function PrivacyPage() {
           </ul>
           <p>
             לצורך מימוש הזכויות לעיל ניתן לפנות אלינו בכתובת{" "}
-            <a href="mailto:info@suitsai.com">info@suitsai.com</a>. נטפל
+            <a href="mailto:info@suitsai.com">info@suitsai.com</a> או ישירות
+            למתן יעקובסון בכתובת{" "}
+            <a href="mailto:matan@digi-tech.co.il">matan@digi-tech.co.il</a>.
+            נטפל
             בפנייתכם בתוך פרק זמן סביר ובהתאם להוראות הדין.
           </p>
 
@@ -205,8 +215,10 @@ export default function PrivacyPage() {
           <h2>12. יצירת קשר</h2>
           <p>
             בכל שאלה בנוגע למדיניות זו, או בקשה למימוש זכויותיכם, ניתן לפנות
-            אלינו בכתובת:{" "}
-            <a href="mailto:info@suitsai.com">info@suitsai.com</a>.
+            אלינו בכתובת{" "}
+            <a href="mailto:info@suitsai.com">info@suitsai.com</a> או ישירות
+            לאיש הקשר מתן יעקובסון בכתובת{" "}
+            <a href="mailto:matan@digi-tech.co.il">matan@digi-tech.co.il</a>.
           </p>
         </LegalPage>
       </main>

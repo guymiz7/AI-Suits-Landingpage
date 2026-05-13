@@ -130,10 +130,14 @@ export default function AccessibilityPage() {
           </p>
           <dl>
             <dt>רכז נגישות</dt>
-            <dd>גיא מיזינסקי</dd>
-            <dt>דוא&quot;ל</dt>
             <dd>
+              גיא מיזינסקי —{" "}
               <a href="mailto:guy@octgroup.co.il">guy@octgroup.co.il</a>
+            </dd>
+            <dt>איש קשר נוסף</dt>
+            <dd>
+              מתן יעקובסון —{" "}
+              <a href="mailto:matan@digi-tech.co.il">matan@digi-tech.co.il</a>
             </dd>
             <dt>זמן מענה</dt>
             <dd>עד 14 ימי עבודה ממועד קבלת הפנייה</dd>
