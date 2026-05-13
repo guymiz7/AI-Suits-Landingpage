@@ -22,73 +22,71 @@ const partners = [
   { src: "/clients/partner-4.png", name: "Partner" },
 ];
 
-// How long one full set takes to scroll across (smaller = faster)
-const SPEED_DESKTOP_MS = 32000;
-const SPEED_MOBILE_MS = 22000;
+// CSS values mirrored here so we never depend on layout measurements.
+// Must stay in sync with .marquee-logo in globals.css.
+const SLOT_MOBILE_PX = 96 + 24 * 2; //  96 logo + 24 margin × 2  = 144
+const SLOT_DESKTOP_PX = 144 + 36 * 2; // 144 logo + 36 margin × 2 = 216
+
+const SPEED_DESKTOP_MS = 32000; // full set takes 32 s on desktop
+const SPEED_MOBILE_MS = 22000; // full set takes 22 s on mobile
 
 export function ClientsMarquee() {
-  // Triple the array for seamless infinite loop
+  // Triple the array so the loop is always covered on wide screens
   const items = [...partners, ...partners, ...partners];
   const trackRef = useRef<HTMLDivElement>(null);
 
   /**
-   * JavaScript-driven marquee — bulletproof across iOS Safari, Android
-   * Chrome and all desktop browsers. We measure the actual rendered width
-   * of one set, then translate by exactly that amount each loop.
-   *
-   * Why not CSS animation? On some mobile browsers the percentage-based
-   * CSS animation gets paused, jittered, or never starts (especially when
-   * `prefers-reduced-motion` is enabled silently by low-power mode).
+   * Bulletproof marquee — pure requestAnimationFrame, all dimensions are
+   * derived from known CSS values (not DOM measurement). Works on every
+   * mobile browser regardless of layout timing, image-load state or
+   * prefers-reduced-motion preference.
    */
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
 
     let position = 0;
-    let lastTime = performance.now();
+    let last = 0;
     let raf = 0;
     let running = true;
 
-    const pickDuration = () =>
-      window.matchMedia("(max-width: 640px)").matches
-        ? SPEED_MOBILE_MS
-        : SPEED_DESKTOP_MS;
-
-    let duration = pickDuration();
+    const isMobile = () => window.matchMedia("(max-width: 640px)").matches;
 
     const tick = (now: number) => {
       if (!running) return;
-      const delta = now - lastTime;
-      lastTime = now;
-
-      // One set is exactly 1/3 of the total tripled-track width
-      const oneSet = track.scrollWidth / 3;
-      if (oneSet > 0) {
-        const pxPerMs = oneSet / duration;
-        position -= pxPerMs * delta;
-        // Wrap when we've moved a full set
-        if (position <= -oneSet) position += oneSet;
-        track.style.transform = `translate3d(${position}px, 0, 0)`;
+      if (last === 0) {
+        last = now;
+        raf = requestAnimationFrame(tick);
+        return;
       }
+      const delta = now - last;
+      last = now;
+
+      const mobile = isMobile();
+      const slot = mobile ? SLOT_MOBILE_PX : SLOT_DESKTOP_PX;
+      const oneSet = partners.length * slot; // exactly one third of the rendered track
+      const duration = mobile ? SPEED_MOBILE_MS : SPEED_DESKTOP_MS;
+      const pxPerMs = oneSet / duration;
+
+      position -= pxPerMs * delta;
+      // Seamless wrap — when we've scrolled one full set, rebase.
+      if (position <= -oneSet) position += oneSet;
+
+      track.style.transform = `translate3d(${position.toFixed(2)}px, 0, 0)`;
+
       raf = requestAnimationFrame(tick);
     };
 
     raf = requestAnimationFrame(tick);
 
-    // Resync on resize so mobile/desktop speeds switch fluidly
-    const onResize = () => {
-      duration = pickDuration();
-    };
-    window.addEventListener("resize", onResize, { passive: true });
-
-    // Pause when tab is hidden (battery)
+    // Pause when tab is hidden — saves battery, prevents drift
     const onVisibility = () => {
       if (document.visibilityState === "hidden") {
         running = false;
         cancelAnimationFrame(raf);
       } else if (!running) {
         running = true;
-        lastTime = performance.now();
+        last = 0;
         raf = requestAnimationFrame(tick);
       }
     };
@@ -97,7 +95,6 @@ export function ClientsMarquee() {
     return () => {
       running = false;
       cancelAnimationFrame(raf);
-      window.removeEventListener("resize", onResize);
       document.removeEventListener("visibilitychange", onVisibility);
     };
   }, []);
