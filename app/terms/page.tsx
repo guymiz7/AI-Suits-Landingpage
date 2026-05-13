@@ -131,7 +131,7 @@ export default function TermsPage() {
           <h3>4.3 אופן הגשת בקשת ביטול</h3>
           <p>
             בקשת ביטול תוגש בכתב לכתובת{" "}
-            <a href="mailto:guy@octgroup.co.il">guy@octgroup.co.il</a> ותכלול
+            <a href="mailto:info@suitsai.com">info@suitsai.com</a> ותכלול
             את שם המשתתף, מספר הטלפון, כתובת הדוא&quot;ל שעימה בוצעה ההרשמה,
             ומספר ההזמנה (ככל שצוין באישור התשלום). מועד הגשת הבקשה ייחשב למועד
             קבלת הדוא&quot;ל אצל החברה.
@@ -236,7 +236,7 @@ export default function TermsPage() {
           <p>
             לפניות, שאלות, בקשות תמיכה או בקשות ביטול, ניתן ליצור עמנו קשר
             בדוא&quot;ל:{" "}
-            <a href="mailto:guy@octgroup.co.il">guy@octgroup.co.il</a>.
+            <a href="mailto:info@suitsai.com">info@suitsai.com</a>.
           </p>
         </LegalPage>
       </main>

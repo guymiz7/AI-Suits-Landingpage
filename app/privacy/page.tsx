@@ -45,11 +45,9 @@ export default function PrivacyPage() {
             ההכשרה <em>Suits AI Bootcamp</em>. לפניות בנושאי פרטיות:
           </p>
           <dl>
-            <dt>איש קשר</dt>
-            <dd>גיא מיזינסקי</dd>
             <dt>דוא&quot;ל</dt>
             <dd>
-              <a href="mailto:guy@octgroup.co.il">guy@octgroup.co.il</a>
+              <a href="mailto:info@suitsai.com">info@suitsai.com</a>
             </dd>
           </dl>
 
@@ -179,7 +177,7 @@ export default function PrivacyPage() {
           </ul>
           <p>
             לצורך מימוש הזכויות לעיל ניתן לפנות אלינו בכתובת{" "}
-            <a href="mailto:guy@octgroup.co.il">guy@octgroup.co.il</a>. נטפל
+            <a href="mailto:info@suitsai.com">info@suitsai.com</a>. נטפל
             בפנייתכם בתוך פרק זמן סביר ובהתאם להוראות הדין.
           </p>
 
@@ -208,7 +206,7 @@ export default function PrivacyPage() {
           <p>
             בכל שאלה בנוגע למדיניות זו, או בקשה למימוש זכויותיכם, ניתן לפנות
             אלינו בכתובת:{" "}
-            <a href="mailto:guy@octgroup.co.il">guy@octgroup.co.il</a>.
+            <a href="mailto:info@suitsai.com">info@suitsai.com</a>.
           </p>
         </LegalPage>
       </main>
