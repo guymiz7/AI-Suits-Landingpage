@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 
@@ -179,6 +180,18 @@ export function RegistrationForm({
 
       <p className="form-disclaimer">
         לאחר ההרשמה תועברו לעמוד תשלום מאובטח.
+      </p>
+
+      <p className="form-consent">
+        בלחיצה על הכפתור הנכם מאשרים שקראתם את{" "}
+        <Link href="/privacy" target="_blank" rel="noopener noreferrer">
+          מדיניות הפרטיות
+        </Link>{" "}
+        ואת{" "}
+        <Link href="/terms" target="_blank" rel="noopener noreferrer">
+          התקנון
+        </Link>
+        , ומסכימים לקבל הודעות תפעוליות הקשורות לבוטקמפ.
       </p>
     </motion.form>
   );

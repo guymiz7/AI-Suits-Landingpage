@@ -14,7 +14,7 @@ export default function ThankYouPage() {
   return (
     <>
       <Header />
-      <main className="relative">
+      <main id="main" className="relative">
         <ThankYouContent />
       </main>
       <Footer />

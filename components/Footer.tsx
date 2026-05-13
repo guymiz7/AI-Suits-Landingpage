@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Logo } from "./Logo";
 
 export function Footer() {
@@ -16,9 +17,11 @@ export function Footer() {
             aria-label="קישורים תחתונים"
             className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2"
           >
-            <a href="/privacy" className="footer-link">מדיניות פרטיות</a>
+            <Link href="/privacy" className="footer-link">מדיניות פרטיות</Link>
             <span aria-hidden="true" style={{ color: "rgba(245,239,230,0.25)" }}>·</span>
-            <a href="/accessibility" className="footer-link">נגישות</a>
+            <Link href="/accessibility" className="footer-link">הצהרת נגישות</Link>
+            <span aria-hidden="true" style={{ color: "rgba(245,239,230,0.25)" }}>·</span>
+            <Link href="/terms" className="footer-link">תקנון ותנאי שימוש</Link>
           </nav>
 
           <hr className="hairline" style={{ width: 80 }} />

@@ -172,6 +172,7 @@ export default function RootLayout({
       className={`${heebo.variable} ${cormorant.variable}`}
     >
       <body className="min-h-screen overflow-x-hidden font-sans">
+        <a href="#main" className="skip-link">דלג לתוכן הראשי</a>
         <ScrollProgress />
         {children}
         {/* SEO — structured data */}
