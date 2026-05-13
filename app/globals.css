@@ -267,21 +267,8 @@
 /* Marquee track — triple set, scroll exactly one third per loop for seamless tile.
    With equal mx on every item, total width = 3N * (item + 2*margin),
    so 33.333% lands precisely at the start of the second set. */
-@keyframes marquee-track {
-  0%   { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-33.3333%, 0, 0); }
-}
-.marquee-track {
-  animation: marquee-track 32s linear infinite;
-  animation-play-state: running !important;
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  will-change: transform;
-}
-@media (max-width: 640px) {
-  .marquee-track { animation-duration: 26s; }
-}
+/* Marquee track is now JS-driven (see ClientsMarquee.tsx).
+   No CSS animation here — reliable across all browsers + mobile. */
 
 /* === Founder cards — equal heights === */
 .founder-photo {

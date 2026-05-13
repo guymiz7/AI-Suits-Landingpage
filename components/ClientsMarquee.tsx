@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 const ASSET_PREFIX =
   process.env.NODE_ENV === "production" ? "/AI-Suits-Landingpage" : "";
@@ -21,9 +22,85 @@ const partners = [
   { src: "/clients/partner-4.png", name: "Partner" },
 ];
 
+// How long one full set takes to scroll across (smaller = faster)
+const SPEED_DESKTOP_MS = 32000;
+const SPEED_MOBILE_MS = 22000;
+
 export function ClientsMarquee() {
-  // Triple the array — translateX(-33.333%) loops seamlessly through identical sets
+  // Triple the array for seamless infinite loop
   const items = [...partners, ...partners, ...partners];
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  /**
+   * JavaScript-driven marquee — bulletproof across iOS Safari, Android
+   * Chrome and all desktop browsers. We measure the actual rendered width
+   * of one set, then translate by exactly that amount each loop.
+   *
+   * Why not CSS animation? On some mobile browsers the percentage-based
+   * CSS animation gets paused, jittered, or never starts (especially when
+   * `prefers-reduced-motion` is enabled silently by low-power mode).
+   */
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    let position = 0;
+    let lastTime = performance.now();
+    let raf = 0;
+    let running = true;
+
+    const pickDuration = () =>
+      window.matchMedia("(max-width: 640px)").matches
+        ? SPEED_MOBILE_MS
+        : SPEED_DESKTOP_MS;
+
+    let duration = pickDuration();
+
+    const tick = (now: number) => {
+      if (!running) return;
+      const delta = now - lastTime;
+      lastTime = now;
+
+      // One set is exactly 1/3 of the total tripled-track width
+      const oneSet = track.scrollWidth / 3;
+      if (oneSet > 0) {
+        const pxPerMs = oneSet / duration;
+        position -= pxPerMs * delta;
+        // Wrap when we've moved a full set
+        if (position <= -oneSet) position += oneSet;
+        track.style.transform = `translate3d(${position}px, 0, 0)`;
+      }
+      raf = requestAnimationFrame(tick);
+    };
+
+    raf = requestAnimationFrame(tick);
+
+    // Resync on resize so mobile/desktop speeds switch fluidly
+    const onResize = () => {
+      duration = pickDuration();
+    };
+    window.addEventListener("resize", onResize, { passive: true });
+
+    // Pause when tab is hidden (battery)
+    const onVisibility = () => {
+      if (document.visibilityState === "hidden") {
+        running = false;
+        cancelAnimationFrame(raf);
+      } else if (!running) {
+        running = true;
+        lastTime = performance.now();
+        raf = requestAnimationFrame(tick);
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+
+    return () => {
+      running = false;
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", onResize);
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
+  }, []);
 
   return (
     <section
@@ -45,8 +122,14 @@ export function ClientsMarquee() {
           }}
         />
 
-        {/* No gap on the track — spacing is on each item via mx, so width math is exact */}
-        <div className="marquee-track flex w-max items-center">
+        <div
+          ref={trackRef}
+          className="flex w-max items-center"
+          style={{
+            transform: "translate3d(0, 0, 0)",
+            willChange: "transform",
+          }}
+        >
           {items.map((p, i) => (
             <div
               key={`${p.name}-${i}`}
