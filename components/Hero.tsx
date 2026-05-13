@@ -172,13 +172,17 @@ export function Hero() {
               letterSpacing: "0.005em",
             }}
           >
-            <strong style={{ fontWeight: 500, color: "var(--cream)" }}>
-              25 ו־27 במאי 2026
+            <strong
+              dir="ltr"
+              style={{
+                fontWeight: 500,
+                color: "var(--cream)",
+                display: "inline-block",
+                unicodeBidi: "embed",
+              }}
+            >
+              25,27.5.2026 18:00-19:30
             </strong>
-            {" · "}
-            18:00–19:30
-            {" · "}
-            שני מפגשים בלבד
             <br />
             <span
               style={{
@@ -187,7 +191,7 @@ export function Hero() {
                 fontWeight: 300,
               }}
             >
-              מספר המקומות מוגבל. ההטבה תקפה לזמן מוגבל.
+              שני מפגשים בלבד. מספר המקומות מוגבל. ההטבה תקפה לזמן מוגבל.
             </span>
           </motion.p>
 
