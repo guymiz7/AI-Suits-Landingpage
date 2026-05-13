@@ -122,21 +122,40 @@ export function Hero() {
             Suits AI &mdash; AI Tailored to you
           </motion.p>
 
+          {/* Main H1 — original opening sentence */}
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="display-hero text-cream"
+            className="text-cream mx-auto"
+            style={{
+              fontWeight: 200,
+              fontSize: "clamp(28px, 4.4vw, 56px)",
+              lineHeight: 1.2,
+              letterSpacing: "-0.015em",
+              maxWidth: "30ch",
+            }}
+          >
+            בשני מפגשים ממוקדים בליווי מלא משלב ההתקנה, תלמדו לבנות דפי מכירה מקצועיים וממותגים, עם דיוק בהצעה, בתכנון ובאסטרטגיה — בלי רקע קודם, עם חיסכון בזמן, בכסף ובתלות באנשי מקצוע.
+          </motion.h1>
+
+          {/* H2 — FOMO urgency line */}
+          <motion.h2
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="display-hero text-cream mt-10"
           >
             המחזור הקרוב יוצא לדרך — שריינו את מקומכם.
-          </motion.h1>
+          </motion.h2>
 
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.9, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="mx-auto mt-8 max-w-3xl"
             style={{
               fontSize: 18,
