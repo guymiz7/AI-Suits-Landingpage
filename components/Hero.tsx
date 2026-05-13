@@ -146,7 +146,14 @@ export function Hero() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="display-hero text-cream mt-10"
+            className="text-cream mt-10"
+            style={{
+              fontWeight: 300,
+              fontSize: "clamp(20px, 2.6vw, 30px)",
+              lineHeight: 1.35,
+              letterSpacing: "-0.005em",
+              color: "rgba(245,239,230,0.92)",
+            }}
           >
             המחזור הקרוב יוצא לדרך — שריינו את מקומכם.
           </motion.h2>
