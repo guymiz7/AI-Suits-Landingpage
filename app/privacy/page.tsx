@@ -43,18 +43,18 @@ export default function PrivacyPage() {
           <p>
             המידע שייאסף באמצעות האתר מנוהל על ידי Suits AI, מפעילת תוכנית
             ההכשרה <em>Suits AI Bootcamp</em>. לפניות בנושאי פרטיות ניתן ליצור
-            קשר באחד מן הערוצים הבאים:
+            קשר עם אחד מאנשי הקשר הבאים:
           </p>
           <dl>
             <dt>איש קשר</dt>
-            <dd>מתן יעקובסון</dd>
-            <dt>דוא&quot;ל ישיר</dt>
             <dd>
+              מתן יעקובסון —{" "}
               <a href="mailto:matan@digi-tech.co.il">matan@digi-tech.co.il</a>
             </dd>
-            <dt>פניות כלליות</dt>
+            <dt>איש קשר</dt>
             <dd>
-              <a href="mailto:info@suitsai.com">info@suitsai.com</a>
+              גיא מיזינסקי —{" "}
+              <a href="mailto:guy@octgroup.co.il">guy@octgroup.co.il</a>
             </dd>
           </dl>
 
@@ -183,11 +183,11 @@ export default function PrivacyPage() {
             </li>
           </ul>
           <p>
-            לצורך מימוש הזכויות לעיל ניתן לפנות אלינו בכתובת{" "}
-            <a href="mailto:info@suitsai.com">info@suitsai.com</a> או ישירות
-            למתן יעקובסון בכתובת{" "}
-            <a href="mailto:matan@digi-tech.co.il">matan@digi-tech.co.il</a>.
-            נטפל
+            לצורך מימוש הזכויות לעיל ניתן לפנות לאחד מאנשי הקשר שלנו: מתן
+            יעקובסון בכתובת{" "}
+            <a href="mailto:matan@digi-tech.co.il">matan@digi-tech.co.il</a>,
+            או גיא מיזינסקי בכתובת{" "}
+            <a href="mailto:guy@octgroup.co.il">guy@octgroup.co.il</a>. נטפל
             בפנייתכם בתוך פרק זמן סביר ובהתאם להוראות הדין.
           </p>
 
@@ -215,10 +215,10 @@ export default function PrivacyPage() {
           <h2>12. יצירת קשר</h2>
           <p>
             בכל שאלה בנוגע למדיניות זו, או בקשה למימוש זכויותיכם, ניתן לפנות
-            אלינו בכתובת{" "}
-            <a href="mailto:info@suitsai.com">info@suitsai.com</a> או ישירות
-            לאיש הקשר מתן יעקובסון בכתובת{" "}
-            <a href="mailto:matan@digi-tech.co.il">matan@digi-tech.co.il</a>.
+            לאנשי הקשר שלנו: מתן יעקובסון בכתובת{" "}
+            <a href="mailto:matan@digi-tech.co.il">matan@digi-tech.co.il</a>,
+            או גיא מיזינסקי בכתובת{" "}
+            <a href="mailto:guy@octgroup.co.il">guy@octgroup.co.il</a>.
           </p>
         </LegalPage>
       </main>
