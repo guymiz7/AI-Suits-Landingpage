@@ -824,21 +824,6 @@
   flex-direction: column;
   text-align: right;
 }
-/* Soft bordeaux halo behind the form */
-.registration-form::before {
-  content: "";
-  position: absolute;
-  inset: -40px;
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(122, 43, 61, 0.35), transparent 60%);
-  z-index: -1;
-  pointer-events: none;
-  animation: form-glow-pulse 5s ease-in-out infinite;
-}
-@keyframes form-glow-pulse {
-  0%, 100% { opacity: 0.55; }
-  50% { opacity: 0.9; }
-}
 /* Top hairline accent */
 .registration-form::after {
   content: "";
